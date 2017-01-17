@@ -1,8 +1,8 @@
 language: objective-c
 osx_image: xcode8
 env:
-    global:
-    - FRAMEWORK_NAME=ClusterKit
+  global:
+  - FRAMEWORK_NAME=ClusterKit
 
 before_install:
 - brew update
@@ -21,6 +21,11 @@ before_deploy:
 - carthage archive $FRAMEWORK_NAME
 
 deploy:
-    provider: releases
-    on:
-        repo: hulab/ClusterKit
+  provider: releases
+  api_key:
+    secure: SQh6dfiety7M8KOnIeRAE4f1m1YXswch/8t/3/AEXymp5v35o2DUQ0P9zLyJlwuOLF9zPrT10Po2p34K8DYClNeA+6n/f3ptGozLtXEm2Whl99i/Kq54H6v1XbiRTUR61t5qjTGqxQnR/POYSQAYU+gwt9/pQ5l3YVIrfeUIppgy8VQi0WzknzeEHOvdld9GvgJ5hetQNXctmMYGFTfYpqfUbAajcLhfvic/qrhZMmhPwCf5FLIbtkRxOcImqATHVtZ0JW/mXEDb5eatsfP1JpQJ9pclC/5K+1DWfGv+AA3QbSOod4JuDnJG9JYwWBjGmtKd+4TuiO8HzawlydpK3gE3vVBOSQB5EI646f2AlQaxzWZCCplFBsIbpGamTcv3KJ+Xy4lsT7AFfH6aqDQsspoZhgFbImSYrKJVD/rypmS7dsKknPjUk0w0z3D+cxkvCZ+VC4TkQW5IIvQoiGXP03Yqg3zF4jUhZywEDXFVYJqLIZpoVL8P8zAp8PMTkULMZCGsSkH+vFOzxa1DwK+BY1VVqocCF0tkothG+WrWeH0Cf1qBhYRortPnwgvx6ae7lOJyfAJLKXDHTY8R0y2CWm4mrAGKb/9/c+OVzK4Csw01oKJ4DFGiIi9AwNbaP0/U6b0ppGmLBB6YoL9RFDRzqsENWS/aiG9CGMRskw2GUsU=
+  file: $FRAMEWORK_NAME.framework.zip
+  skip_cleanup: true
+  on:
+    repo: hulab/ClusterKit
+    tags: true
