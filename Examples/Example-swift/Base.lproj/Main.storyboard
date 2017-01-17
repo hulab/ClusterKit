@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YSf-PU-gyI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map Kit View Controller-->
+        <scene sceneID="lfO-jM-jle">
+            <objects>
+                <viewController id="X1I-Qw-JJ5" customClass="MapKitViewController" customModule="ClusterKit_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hXz-fh-KE1"/>
+                        <viewControllerLayoutGuide type="bottom" id="FS4-Xi-AI2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7a0-Bu-2xq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DKP-X5-k6l">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <connections>
+                                    <outlet property="delegate" destination="X1I-Qw-JJ5" id="OVI-8e-5xD"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DKP-X5-k6l" secondAttribute="trailing" id="2HR-T2-uCQ"/>
+                            <constraint firstItem="DKP-X5-k6l" firstAttribute="top" secondItem="7a0-Bu-2xq" secondAttribute="top" id="88D-NA-OGj"/>
+                            <constraint firstItem="DKP-X5-k6l" firstAttribute="leading" secondItem="7a0-Bu-2xq" secondAttribute="leading" id="8aZ-3c-aka"/>
+                            <constraint firstItem="FS4-Xi-AI2" firstAttribute="top" secondItem="DKP-X5-k6l" secondAttribute="bottom" id="s6K-5i-SSg"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="apple" id="QKZ-gE-QM1">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="mapView" destination="DKP-X5-k6l" id="xbw-0g-GwG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eph-Ir-P9O" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="366" y="-25"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="fLH-Wk-QXf">
+            <objects>
+                <tabBarController id="YSf-PU-gyI" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="HaJ-KZ-bfF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="X1I-Qw-JJ5" kind="relationship" relationship="viewControllers" id="C2s-JS-mXF"/>
+                        <segue destination="qLw-tV-6Im" kind="relationship" relationship="viewControllers" id="TnP-rJ-KTV"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UZv-hA-plD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663" y="310"/>
+        </scene>
+        <!--Google Maps View Controller-->
+        <scene sceneID="dTK-jm-dCE">
+            <objects>
+                <viewController id="qLw-tV-6Im" customClass="GoogleMapsViewController" customModule="ClusterKit_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0vF-gO-OaQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="RWu-s6-3i5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mbB-gg-unf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyA-UN-G0i" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RWu-s6-3i5" firstAttribute="top" secondItem="UyA-UN-G0i" secondAttribute="bottom" id="CN0-iI-GlL"/>
+                            <constraint firstAttribute="trailing" secondItem="UyA-UN-G0i" secondAttribute="trailing" id="Qdy-c1-72O"/>
+                            <constraint firstItem="UyA-UN-G0i" firstAttribute="top" secondItem="mbB-gg-unf" secondAttribute="top" id="fXZ-9g-K0J"/>
+                            <constraint firstItem="UyA-UN-G0i" firstAttribute="leading" secondItem="mbB-gg-unf" secondAttribute="leading" id="rgX-6U-EwA"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="google" id="joI-5c-v9s">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="mapView" destination="UyA-UN-G0i" id="99F-7M-mlD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R8o-ib-ATs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="366" y="644"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="apple" width="21" height="25"/>
+        <image name="google" width="70" height="23"/>
+    </resources>
+</document>

@@ -1,0 +1,6 @@
+framework module Pods_ParisOpenDataUI {
+  umbrella header "Pods-ParisOpenDataUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

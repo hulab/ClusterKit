@@ -1,0 +1,6 @@
+framework module ClusterKit {
+  umbrella header "ClusterKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

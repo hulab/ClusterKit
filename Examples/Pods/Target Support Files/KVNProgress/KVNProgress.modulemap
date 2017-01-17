@@ -1,0 +1,6 @@
+framework module KVNProgress {
+  umbrella header "KVNProgress-umbrella.h"
+
+  export *
+  module * { export * }
+}

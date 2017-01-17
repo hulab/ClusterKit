@@ -1,0 +1,26 @@
+language: objective-c
+osx_image: xcode8
+env:
+    global:
+    - FRAMEWORK_NAME=ClusterKit
+
+before_install:
+- brew update
+- brew outdated carthage || brew upgrade carthage
+
+install:
+- gem install cocoapods
+- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+
+script:
+- set -o pipefail && xcodebuild -project ClusterKit.xcodeproj -scheme $FRAMEWORK_NAME -sdk iphonesimulator10.0 -configuration Release -destination "platform=iOS Simulator,name=iPhone 7" clean build test | xcpretty -c
+- pod lib lint --quick
+
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+
+deploy:
+    provider: releases
+    on:
+        repo: hulab/ClusterKit

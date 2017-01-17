@@ -1,0 +1,28 @@
+PODS:
+  - ClusterKit/Core (0.1.0)
+  - ClusterKit/MapKit (0.1.0):
+    - ClusterKit/Core
+  - GoogleMaps (2.1.1):
+    - GoogleMaps/Maps (= 2.1.1)
+  - GoogleMaps/Base (2.1.1)
+  - GoogleMaps/Maps (2.1.1):
+    - GoogleMaps/Base
+  - KVNProgress (2.3.1)
+
+DEPENDENCIES:
+  - ClusterKit/MapKit (from `../.`)
+  - GoogleMaps (~> 2.1)
+  - KVNProgress (~> 2.3)
+
+EXTERNAL SOURCES:
+  ClusterKit:
+    :path: ../.
+
+SPEC CHECKSUMS:
+  ClusterKit: 9f05d4053cb23956e59260864f1ac7f07db5f1fd
+  GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
+  KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
+
+PODFILE CHECKSUM: 1b2c8c7f2b92c292cd01808b7b0cd5caae248bfb
+
+COCOAPODS: 1.1.1
