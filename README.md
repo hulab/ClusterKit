@@ -32,7 +32,21 @@ An iOS Framework for clustering annotations with [MapKit](https://developer.appl
 + Cluster center can be switched to Centroid, Nearest Centroid, Bottom.
 + Written in Objective-C with full Swift interop support.
 
+<p align="center" margin=20>
+    <img src="Resources/apple_maps.gif" alt="Apple Plan" style="padding:20px;">
+    <img src="Resources/google_maps.gif" alt="Google Maps" style="padding:20px;">
+</p>
+
 ## Usage
+
+If you want to try it, simply run:
+
+```
+pod try ClusterKit
+```
+
+Or clone the repo and run `pod install` from the [Examples](Examples) directory first.
+> Provide the [Google API Key](https://console.developers.google.com) in the AppDelegate in order to try it with GoogleMaps.
 
 #### MapKit
 
@@ -151,6 +165,10 @@ if you aim to integrate ClusterKit with GoogleMaps, you will need few more steps
 
 > This is due to the fact that GoogleMaps is still a static framework.
 
+## Credits
+
+Assets by [Hugo des Gayets](https://dribbble.com/hugodesgayets).
+
 ## License
 
-ClusterKit is available under the MIT license. See the LICENSE file for more info.
+ClusterKit is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
