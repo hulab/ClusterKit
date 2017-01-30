@@ -98,9 +98,14 @@ MKMapRect CKCreateRectFromSpan(CLLocationCoordinate2D center, double span);
 
 MKMapRect CKCreateRectFromSpan(CLLocationCoordinate2D center, CLLocationDegrees span) {
     double halfSpan = span / 2;
-    MKMapPoint a = MKMapPointForCoordinate(CLLocationCoordinate2DMake(center.latitude + halfSpan,
-                                                                      center.longitude - halfSpan));
-    MKMapPoint b = MKMapPointForCoordinate(CLLocationCoordinate2DMake(center.latitude - halfSpan,
-                                                                      center.longitude + halfSpan));
+    
+    CLLocationDegrees latitude = MIN(center.latitude + halfSpan, 180);
+    CLLocationDegrees longitude = MAX(center.longitude - halfSpan, -180);
+    MKMapPoint a = MKMapPointForCoordinate(CLLocationCoordinate2DMake(latitude, longitude));
+    
+    latitude = MAX(center.latitude - halfSpan, -180);
+    longitude = MIN(center.longitude + halfSpan, 180);
+    MKMapPoint b = MKMapPointForCoordinate(CLLocationCoordinate2DMake(latitude, longitude));
+    
     return MKMapRectMake(MIN(a.x,b.x), MIN(a.y,b.y), ABS(a.x-b.x), ABS(a.y-b.y));
 }
