@@ -23,7 +23,6 @@
 #import <ParisOpenData/ParisOpenData.h>
 #import <ParisOpenDataUI/ParisOpenDataUI.h>
 
-#import <ClusterKit/ClusterKit.h>
 #import <ClusterKit/MKMapView+ClusterKit.h>
 
 #import "CKMapKitViewController.h"

@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <MapKit/MapKit.h>
-#import <ClusterKit/CKMap.h>
+#import <ClusterKit/ClusterKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
