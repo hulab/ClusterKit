@@ -22,12 +22,12 @@
 
 ----------------
 
-An iOS Framework for clustering annotations with [MapKit](https://developer.apple.com/reference/mapkit) and [GoogleMaps iOS SDK](https://developers.google.com/maps/documentation/ios-sdk).
+ClusterKit is an elegant and efficiant clustering controller for maps. Its flexible architecture make it very customizable, you can use your own algorithm and even your own map provider. 
 
 ## Features
 
-+ Supports MapKit **AND** GoogleMaps.
-+ Comes with 2 clustering algorithms, a Grid Based Algorithm and a Non Hierarchical Distance Based Algorithm, both inspired by [Google Maps Utils](https://github.com/googlemaps/google-maps-ios-utils). Other algorithms can easily be integrated.
++ Native supports of **MapKit** and **GoogleMaps**.
++ Comes with 2 clustering algorithms, a Grid Based Algorithm and a Non Hierarchical Distance Based Algorithm.
 + Annotations are stored in a [QuadTree](https://en.wikipedia.org/wiki/Quadtree) for efficient region queries.
 + Cluster center can be switched to Centroid, Nearest Centroid, Bottom.
 + Written in Objective-C with full Swift interop support.
@@ -36,6 +36,29 @@ An iOS Framework for clustering annotations with [MapKit](https://developer.appl
     <img src="Resources/apple_maps.gif" alt="Apple Plan" style="padding:20px;">
     <img src="Resources/google_maps.gif" alt="Google Maps" style="padding:20px;">
 </p>
+
+## Installation
+
+### CocoaPods
+
+ClusterKit is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your `Podfile`:
+
+```ruby
+pod 'ClusterKit'
+```
+
+### Carthage
+
+With [Carthage](https://github.com/Carthage/Carthage), add the following to your `Cartfile`:
+
+```ruby
+github "hulab/ClusterKit"
+```
+
+### Maps
+
+If you want to use ClusterKit with **Mapkit** or **GoogleMaps**, please follow the [Installation Guide](https://github.com/hulab/ClusterKit/wiki/Installation).
 
 ## Usage
 
@@ -48,14 +71,7 @@ pod try ClusterKit
 Or clone the repo and run `pod install` from the [Examples](Examples) directory first.
 > Provide the [Google API Key](https://console.developers.google.com) in the AppDelegate in order to try it with GoogleMaps.
 
-#### MapKit
-
-##### Import the framework
-
-```objective-c
-#import <ClusterKit/ClusterKit.h>
-#import <ClusterKit/MKMapView+ClusterKit.h>
-```
+### MapKit
 
 ##### Configure the cluster manager
 
@@ -77,22 +93,14 @@ self.mapView.clusterManager.annotations = annotations;
     if ([view.annotation isKindOfClass:[CKCluster class]]) {
         CKCluster *cluster = view.annotation;
         
-        if (cluster.annotations.count > 1) {
+        if (cluster.count > 1) {
             [mapView showCluster:cluster animated:YES];
         }
     }
 }
 ```
 
-#### GoogleMaps
-
-##### Import the framework
-
-```objective-c
-#import <ClusterKit/ClusterKit.h>
-#import "GMSMapView+ClusterKit.h"
-```
-> After having following [install steps](#Installation)
+### GoogleMaps
 
 ##### Configure the cluster manager
 
@@ -111,7 +119,7 @@ self.mapView.clusterManager.annotations = annotations;
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
-    if (marker.cluster.annotations.count > 1) {
+    if (marker.cluster.count > 1) {
         GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate fitCluster:marker.cluster];
         [mapView animateWithCameraUpdate:cameraUpdate];
         return YES;
@@ -126,7 +134,7 @@ self.mapView.clusterManager.annotations = annotations;
 - (GMSMarker *)mapView:(GMSMapView *)mapView markerForCluster:(CKCluster *)cluster {
     GMSMarker *marker = [GMSMarker markerWithPosition:cluster.coordinate];
     
-    if(cluster.annotations.count > 1) {
+    if(cluster.count > 1) {
         marker.icon = <#Cluster icon#>;
     } else {
         marker.icon = <#Annotation icon#>;
@@ -135,35 +143,6 @@ self.mapView.clusterManager.annotations = annotations;
     return marker;
 }
 ```
-
-## Installation
-
-#### CocoaPods
-
-ClusterKit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your `Podfile`:
-
-```ruby
-pod 'ClusterKit'
-```
-
-#### Carthage
-
-For [Carthage](https://github.com/Carthage/Carthage), add the following to your `Cartfile`:
-
-```ruby
-github "hulab/ClusterKit"
-```
-
-#### GoogleMaps
-if you aim to integrate ClusterKit with GoogleMaps, you will need few more steps:
-
-1. In your project, create a group named `ClusterKit`.
-2. Download `GMSMapView+ClusterKit.h` and `GMSMapView+ClusterKit.m` from `ClusterKit/GoogleMaps`.
-3. Add the files to your project by right clicking on the `ClusterKit` group and selecting "Add Files to ..." (Make sure you select the target as your app target to avoid undefined symbols issue).
-4. *In Swift projects*: Add a bridging header file with `#import "GMSMapView+ClusterKit.h"` (note the relative path).
-
-> This is due to the fact that GoogleMaps is still a static framework.
 
 ## Credits
 
