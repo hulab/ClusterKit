@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C4C93E11E4250D500927A42 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKClusterAlgorithm.h; sourceTree = "<group>"; };
 		9C53CD051E03F51C000AD9B8 /* CKClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKClusterAlgorithm.m; sourceTree = "<group>"; };
 		9C53CD061E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKNonHierarchicalDistanceBasedAlgorithm.h; sourceTree = "<group>"; };
@@ -213,6 +214,7 @@
 				9CC875B51E029AB00019AA18 /* ClusterKit.podspec */,
 				9CC875B61E029AB00019AA18 /* LICENSE */,
 				9CC875B71E029AB00019AA18 /* README.md */,
+				9C4C93E11E4250D500927A42 /* CHANGELOG.md */,
 			);
 			name = Metadata;
 			sourceTree = "<group>";
