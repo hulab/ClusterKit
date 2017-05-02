@@ -246,6 +246,18 @@ void hb_qtree_find_in_range(hb_qtree_t *t, MKMapRect range , void(^find)(id<MKAn
 - (NSArray<id<CKAnnotation>> *)annotationsInRect:(MKMapRect)rect {
     NSMutableArray *results = [NSMutableArray new];
     
+    // For map rects that span the 180th meridian, we get the portion outside the world.
+    if (MKMapRectSpans180thMeridian(rect)) {
+        
+        hb_qtree_find_in_range(self.tree, MKMapRectRemainder(rect), ^(id<CKAnnotation> annotation) {
+            if (!self->_responds || [self.delegate annotationTree:self shouldExtractAnnotation:annotation]) {
+                [results addObject:annotation];
+            }
+        });
+        
+        rect = MKMapRectIntersection(rect, MKMapRectWorld);
+    }
+    
     hb_qtree_find_in_range(self.tree, rect, ^(id<CKAnnotation> annotation) {
         if (!self->_responds || [self.delegate annotationTree:self shouldExtractAnnotation:annotation]) {
             [results addObject:annotation];
