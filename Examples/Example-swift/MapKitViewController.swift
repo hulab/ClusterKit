@@ -23,8 +23,7 @@
 import UIKit
 import MapKit
 import ClusterKit
-import ParisOpenData
-import ParisOpenDataUI
+import ExampleData
 
 class MapKitViewController: UIViewController, MKMapViewDelegate {
 
@@ -39,7 +38,11 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         mapView.clusterManager.algorithm = algorithm
         mapView.clusterManager.marginFactor = 1
         
-        loadMuseums()
+        
+        let paris = CLLocationCoordinate2D(latitude: 48.853, longitude: 2.35)
+        mapView.setCenter(paris, animated: false)
+        
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,8 +50,14 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func didLoadPoints(_ points: [CKPointObject]!) {
-        mapView.clusterManager.annotations = points
+    func loadData() {
+        let operation = CKGeoPointOperation()
+        
+        operation.setCompletionBlockWithSuccess({ (_, points) in
+            self.mapView.clusterManager.annotations = points
+        })
+        
+        operation.start()
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

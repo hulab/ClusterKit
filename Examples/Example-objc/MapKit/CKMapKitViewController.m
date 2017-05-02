@@ -20,9 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <ParisOpenData/ParisOpenData.h>
-#import <ParisOpenDataUI/ParisOpenDataUI.h>
-
+#import <ExampleData/ExampleData.h>
 #import <ClusterKit/MKMapView+ClusterKit.h>
 
 #import "CKMapKitViewController.h"
@@ -42,11 +40,17 @@
     self.mapView.clusterManager.algorithm = algorithm;
     self.mapView.clusterManager.marginFactor = 1;
  
-    [self loadMuseums];
+    [self loadData];
 }
 
-- (void)didLoadPoints:(NSArray<CKPointObject *> *)points {
-    self.mapView.clusterManager.annotations = points;
+- (void)loadData {
+    CKGeoPointOperation *operation = [[CKGeoPointOperation alloc] init];
+    
+    [operation setCompletionBlockWithSuccess:^(CKGeoPointOperation * _Nonnull operation, NSArray<MKPointAnnotation *> *points) {
+        self.mapView.clusterManager.annotations = points;
+    } failure:nil];
+    
+    [operation start];
 }
 
 #pragma mark <MKMapViewDelegate>

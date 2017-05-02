@@ -23,8 +23,7 @@
 import UIKit
 import GoogleMaps
 import ClusterKit
-import ParisOpenData
-import ParisOpenDataUI
+import ExampleData
 
 class GoogleMapsViewController: UIViewController, GMSMapViewDelegate, GMSMapViewDataSource {
 
@@ -43,16 +42,26 @@ class GoogleMapsViewController: UIViewController, GMSMapViewDelegate, GMSMapView
         mapView.clusterManager.marginFactor = 1
         mapView.dataSource = self
         
-        loadMuseums()
+        let paris = CLLocationCoordinate2D(latitude: 48.853, longitude: 2.35)
+        let update = GMSCameraUpdate.setTarget(paris)
+        mapView.moveCamera(update)
+        
+        loadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func didLoadPoints(_ points: [CKPointObject]!) {
-        mapView.clusterManager.annotations = points
+    func loadData() {
+        let operation = CKGeoPointOperation()
+        
+        operation.setCompletionBlockWithSuccess({ (_, points) in
+            self.mapView.clusterManager.annotations = points
+        })
+        
+        operation.start()
     }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {

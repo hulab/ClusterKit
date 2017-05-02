@@ -7,48 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05A730E23F56AA7105F7A43F /* Pods_ParisOpenData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A6CED68D20A477526F7832 /* Pods_ParisOpenData.framework */; };
+		76436ED7CB2CBF845C3B3397 /* Pods_Example_data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991F94DAC9500A17E248ABC4 /* Pods_Example_data.framework */; };
 		9ACFAA26A015E26A0B1CFEA9 /* Pods_Example_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91060DA485011A40E2B07E /* Pods_Example_swift.framework */; };
-		9C2EBCB11E2395F000C039AD /* CKPointObjectDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2EBCAF1E2395F000C039AD /* CKPointObjectDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C2EBCB21E2395F000C039AD /* CKPointObjectDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EBCB01E2395F000C039AD /* CKPointObjectDownloader.m */; };
-		9C2EBCB51E23A87900C039AD /* CKMuseumDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2EBCB31E23A87900C039AD /* CKMuseumDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C2EBCB61E23A87900C039AD /* CKMuseumDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EBCB41E23A87900C039AD /* CKMuseumDownloader.m */; };
-		9C2EBCB91E23AB0E00C039AD /* CKTreeDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2EBCB71E23AB0E00C039AD /* CKTreeDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C2EBCBA1E23AB0E00C039AD /* CKTreeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EBCB81E23AB0E00C039AD /* CKTreeDownloader.m */; };
-		9C2EBCBD1E23C8D200C039AD /* CKNearbyShopDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2EBCBB1E23C8D200C039AD /* CKNearbyShopDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C2EBCBE1E23C8D200C039AD /* CKNearbyShopDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EBCBC1E23C8D200C039AD /* CKNearbyShopDownloader.m */; };
+		9C1A99ED1EB9225800BEB563 /* ExampleData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1A99EB1EB9225800BEB563 /* ExampleData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C1A99F01EB9225800BEB563 /* ExampleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; };
+		9C1A99F11EB9225800BEB563 /* ExampleData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C5C83DC1EB92678002F4C73 /* CKGeoPointOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C5C83DA1EB92678002F4C73 /* CKGeoPointOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C5C83DD1EB92678002F4C73 /* CKGeoPointOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C83DB1EB92678002F4C73 /* CKGeoPointOperation.m */; };
+		9C5C83E21EB930F3002F4C73 /* random.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A99F51EB922A400BEB563 /* random.geojson */; };
+		9C5C83E31EB9338E002F4C73 /* ExampleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; };
+		9C5C83E41EB9338E002F4C73 /* ExampleData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C5C83E91EB961DA002F4C73 /* stations.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C83E81EB961DA002F4C73 /* stations.geojson */; };
 		9C6827CF1E2E6F970076C573 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6827CE1E2E6F970076C573 /* Assets.xcassets */; };
 		9C6827D01E2E6F970076C573 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6827CE1E2E6F970076C573 /* Assets.xcassets */; };
 		9C6827D11E2E743F0076C573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD80AE51E2306E000DFCB89 /* Main.storyboard */; };
 		9C6827D21E2E743F0076C573 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD80AEA1E2306E000DFCB89 /* LaunchScreen.storyboard */; };
-		9C6EBCAB1E23C951008FAC7A /* CKStationDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C6EBCA91E23C951008FAC7A /* CKStationDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C6EBCAC1E23C951008FAC7A /* CKStationDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EBCAA1E23C951008FAC7A /* CKStationDownloader.m */; };
-		9C6EBCB61E23CDE0008FAC7A /* ParisOpenDataUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C6EBCB41E23CDE0008FAC7A /* ParisOpenDataUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C6EBCBD1E23CE42008FAC7A /* CKTreeClusterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C6EBCBB1E23CE42008FAC7A /* CKTreeClusterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C6EBCBE1E23CE42008FAC7A /* CKTreeClusterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EBCBC1E23CE42008FAC7A /* CKTreeClusterView.m */; };
-		9C6EBCC01E23CE74008FAC7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6EBCBF1E23CE74008FAC7A /* Assets.xcassets */; };
-		9C6EBCC31E23CEA9008FAC7A /* UIViewController+ParisOpenData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C6EBCC11E23CEA9008FAC7A /* UIViewController+ParisOpenData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C6EBCC41E23CEA9008FAC7A /* UIViewController+ParisOpenData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EBCC21E23CEA9008FAC7A /* UIViewController+ParisOpenData.m */; };
-		9C6EBCC51E23CF15008FAC7A /* ParisOpenDataUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C6EBCB21E23CDE0008FAC7A /* ParisOpenDataUI.framework */; };
-		9C6EBCC61E23CF15008FAC7A /* ParisOpenDataUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C6EBCB21E23CDE0008FAC7A /* ParisOpenDataUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9C6EBCD31E23DBC3008FAC7A /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EBCD21E23DBC3008FAC7A /* MapKitViewController.swift */; };
 		9C6EBCD51E23DBDE008FAC7A /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EBCD41E23DBDE008FAC7A /* GoogleMapsViewController.swift */; };
 		9CAFE26E1E23E8D100337FD1 /* GMSMapView+ClusterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFE26D1E23E8D100337FD1 /* GMSMapView+ClusterKit.m */; };
-		9CBF7D251E23DF52002E0BA3 /* ParisOpenData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD80A9C1E2303C400DFCB89 /* ParisOpenData.framework */; };
-		9CBF7D261E23DF52002E0BA3 /* ParisOpenData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD80A9C1E2303C400DFCB89 /* ParisOpenData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9CBF7D291E23DF52002E0BA3 /* ParisOpenDataUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C6EBCB21E23CDE0008FAC7A /* ParisOpenDataUI.framework */; };
-		9CBF7D2A1E23DF52002E0BA3 /* ParisOpenDataUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C6EBCB21E23CDE0008FAC7A /* ParisOpenDataUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9CD80AA01E2303C400DFCB89 /* ParisOpenData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD80A9E1E2303C400DFCB89 /* ParisOpenData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9CD80AC11E23040800DFCB89 /* CKPointObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD80AA61E23040800DFCB89 /* CKPointObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9CD80AC21E23040800DFCB89 /* CKPointObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD80AA71E23040800DFCB89 /* CKPointObject.m */; };
-		9CD80AC61E23040800DFCB89 /* CKMuseum.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD80AAC1E23040800DFCB89 /* CKMuseum.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9CD80AC71E23040800DFCB89 /* CKMuseum.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD80AAD1E23040800DFCB89 /* CKMuseum.m */; };
-		9CD80ACA1E23040800DFCB89 /* CKShop.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD80AB11E23040800DFCB89 /* CKShop.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9CD80ACB1E23040800DFCB89 /* CKShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD80AB21E23040800DFCB89 /* CKShop.m */; };
-		9CD80ACE1E23040800DFCB89 /* CKStation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD80AB61E23040800DFCB89 /* CKStation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9CD80ACF1E23040800DFCB89 /* CKStation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD80AB71E23040800DFCB89 /* CKStation.m */; };
-		9CD80AD21E23040800DFCB89 /* CKTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD80ABB1E23040800DFCB89 /* CKTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9CD80AD31E23040800DFCB89 /* CKTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD80ABC1E23040800DFCB89 /* CKTree.m */; };
 		9CD80ADE1E2306E000DFCB89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD80ADD1E2306E000DFCB89 /* main.m */; };
 		9CD80AF81E2306F400DFCB89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD80AF71E2306F400DFCB89 /* AppDelegate.swift */; };
 		9CD80AFD1E2306F400DFCB89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD80AFB1E2306F400DFCB89 /* Main.storyboard */; };
@@ -59,52 +35,34 @@
 		9CD80B151E2307AF00DFCB89 /* GMSMapView+ClusterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD80B141E2307AF00DFCB89 /* GMSMapView+ClusterKit.m */; };
 		9CD80B171E2307F400DFCB89 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD80B161E2307F400DFCB89 /* MapKit.framework */; };
 		9CD80B181E2307FC00DFCB89 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD80B161E2307F400DFCB89 /* MapKit.framework */; };
-		9CD80B2B1E230BC500DFCB89 /* ParisOpenData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD80A9C1E2303C400DFCB89 /* ParisOpenData.framework */; };
-		9CD80B2C1E230BC500DFCB89 /* ParisOpenData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD80A9C1E2303C400DFCB89 /* ParisOpenData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BDD99BF8F0171E3EB7424E2D /* Pods_ParisOpenDataUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F3D0EE0F71641D654D2A40 /* Pods_ParisOpenDataUI.framework */; };
 		FBCD06409EDDB8D4DCC65554 /* Pods_Example_objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 804AB2574059CD5C5BEDCE2C /* Pods_Example_objc.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9C6EBCC71E23CF15008FAC7A /* PBXContainerItemProxy */ = {
+		9C1A99EE1EB9225800BEB563 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9CD80A831E23031700DFCB89 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9C6EBCB11E23CDE0008FAC7A;
-			remoteInfo = ParisOpenDataUI;
+			remoteGlobalIDString = 9C1A99E81EB9225800BEB563;
+			remoteInfo = "Example-data";
 		};
-		9CBF7D271E23DF52002E0BA3 /* PBXContainerItemProxy */ = {
+		9C5C83E51EB9338E002F4C73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9CD80A831E23031700DFCB89 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9CD80A9B1E2303C400DFCB89;
-			remoteInfo = ParisOpenData;
-		};
-		9CBF7D2B1E23DF52002E0BA3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9CD80A831E23031700DFCB89 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9C6EBCB11E23CDE0008FAC7A;
-			remoteInfo = ParisOpenDataUI;
-		};
-		9CD80B291E230BBD00DFCB89 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9CD80A831E23031700DFCB89 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9CD80A9B1E2303C400DFCB89;
-			remoteInfo = ParisOpenData;
+			remoteGlobalIDString = 9C1A99E81EB9225800BEB563;
+			remoteInfo = "Example-data";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9CBF7D2D1E23DF52002E0BA3 /* Embed Frameworks */ = {
+		9C5C83E71EB9338E002F4C73 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9CBF7D2A1E23DF52002E0BA3 /* ParisOpenDataUI.framework in Embed Frameworks */,
-				9CBF7D261E23DF52002E0BA3 /* ParisOpenData.framework in Embed Frameworks */,
+				9C5C83E41EB9338E002F4C73 /* ExampleData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,8 +73,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9C6EBCC61E23CF15008FAC7A /* ParisOpenDataUI.framework in Embed Frameworks */,
-				9CD80B2C1E230BC500DFCB89 /* ParisOpenData.framework in Embed Frameworks */,
+				9C1A99F11EB9225800BEB563 /* ExampleData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +83,7 @@
 /* Begin PBXFileReference section */
 		108907832C51CE9F59276F87 /* Pods_Examples_Example_objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Examples_Example_objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BA9C3C54808263A239B6AB4 /* Pods-Examples-Example-objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples-Example-objc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Examples-Example-objc/Pods-Examples-Example-objc.release.xcconfig"; sourceTree = "<group>"; };
+		30529D0906921024EBCD8FF7 /* Pods-Example-data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-data.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example-data/Pods-Example-data.release.xcconfig"; sourceTree = "<group>"; };
 		33F3D0EE0F71641D654D2A40 /* Pods_ParisOpenDataUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParisOpenDataUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A6CED68D20A477526F7832 /* Pods_ParisOpenData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParisOpenData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B7B856915D31292C0533862 /* Pods_Examples_ParisOpenData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Examples_ParisOpenData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,48 +91,24 @@
 		4ECF1E12AA19EE26529118B7 /* Pods-Example-objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-objc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc.debug.xcconfig"; sourceTree = "<group>"; };
 		53319BB1285E4BB84F1CA340 /* Pods-Example-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift.debug.xcconfig"; sourceTree = "<group>"; };
 		5CDC0E98C1B0CC32EEB4206F /* Pods-Examples-ParisOpenDataUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples-ParisOpenDataUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-Examples-ParisOpenDataUI/Pods-Examples-ParisOpenDataUI.release.xcconfig"; sourceTree = "<group>"; };
+		6342D7FB7C4927C2B322BA29 /* Pods-Example-data.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-data.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example-data/Pods-Example-data.debug.xcconfig"; sourceTree = "<group>"; };
 		637FE4EDF09CAF4306172F86 /* Pods-Example-objc-ParisOpenData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-objc-ParisOpenData.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example-objc-ParisOpenData/Pods-Example-objc-ParisOpenData.release.xcconfig"; sourceTree = "<group>"; };
-		6CB8BEDA481DCBFC5823B95A /* Pods-ParisOpenDataUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParisOpenDataUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParisOpenDataUI/Pods-ParisOpenDataUI.debug.xcconfig"; sourceTree = "<group>"; };
 		71B6B6F461FC5E5896234105 /* Pods_Examples_Example_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Examples_Example_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8F0DE8FC04429B60C3F0F1 /* Pods_Examples_ParisOpenDataUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Examples_ParisOpenDataUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		804AB2574059CD5C5BEDCE2C /* Pods_Example_objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8500689AB9D144CCFB33A987 /* Pods-ParisOpenData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParisOpenData.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParisOpenData/Pods-ParisOpenData.release.xcconfig"; sourceTree = "<group>"; };
-		9C2EBCAF1E2395F000C039AD /* CKPointObjectDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPointObjectDownloader.h; sourceTree = "<group>"; };
-		9C2EBCB01E2395F000C039AD /* CKPointObjectDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPointObjectDownloader.m; sourceTree = "<group>"; };
-		9C2EBCB31E23A87900C039AD /* CKMuseumDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKMuseumDownloader.h; sourceTree = "<group>"; };
-		9C2EBCB41E23A87900C039AD /* CKMuseumDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKMuseumDownloader.m; sourceTree = "<group>"; };
-		9C2EBCB71E23AB0E00C039AD /* CKTreeDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTreeDownloader.h; sourceTree = "<group>"; };
-		9C2EBCB81E23AB0E00C039AD /* CKTreeDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKTreeDownloader.m; sourceTree = "<group>"; };
-		9C2EBCBB1E23C8D200C039AD /* CKNearbyShopDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKNearbyShopDownloader.h; sourceTree = "<group>"; };
-		9C2EBCBC1E23C8D200C039AD /* CKNearbyShopDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKNearbyShopDownloader.m; sourceTree = "<group>"; };
+		991F94DAC9500A17E248ABC4 /* Pods_Example_data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C1A99E91EB9225800BEB563 /* ExampleData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C1A99EB1EB9225800BEB563 /* ExampleData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleData.h; sourceTree = "<group>"; };
+		9C1A99EC1EB9225800BEB563 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C1A99F51EB922A400BEB563 /* random.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = random.geojson; sourceTree = "<group>"; };
+		9C5C83DA1EB92678002F4C73 /* CKGeoPointOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKGeoPointOperation.h; sourceTree = "<group>"; };
+		9C5C83DB1EB92678002F4C73 /* CKGeoPointOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKGeoPointOperation.m; sourceTree = "<group>"; };
+		9C5C83E81EB961DA002F4C73 /* stations.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stations.geojson; sourceTree = "<group>"; };
 		9C6827CE1E2E6F970076C573 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9C6EBCA91E23C951008FAC7A /* CKStationDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKStationDownloader.h; sourceTree = "<group>"; };
-		9C6EBCAA1E23C951008FAC7A /* CKStationDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKStationDownloader.m; sourceTree = "<group>"; };
-		9C6EBCB21E23CDE0008FAC7A /* ParisOpenDataUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ParisOpenDataUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C6EBCB41E23CDE0008FAC7A /* ParisOpenDataUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParisOpenDataUI.h; sourceTree = "<group>"; };
-		9C6EBCB51E23CDE0008FAC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C6EBCBB1E23CE42008FAC7A /* CKTreeClusterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKTreeClusterView.h; path = Trees/CKTreeClusterView.h; sourceTree = "<group>"; };
-		9C6EBCBC1E23CE42008FAC7A /* CKTreeClusterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CKTreeClusterView.m; path = Trees/CKTreeClusterView.m; sourceTree = "<group>"; };
-		9C6EBCBF1E23CE74008FAC7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9C6EBCC11E23CEA9008FAC7A /* UIViewController+ParisOpenData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ParisOpenData.h"; sourceTree = "<group>"; };
-		9C6EBCC21E23CEA9008FAC7A /* UIViewController+ParisOpenData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ParisOpenData.m"; sourceTree = "<group>"; };
 		9C6EBCD21E23DBC3008FAC7A /* MapKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
 		9C6EBCD41E23DBDE008FAC7A /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		9CAFE26C1E23E8D100337FD1 /* GMSMapView+ClusterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMSMapView+ClusterKit.h"; sourceTree = "<group>"; };
 		9CAFE26D1E23E8D100337FD1 /* GMSMapView+ClusterKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMSMapView+ClusterKit.m"; sourceTree = "<group>"; };
-		9CD80A9C1E2303C400DFCB89 /* ParisOpenData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ParisOpenData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CD80A9E1E2303C400DFCB89 /* ParisOpenData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParisOpenData.h; sourceTree = "<group>"; };
-		9CD80A9F1E2303C400DFCB89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CD80AA61E23040800DFCB89 /* CKPointObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPointObject.h; sourceTree = "<group>"; };
-		9CD80AA71E23040800DFCB89 /* CKPointObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPointObject.m; sourceTree = "<group>"; };
-		9CD80AAC1E23040800DFCB89 /* CKMuseum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKMuseum.h; sourceTree = "<group>"; };
-		9CD80AAD1E23040800DFCB89 /* CKMuseum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKMuseum.m; sourceTree = "<group>"; };
-		9CD80AB11E23040800DFCB89 /* CKShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKShop.h; sourceTree = "<group>"; };
-		9CD80AB21E23040800DFCB89 /* CKShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKShop.m; sourceTree = "<group>"; };
-		9CD80AB61E23040800DFCB89 /* CKStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKStation.h; sourceTree = "<group>"; };
-		9CD80AB71E23040800DFCB89 /* CKStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKStation.m; sourceTree = "<group>"; };
-		9CD80ABB1E23040800DFCB89 /* CKTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTree.h; sourceTree = "<group>"; };
-		9CD80ABC1E23040800DFCB89 /* CKTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKTree.m; sourceTree = "<group>"; };
 		9CD80ADA1E2306E000DFCB89 /* ClusterKit ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ClusterKit ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD80ADD1E2306E000DFCB89 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9CD80AE61E2306E000DFCB89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -197,9 +131,7 @@
 		9EB6F7358EEAEDC7F14ED134 /* Pods-Example-objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-objc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc.release.xcconfig"; sourceTree = "<group>"; };
 		A3B1745192A4E13E9EDC2998 /* Pods-Example-objc-ParisOpenData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-objc-ParisOpenData.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example-objc-ParisOpenData/Pods-Example-objc-ParisOpenData.debug.xcconfig"; sourceTree = "<group>"; };
 		B1A3B666D42F3557DD835AA8 /* Pods_Example_objc_ParisOpenData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_objc_ParisOpenData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6A43F01488C265F5B2EBA90 /* Pods-ParisOpenDataUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParisOpenDataUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParisOpenDataUI/Pods-ParisOpenDataUI.release.xcconfig"; sourceTree = "<group>"; };
 		C803A05527678B34A85359A7 /* Pods-Examples-ParisOpenData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples-ParisOpenData.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Examples-ParisOpenData/Pods-Examples-ParisOpenData.debug.xcconfig"; sourceTree = "<group>"; };
-		CCA370CB4226E14ECBBD78E8 /* Pods-ParisOpenData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParisOpenData.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParisOpenData/Pods-ParisOpenData.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1A20DCEC46304D571DC07A /* Pods-Example-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift.release.xcconfig"; sourceTree = "<group>"; };
 		CEE60FEE18B7D2EFBF1BC045 /* Pods-Examples-Example-objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples-Example-objc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Examples-Example-objc/Pods-Examples-Example-objc.debug.xcconfig"; sourceTree = "<group>"; };
 		DC91060DA485011A40E2B07E /* Pods_Example_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,19 +139,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9C6EBCAE1E23CDE0008FAC7A /* Frameworks */ = {
+		9C1A99E51EB9225800BEB563 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDD99BF8F0171E3EB7424E2D /* Pods_ParisOpenDataUI.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9CD80A981E2303C400DFCB89 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				05A730E23F56AA7105F7A43F /* Pods_ParisOpenData.framework in Frameworks */,
+				76436ED7CB2CBF845C3B3397 /* Pods_Example_data.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,9 +151,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CD80B2B1E230BC500DFCB89 /* ParisOpenData.framework in Frameworks */,
 				9CD80B171E2307F400DFCB89 /* MapKit.framework in Frameworks */,
-				9C6EBCC51E23CF15008FAC7A /* ParisOpenDataUI.framework in Frameworks */,
+				9C1A99F01EB9225800BEB563 /* ExampleData.framework in Frameworks */,
 				FBCD06409EDDB8D4DCC65554 /* Pods_Example_objc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,10 +161,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CBF7D251E23DF52002E0BA3 /* ParisOpenData.framework in Frameworks */,
 				9CD80B181E2307FC00DFCB89 /* MapKit.framework in Frameworks */,
-				9CBF7D291E23DF52002E0BA3 /* ParisOpenDataUI.framework in Frameworks */,
 				9ACFAA26A015E26A0B1CFEA9 /* Pods_Example_swift.framework in Frameworks */,
+				9C5C83E31EB9338E002F4C73 /* ExampleData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,12 +175,8 @@
 			children = (
 				4ECF1E12AA19EE26529118B7 /* Pods-Example-objc.debug.xcconfig */,
 				9EB6F7358EEAEDC7F14ED134 /* Pods-Example-objc.release.xcconfig */,
-				CCA370CB4226E14ECBBD78E8 /* Pods-ParisOpenData.debug.xcconfig */,
-				8500689AB9D144CCFB33A987 /* Pods-ParisOpenData.release.xcconfig */,
 				A3B1745192A4E13E9EDC2998 /* Pods-Example-objc-ParisOpenData.debug.xcconfig */,
 				637FE4EDF09CAF4306172F86 /* Pods-Example-objc-ParisOpenData.release.xcconfig */,
-				6CB8BEDA481DCBFC5823B95A /* Pods-ParisOpenDataUI.debug.xcconfig */,
-				B6A43F01488C265F5B2EBA90 /* Pods-ParisOpenDataUI.release.xcconfig */,
 				53319BB1285E4BB84F1CA340 /* Pods-Example-swift.debug.xcconfig */,
 				CE1A20DCEC46304D571DC07A /* Pods-Example-swift.release.xcconfig */,
 				CEE60FEE18B7D2EFBF1BC045 /* Pods-Examples-Example-objc.debug.xcconfig */,
@@ -267,6 +185,8 @@
 				490108FBDC22432E22FA9C1B /* Pods-Examples-ParisOpenData.release.xcconfig */,
 				DE5879CC55066EEA7A7469C1 /* Pods-Examples-ParisOpenDataUI.debug.xcconfig */,
 				5CDC0E98C1B0CC32EEB4206F /* Pods-Examples-ParisOpenDataUI.release.xcconfig */,
+				6342D7FB7C4927C2B322BA29 /* Pods-Example-data.debug.xcconfig */,
+				30529D0906921024EBCD8FF7 /* Pods-Example-data.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -284,30 +204,22 @@
 				7A8F0DE8FC04429B60C3F0F1 /* Pods_Examples_ParisOpenDataUI.framework */,
 				DC91060DA485011A40E2B07E /* Pods_Example_swift.framework */,
 				71B6B6F461FC5E5896234105 /* Pods_Examples_Example_swift.framework */,
+				991F94DAC9500A17E248ABC4 /* Pods_Example_data.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9C6EBCB31E23CDE0008FAC7A /* ParisOpenDataUI */ = {
+		9C1A99EA1EB9225800BEB563 /* Example-data */ = {
 			isa = PBXGroup;
 			children = (
-				9C6EBCBA1E23CE01008FAC7A /* Trees */,
-				9C6EBCB41E23CDE0008FAC7A /* ParisOpenDataUI.h */,
-				9C6EBCC11E23CEA9008FAC7A /* UIViewController+ParisOpenData.h */,
-				9C6EBCC21E23CEA9008FAC7A /* UIViewController+ParisOpenData.m */,
-				9C6EBCB51E23CDE0008FAC7A /* Info.plist */,
-				9C6EBCBF1E23CE74008FAC7A /* Assets.xcassets */,
+				9C1A99EB1EB9225800BEB563 /* ExampleData.h */,
+				9C1A99EC1EB9225800BEB563 /* Info.plist */,
+				9C5C83DA1EB92678002F4C73 /* CKGeoPointOperation.h */,
+				9C5C83DB1EB92678002F4C73 /* CKGeoPointOperation.m */,
+				9C1A99F51EB922A400BEB563 /* random.geojson */,
+				9C5C83E81EB961DA002F4C73 /* stations.geojson */,
 			);
-			path = ParisOpenDataUI;
-			sourceTree = "<group>";
-		};
-		9C6EBCBA1E23CE01008FAC7A /* Trees */ = {
-			isa = PBXGroup;
-			children = (
-				9C6EBCBB1E23CE42008FAC7A /* CKTreeClusterView.h */,
-				9C6EBCBC1E23CE42008FAC7A /* CKTreeClusterView.m */,
-			);
-			name = Trees;
+			path = "Example-data";
 			sourceTree = "<group>";
 		};
 		9CAFE26B1E23E8D100337FD1 /* GoogleMaps */ = {
@@ -323,10 +235,9 @@
 		9CD80A821E23031700DFCB89 = {
 			isa = PBXGroup;
 			children = (
-				9CD80A9D1E2303C400DFCB89 /* ParisOpenData */,
-				9C6EBCB31E23CDE0008FAC7A /* ParisOpenDataUI */,
 				9CD80ADB1E2306E000DFCB89 /* Example-objc */,
 				9CD80AF61E2306F400DFCB89 /* Example-swift */,
+				9C1A99EA1EB9225800BEB563 /* Example-data */,
 				9C6827CE1E2E6F970076C573 /* Assets.xcassets */,
 				9CD80A8D1E23031700DFCB89 /* Products */,
 				987C1F00BBB2E64774D3A906 /* Frameworks */,
@@ -337,73 +248,11 @@
 		9CD80A8D1E23031700DFCB89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9CD80A9C1E2303C400DFCB89 /* ParisOpenData.framework */,
 				9CD80ADA1E2306E000DFCB89 /* ClusterKit ObjC.app */,
 				9CD80AF51E2306F400DFCB89 /* ClusterKit Swift.app */,
-				9C6EBCB21E23CDE0008FAC7A /* ParisOpenDataUI.framework */,
+				9C1A99E91EB9225800BEB563 /* ExampleData.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		9CD80A9D1E2303C400DFCB89 /* ParisOpenData */ = {
-			isa = PBXGroup;
-			children = (
-				9CD80A9E1E2303C400DFCB89 /* ParisOpenData.h */,
-				9C2EBCAF1E2395F000C039AD /* CKPointObjectDownloader.h */,
-				9C2EBCB01E2395F000C039AD /* CKPointObjectDownloader.m */,
-				9CD80AA61E23040800DFCB89 /* CKPointObject.h */,
-				9CD80AA71E23040800DFCB89 /* CKPointObject.m */,
-				9CD80AA91E23040800DFCB89 /* Museums */,
-				9CD80AAE1E23040800DFCB89 /* NearbyShops */,
-				9CD80AB31E23040800DFCB89 /* Stations */,
-				9CD80AB81E23040800DFCB89 /* Trees */,
-				9CD80A9F1E2303C400DFCB89 /* Info.plist */,
-			);
-			path = ParisOpenData;
-			sourceTree = "<group>";
-		};
-		9CD80AA91E23040800DFCB89 /* Museums */ = {
-			isa = PBXGroup;
-			children = (
-				9C2EBCB31E23A87900C039AD /* CKMuseumDownloader.h */,
-				9C2EBCB41E23A87900C039AD /* CKMuseumDownloader.m */,
-				9CD80AAC1E23040800DFCB89 /* CKMuseum.h */,
-				9CD80AAD1E23040800DFCB89 /* CKMuseum.m */,
-			);
-			path = Museums;
-			sourceTree = "<group>";
-		};
-		9CD80AAE1E23040800DFCB89 /* NearbyShops */ = {
-			isa = PBXGroup;
-			children = (
-				9C2EBCBB1E23C8D200C039AD /* CKNearbyShopDownloader.h */,
-				9C2EBCBC1E23C8D200C039AD /* CKNearbyShopDownloader.m */,
-				9CD80AB11E23040800DFCB89 /* CKShop.h */,
-				9CD80AB21E23040800DFCB89 /* CKShop.m */,
-			);
-			path = NearbyShops;
-			sourceTree = "<group>";
-		};
-		9CD80AB31E23040800DFCB89 /* Stations */ = {
-			isa = PBXGroup;
-			children = (
-				9C6EBCA91E23C951008FAC7A /* CKStationDownloader.h */,
-				9C6EBCAA1E23C951008FAC7A /* CKStationDownloader.m */,
-				9CD80AB61E23040800DFCB89 /* CKStation.h */,
-				9CD80AB71E23040800DFCB89 /* CKStation.m */,
-			);
-			path = Stations;
-			sourceTree = "<group>";
-		};
-		9CD80AB81E23040800DFCB89 /* Trees */ = {
-			isa = PBXGroup;
-			children = (
-				9C2EBCB71E23AB0E00C039AD /* CKTreeDownloader.h */,
-				9C2EBCB81E23AB0E00C039AD /* CKTreeDownloader.m */,
-				9CD80ABB1E23040800DFCB89 /* CKTree.h */,
-				9CD80ABC1E23040800DFCB89 /* CKTree.m */,
-			);
-			path = Trees;
 			sourceTree = "<group>";
 		};
 		9CD80ADB1E2306E000DFCB89 /* Example-objc */ = {
@@ -475,75 +324,36 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		9C6EBCAF1E23CDE0008FAC7A /* Headers */ = {
+		9C1A99E61EB9225800BEB563 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C6EBCBD1E23CE42008FAC7A /* CKTreeClusterView.h in Headers */,
-				9C6EBCC31E23CEA9008FAC7A /* UIViewController+ParisOpenData.h in Headers */,
-				9C6EBCB61E23CDE0008FAC7A /* ParisOpenDataUI.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9CD80A991E2303C400DFCB89 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9CD80AC61E23040800DFCB89 /* CKMuseum.h in Headers */,
-				9CD80AD21E23040800DFCB89 /* CKTree.h in Headers */,
-				9CD80ACA1E23040800DFCB89 /* CKShop.h in Headers */,
-				9C2EBCB11E2395F000C039AD /* CKPointObjectDownloader.h in Headers */,
-				9CD80AA01E2303C400DFCB89 /* ParisOpenData.h in Headers */,
-				9CD80AC11E23040800DFCB89 /* CKPointObject.h in Headers */,
-				9C2EBCBD1E23C8D200C039AD /* CKNearbyShopDownloader.h in Headers */,
-				9C2EBCB91E23AB0E00C039AD /* CKTreeDownloader.h in Headers */,
-				9C6EBCAB1E23C951008FAC7A /* CKStationDownloader.h in Headers */,
-				9CD80ACE1E23040800DFCB89 /* CKStation.h in Headers */,
-				9C2EBCB51E23A87900C039AD /* CKMuseumDownloader.h in Headers */,
+				9C1A99ED1EB9225800BEB563 /* ExampleData.h in Headers */,
+				9C5C83DC1EB92678002F4C73 /* CKGeoPointOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		9C6EBCB11E23CDE0008FAC7A /* ParisOpenDataUI */ = {
+		9C1A99E81EB9225800BEB563 /* Example-data */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C6EBCB71E23CDE0008FAC7A /* Build configuration list for PBXNativeTarget "ParisOpenDataUI" */;
+			buildConfigurationList = 9C1A99F21EB9225800BEB563 /* Build configuration list for PBXNativeTarget "Example-data" */;
 			buildPhases = (
-				8AF42776CD246D89F80EF75F /* [CP] Check Pods Manifest.lock */,
-				9C6EBCAD1E23CDE0008FAC7A /* Sources */,
-				9C6EBCAE1E23CDE0008FAC7A /* Frameworks */,
-				9C6EBCAF1E23CDE0008FAC7A /* Headers */,
-				9C6EBCB01E23CDE0008FAC7A /* Resources */,
-				CA4EC1570FA5DFEC5F0D945F /* [CP] Copy Pods Resources */,
+				3760CD69C0639C1A7DE13AA3 /* [CP] Check Pods Manifest.lock */,
+				9C1A99E41EB9225800BEB563 /* Sources */,
+				9C1A99E51EB9225800BEB563 /* Frameworks */,
+				9C1A99E61EB9225800BEB563 /* Headers */,
+				9C1A99E71EB9225800BEB563 /* Resources */,
+				16AADC9C44222CF58CA905D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ParisOpenDataUI;
-			productName = ParisOpenDataUI;
-			productReference = 9C6EBCB21E23CDE0008FAC7A /* ParisOpenDataUI.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		9CD80A9B1E2303C400DFCB89 /* ParisOpenData */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9CD80AA11E2303C400DFCB89 /* Build configuration list for PBXNativeTarget "ParisOpenData" */;
-			buildPhases = (
-				666EC8911455E83416C00A70 /* [CP] Check Pods Manifest.lock */,
-				9CD80A971E2303C400DFCB89 /* Sources */,
-				9CD80A981E2303C400DFCB89 /* Frameworks */,
-				9CD80A991E2303C400DFCB89 /* Headers */,
-				9CD80A9A1E2303C400DFCB89 /* Resources */,
-				13624B567BB1CA5BCF60C20B /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ParisOpenData;
-			productName = ParisOpenData;
-			productReference = 9CD80A9C1E2303C400DFCB89 /* ParisOpenData.framework */;
+			name = "Example-data";
+			productName = "Example-data";
+			productReference = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9CD80AD91E2306E000DFCB89 /* Example-objc */ = {
@@ -561,8 +371,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9CD80B2A1E230BBD00DFCB89 /* PBXTargetDependency */,
-				9C6EBCC81E23CF15008FAC7A /* PBXTargetDependency */,
+				9C1A99EF1EB9225800BEB563 /* PBXTargetDependency */,
 			);
 			name = "Example-objc";
 			productName = "Example-objc";
@@ -577,15 +386,14 @@
 				9CD80AF11E2306F400DFCB89 /* Sources */,
 				9CD80AF21E2306F400DFCB89 /* Frameworks */,
 				9CD80AF31E2306F400DFCB89 /* Resources */,
-				9CBF7D2D1E23DF52002E0BA3 /* Embed Frameworks */,
 				51077C0232745E78C7061F83 /* [CP] Embed Pods Frameworks */,
 				9DAAF5BB803B327C06843D22 /* [CP] Copy Pods Resources */,
+				9C5C83E71EB9338E002F4C73 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9CBF7D281E23DF52002E0BA3 /* PBXTargetDependency */,
-				9CBF7D2C1E23DF52002E0BA3 /* PBXTargetDependency */,
+				9C5C83E61EB9338E002F4C73 /* PBXTargetDependency */,
 			);
 			name = "Example-swift";
 			productName = "Example-swift";
@@ -602,16 +410,9 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Hulab;
 				TargetAttributes = {
-					9C6EBCB11E23CDE0008FAC7A = {
-						CreatedOnToolsVersion = 8.2;
+					9C1A99E81EB9225800BEB563 = {
+						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = Q95SQ3447E;
-						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
-					};
-					9CD80A9B1E2303C400DFCB89 = {
-						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = Q95SQ3447E;
-						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					9CD80AD91E2306E000DFCB89 = {
@@ -650,27 +451,20 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9CD80A9B1E2303C400DFCB89 /* ParisOpenData */,
-				9C6EBCB11E23CDE0008FAC7A /* ParisOpenDataUI */,
 				9CD80AD91E2306E000DFCB89 /* Example-objc */,
 				9CD80AF41E2306F400DFCB89 /* Example-swift */,
+				9C1A99E81EB9225800BEB563 /* Example-data */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9C6EBCB01E23CDE0008FAC7A /* Resources */ = {
+		9C1A99E71EB9225800BEB563 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C6EBCC01E23CE74008FAC7A /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9CD80A9A1E2303C400DFCB89 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9C5C83E91EB961DA002F4C73 /* stations.geojson in Resources */,
+				9C5C83E21EB930F3002F4C73 /* random.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,10 +503,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		13624B567BB1CA5BCF60C20B /* [CP] Copy Pods Resources */ = {
+		16AADC9C44222CF58CA905D6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -724,7 +518,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParisOpenData/Pods-ParisOpenData-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-data/Pods-Example-data-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2665C1F24D2188B1AB03D970 /* [CP] Check Pods Manifest.lock */ = {
@@ -739,7 +533,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3760CD69C0639C1A7DE13AA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		51077C0232745E78C7061F83 /* [CP] Embed Pods Frameworks */ = {
@@ -757,21 +566,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		666EC8911455E83416C00A70 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		6FBEE0F289623D53A1361EBC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -787,21 +581,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8AF42776CD246D89F80EF75F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		9DAAF5BB803B327C06843D22 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -815,21 +594,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA4EC1570FA5DFEC5F0D945F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParisOpenDataUI/Pods-ParisOpenDataUI-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CB8CD84FCD0E5E344C49FE2C /* [CP] Copy Pods Resources */ = {
@@ -850,29 +614,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9C6EBCAD1E23CDE0008FAC7A /* Sources */ = {
+		9C1A99E41EB9225800BEB563 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C6EBCC41E23CEA9008FAC7A /* UIViewController+ParisOpenData.m in Sources */,
-				9C6EBCBE1E23CE42008FAC7A /* CKTreeClusterView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9CD80A971E2303C400DFCB89 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9C2EBCB61E23A87900C039AD /* CKMuseumDownloader.m in Sources */,
-				9CD80ACF1E23040800DFCB89 /* CKStation.m in Sources */,
-				9CD80ACB1E23040800DFCB89 /* CKShop.m in Sources */,
-				9C2EBCBA1E23AB0E00C039AD /* CKTreeDownloader.m in Sources */,
-				9CD80AD31E23040800DFCB89 /* CKTree.m in Sources */,
-				9CD80AC21E23040800DFCB89 /* CKPointObject.m in Sources */,
-				9CD80AC71E23040800DFCB89 /* CKMuseum.m in Sources */,
-				9C2EBCB21E2395F000C039AD /* CKPointObjectDownloader.m in Sources */,
-				9C2EBCBE1E23C8D200C039AD /* CKNearbyShopDownloader.m in Sources */,
-				9C6EBCAC1E23C951008FAC7A /* CKStationDownloader.m in Sources */,
+				9C5C83DD1EB92678002F4C73 /* CKGeoPointOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,25 +648,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9C6EBCC81E23CF15008FAC7A /* PBXTargetDependency */ = {
+		9C1A99EF1EB9225800BEB563 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9C6EBCB11E23CDE0008FAC7A /* ParisOpenDataUI */;
-			targetProxy = 9C6EBCC71E23CF15008FAC7A /* PBXContainerItemProxy */;
+			target = 9C1A99E81EB9225800BEB563 /* Example-data */;
+			targetProxy = 9C1A99EE1EB9225800BEB563 /* PBXContainerItemProxy */;
 		};
-		9CBF7D281E23DF52002E0BA3 /* PBXTargetDependency */ = {
+		9C5C83E61EB9338E002F4C73 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9CD80A9B1E2303C400DFCB89 /* ParisOpenData */;
-			targetProxy = 9CBF7D271E23DF52002E0BA3 /* PBXContainerItemProxy */;
-		};
-		9CBF7D2C1E23DF52002E0BA3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9C6EBCB11E23CDE0008FAC7A /* ParisOpenDataUI */;
-			targetProxy = 9CBF7D2B1E23DF52002E0BA3 /* PBXContainerItemProxy */;
-		};
-		9CD80B2A1E230BBD00DFCB89 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9CD80A9B1E2303C400DFCB89 /* ParisOpenData */;
-			targetProxy = 9CD80B291E230BBD00DFCB89 /* PBXContainerItemProxy */;
+			target = 9C1A99E81EB9225800BEB563 /* Example-data */;
+			targetProxy = 9C5C83E51EB9338E002F4C73 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -960,48 +696,45 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9C6EBCB81E23CDE0008FAC7A /* Debug */ = {
+		9C1A99F31EB9225800BEB563 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CB8BEDA481DCBFC5823B95A /* Pods-ParisOpenDataUI.debug.xcconfig */;
+			baseConfigurationReference = 6342D7FB7C4927C2B322BA29 /* Pods-Example-data.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Q95SQ3447E;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ParisOpenDataUI/Info.plist;
+				INFOPLIST_FILE = "Example-data/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ParisOpenDataUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.clusterkit.example.data;
+				PRODUCT_NAME = ExampleData;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		9C6EBCB91E23CDE0008FAC7A /* Release */ = {
+		9C1A99F41EB9225800BEB563 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6A43F01488C265F5B2EBA90 /* Pods-ParisOpenDataUI.release.xcconfig */;
+			baseConfigurationReference = 30529D0906921024EBCD8FF7 /* Pods-Example-data.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Q95SQ3447E;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ParisOpenDataUI/Info.plist;
+				INFOPLIST_FILE = "Example-data/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ParisOpenDataUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.clusterkit.example.data;
+				PRODUCT_NAME = ExampleData;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1102,51 +835,6 @@
 			};
 			name = Release;
 		};
-		9CD80AA21E2303C400DFCB89 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCA370CB4226E14ECBBD78E8 /* Pods-ParisOpenData.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ParisOpenData/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ParisOpenData;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		9CD80AA31E2303C400DFCB89 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8500689AB9D144CCFB33A987 /* Pods-ParisOpenData.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ParisOpenData/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ParisOpenData;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 		9CD80AEF1E2306E000DFCB89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4ECF1E12AA19EE26529118B7 /* Pods-Example-objc.debug.xcconfig */;
@@ -1220,11 +908,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9C6EBCB71E23CDE0008FAC7A /* Build configuration list for PBXNativeTarget "ParisOpenDataUI" */ = {
+		9C1A99F21EB9225800BEB563 /* Build configuration list for PBXNativeTarget "Example-data" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9C6EBCB81E23CDE0008FAC7A /* Debug */,
-				9C6EBCB91E23CDE0008FAC7A /* Release */,
+				9C1A99F31EB9225800BEB563 /* Debug */,
+				9C1A99F41EB9225800BEB563 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1234,15 +922,6 @@
 			buildConfigurations = (
 				9CD80A921E23031700DFCB89 /* Debug */,
 				9CD80A931E23031700DFCB89 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9CD80AA11E2303C400DFCB89 /* Build configuration list for PBXNativeTarget "ParisOpenData" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9CD80AA21E2303C400DFCB89 /* Debug */,
-				9CD80AA31E2303C400DFCB89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

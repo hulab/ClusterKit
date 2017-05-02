@@ -1,20 +1,18 @@
 source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
 use_frameworks!
 
 pod 'ClusterKit/MapKit', :path => '../.'
 
-target "ParisOpenData" do
-end
-
-target "ParisOpenDataUI" do
-    pod 'KVNProgress', '~> 2.3'
+target 'Example-data' do
+    pod 'GeoJSONSerialization'
 end
 
 target 'Example-objc' do
-    pod 'GoogleMaps', '~> 2.1'
+    pod 'GoogleMaps', '~> 2.2'
 end
 
 target 'Example-swift' do
-    pod 'GoogleMaps', '~> 2.1'
+    pod 'GoogleMaps', '~> 2.2'
 end
 
