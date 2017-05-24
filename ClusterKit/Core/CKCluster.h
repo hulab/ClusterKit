@@ -78,6 +78,11 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
 /**
+ Cluster annotation array.
+ */
+@property (nonatomic, readonly, copy) NSArray<id<CKAnnotation>> *annotations;
+
+/**
  The number of annotations in the cluster.
  */
 @property (nonatomic, readonly) NSUInteger count;
