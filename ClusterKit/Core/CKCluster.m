@@ -214,6 +214,7 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
                                    }];
         
         [_annotations insertObject:annotation atIndex:index];
+        annotation.cluster = self;
         
         self.coordinate = _annotations.firstObject.coordinate;
     }
