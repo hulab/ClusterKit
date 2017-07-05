@@ -412,12 +412,10 @@
 				TargetAttributes = {
 					9C1A99E81EB9225800BEB563 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = Q95SQ3447E;
 						ProvisioningStyle = Automatic;
 					};
 					9CD80AD91E2306E000DFCB89 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = Q95SQ3447E;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -428,7 +426,6 @@
 					};
 					9CD80AF41E2306F400DFCB89 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = Q95SQ3447E;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -703,7 +700,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -724,7 +721,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -841,7 +838,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Example-objc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -859,7 +856,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Example-objc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -875,7 +872,7 @@
 			baseConfigurationReference = 53319BB1285E4BB84F1CA340 /* Pods-Example-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Example-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -893,7 +890,7 @@
 			baseConfigurationReference = CE1A20DCEC46304D571DC07A /* Pods-Example-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Example-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

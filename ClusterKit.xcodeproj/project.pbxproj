@@ -298,7 +298,6 @@
 				TargetAttributes = {
 					9CC8756E1E0295A30019AA18 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q95SQ3447E;
 						ProvisioningStyle = Automatic;
 					};
 					9CC875771E0295A30019AA18 = {
@@ -484,7 +483,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -504,7 +503,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

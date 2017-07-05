@@ -3,6 +3,16 @@ All notable changes to `ClusterKit` project will be documented in this file.
 
 --- 
 
+## [0.1.3](https://github.com/hulab/ClusterKit/releases/tag/0.1.3) - July 5, 2017
+
+### Updated
+
+- **CKCluster.m**: Make the annotation array plubic.
+
+### Fixed
+
+- **CKCluster.m**: Fix empty cluster in annotation using `CKBottomCluster`.
+
 ## [0.1.2](https://github.com/hulab/ClusterKit/releases/tag/0.1.2) - May 3, 2017
 
 ### Updated
