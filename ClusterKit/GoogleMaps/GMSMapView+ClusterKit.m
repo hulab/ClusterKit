@@ -170,8 +170,10 @@
 
 - (void)selectCluster:(CKCluster *)cluster animated:(BOOL)animated {
     GMSMarker *marker = [self.markers objectForKey:cluster];
-    marker.map = self;
-    self.selectedMarker = marker;
+    if (marker != self.selectedMarker) {
+        marker.map = self;
+        self.selectedMarker = marker;
+    }
 }
 
 - (void)deselectCluster:(CKCluster *)cluster animated:(BOOL)animated {

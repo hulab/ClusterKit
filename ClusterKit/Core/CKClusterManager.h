@@ -145,14 +145,14 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  
  @param annotation   The annotation to be selected.
  */
-- (void)selectAnnotation:(nullable id<CKAnnotation>)annotation animated:(BOOL)animated;
+- (void)selectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated;
 
 /**
  Deselects an annotation.
  
  @param annotation   The annotation to be deselected.
  */
-- (void)deselectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated;
+- (void)deselectAnnotation:(nullable id<CKAnnotation>)annotation animated:(BOOL)animated;
 
 /**
  Updates displayed clusters.

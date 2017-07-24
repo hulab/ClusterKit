@@ -129,10 +129,11 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     self.annotations = _annotations;
 }
 
-- (void)selectAnnotation:(nullable id<CKAnnotation>)annotation animated:(BOOL)animated {
-    CKCluster *cluster = nil;
+- (void)selectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated {
     
     if (annotation) {
+        CKCluster *cluster = nil;
+        
         if (!annotation.cluster || annotation.cluster.count > 1) {
             cluster = [self.algorithm clusterWithCoordinate:annotation.coordinate];
             [cluster addAnnotation:annotation];
@@ -140,13 +141,15 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
         } else {
             cluster = annotation.cluster;
         }
+        
+        [self setSelectedCluster:cluster animated:animated];
     }
-    [self setSelectedCluster:cluster animated:animated];
 }
 
 - (void)deselectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated {
-    if (annotation == self.selectedAnnotation) {
-        [self selectAnnotation:nil animated:animated];
+    
+    if (!annotation || annotation == self.selectedAnnotation) {
+        [self setSelectedCluster:nil animated:animated];
     }
 }
 
@@ -155,15 +158,23 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 }
 
 - (void)setSelectedCluster:(CKCluster *)selectedCluster animated:(BOOL)animated {
-    if (_selectedCluster && selectedCluster != _selectedCluster) {
-        [_clusters addObject:_selectedCluster];
-        [self.map deselectCluster:_selectedCluster animated:animated];
+    if (selectedCluster == _selectedCluster) {
+        return;
     }
+    
+    CKCluster *prev = _selectedCluster;
+    _selectedCluster = selectedCluster;
+    
+    if (prev) {
+        [_clusters addObject:prev];
+        [self.map deselectCluster:prev animated:animated];
+    }
+    
     if (selectedCluster) {
         [_clusters removeObject:selectedCluster];
         [self.map selectCluster:selectedCluster animated:animated];
     }
-    _selectedCluster = selectedCluster;
+    
 }
 
 #pragma mark - Private
