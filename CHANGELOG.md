@@ -3,6 +3,16 @@ All notable changes to `ClusterKit` project will be documented in this file.
 
 --- 
 
+## [0.2.0](https://github.com/hulab/ClusterKit/releases/tag/0.2.0) - July 24, 2017
+
+### Added
+
+- **CKQuadTree.m**: Drag and Drop support.
+
+### Fixed
+
+- **CKClusterManager.m**: Fix annotation selection/deselection.
+
 ## [0.1.3](https://github.com/hulab/ClusterKit/releases/tag/0.1.3) - July 5, 2017
 
 ### Updated
