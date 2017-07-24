@@ -71,6 +71,7 @@
             
         } else {
             annotationView.canShowCallout = YES;
+            annotationView.draggable = YES;
             annotationView.image = [UIImage imageNamed:@"marker"];
         }
     }
@@ -78,9 +79,13 @@
     return annotationView;
 }
 
+#pragma mark How To Update Clusters
+
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     [mapView.clusterManager updateClustersIfNeeded];
 }
+
+#pragma mark How To Handle Selection/Deselection
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     
@@ -89,7 +94,41 @@
         
         if (cluster.count > 1) {
             UIEdgeInsets edgePadding = UIEdgeInsetsMake(40, 20, 44, 20);
-            [self.mapView showCluster:cluster edgePadding:edgePadding animated:YES];
+            [mapView showCluster:cluster edgePadding:edgePadding animated:YES];
+        } else {
+            [mapView.clusterManager selectAnnotation:cluster.firstAnnotation animated:NO];
+        }
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    if ([view.annotation isKindOfClass:[CKCluster class]]) {
+        CKCluster *cluster = (CKCluster *)view.annotation;
+        [mapView.clusterManager deselectAnnotation:cluster.firstAnnotation animated:NO];
+    }
+}
+
+#pragma mark How To Handle Drag and Drop
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+    
+    if ([view.annotation isKindOfClass:[CKCluster class]]) {
+        CKCluster *cluster = (CKCluster *)view.annotation;
+        
+        switch (newState) {
+                
+            case MKAnnotationViewDragStateEnding:
+                cluster.firstAnnotation.coordinate = cluster.coordinate;
+                view.dragState = MKAnnotationViewDragStateNone;
+                [view setDragState:MKAnnotationViewDragStateNone animated:YES];
+                break;
+                
+            case MKAnnotationViewDragStateCanceling:
+                [view setDragState:MKAnnotationViewDragStateNone animated:YES];
+                break;
+                
+            default:
+                break;
         }
     }
 }

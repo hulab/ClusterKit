@@ -64,20 +64,6 @@ class GoogleMapsViewController: UIViewController, GMSMapViewDelegate, GMSMapView
         operation.start()
     }
     
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        mapView.clusterManager.updateClustersIfNeeded()
-    }
-    
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if let cluster = marker.cluster, cluster.count > 1 {
-            let padding = UIEdgeInsetsMake(40, 20, 44, 20)
-            let cameraUpdate = GMSCameraUpdate.fit(cluster, with: padding)
-            mapView.animate(with: cameraUpdate)
-            return true
-        }
-        return false
-    }
-    
     func mapView(_ mapView: GMSMapView, markerFor cluster: CKCluster) -> GMSMarker {
         let marker = GMSMarker(position: cluster.coordinate)
         
@@ -86,8 +72,53 @@ class GoogleMapsViewController: UIViewController, GMSMapViewDelegate, GMSMapView
         } else {
             marker.icon = UIImage(named: "marker")
             marker.title = cluster.title
+            marker.isDraggable = true
         }
         
         return marker;
+    }
+    
+    // MARK: How To Update Clusters
+    
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        mapView.clusterManager.updateClustersIfNeeded()
+    }
+    
+    // MARK: How To Handle Selection/Deselection
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        if let cluster = marker.cluster, cluster.count > 1 {
+            
+            let padding = UIEdgeInsetsMake(40, 20, 44, 20)
+            let cameraUpdate = GMSCameraUpdate.fit(cluster, with: padding)
+            mapView.animate(with: cameraUpdate)
+            return true
+        }
+        return false
+    }
+    
+    public func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        
+        if let annotation = marker.cluster?.firstAnnotation {
+            mapView.clusterManager.selectAnnotation(annotation, animated: false)
+        }
+        return nil
+    }
+    
+    func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
+        
+        if let annotation = marker.cluster?.firstAnnotation {
+            mapView.clusterManager.deselectAnnotation(annotation, animated: false)
+        }
+    }
+    
+    // MARK: How To Handle Drag and Drop
+    
+    func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
+        
+        if let annotation = marker.cluster?.firstAnnotation as? MKPointAnnotation {
+            annotation.coordinate = marker.position
+        }
     }
 }

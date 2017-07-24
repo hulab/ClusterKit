@@ -29,7 +29,8 @@ ClusterKit is an elegant and efficiant clustering controller for maps. Its flexi
 + Native supports of **MapKit** and **GoogleMaps**.
 + Comes with 2 clustering algorithms, a Grid Based Algorithm and a Non Hierarchical Distance Based Algorithm.
 + Annotations are stored in a [QuadTree](https://en.wikipedia.org/wiki/Quadtree) for efficient region queries.
-+ Cluster center can be switched to Centroid, Nearest Centroid, Bottom.
++ Cluster center can be switched to **Centroid**, **Nearest Centroid**, **Bottom**.
++ Handles pin **selection** as well as **drag and dropping**.
 + Written in Objective-C with full Swift interop support.
 
 <p align="center" margin=20>

@@ -72,26 +72,63 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
                 annotationView.image = UIImage(named: "cluster")
             } else {
                 annotationView.canShowCallout = true
+                annotationView.isDraggable = true
                 annotationView.image = UIImage(named: "marker")
             }
         }
         return annotationView;
     }
     
+    // MARK: How To Update Clusters
+    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         mapView.clusterManager.updateClustersIfNeeded()
     }
     
+    // MARK: How To Handle Selection/Deselection
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let cluster = view.annotation as? CKCluster else {
+            return;
+        }
         
-        if let cluster = view.annotation as? CKCluster {
-            if cluster.count > 1 {
-                let edgePadding = UIEdgeInsetsMake(40, 20, 44, 20)
-                mapView.show(cluster, edgePadding: edgePadding, animated: true)
-            }
+        if cluster.count > 1 {
+            let edgePadding = UIEdgeInsetsMake(40, 20, 44, 20)
+            mapView.show(cluster, edgePadding: edgePadding, animated: true)
+        } else if let annotation = cluster.firstAnnotation {
+            mapView.clusterManager.selectAnnotation(annotation, animated: false);
         }
     }
     
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        guard let cluster = view.annotation as? CKCluster, cluster.count == 1 else {
+            return;
+        }
+        
+        mapView.clusterManager.deselectAnnotation(cluster.firstAnnotation, animated: false);
+    }
     
+    // MARK: How To Handle Drag and Drop
     
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        
+        guard let cluster = view.annotation as? CKCluster else {
+            return;
+        }
+        
+        switch newState {
+        case .ending:
+            
+            if let annotation = cluster.firstAnnotation as? MKPointAnnotation {
+                annotation.coordinate = cluster.coordinate
+            }
+            view.setDragState(.none, animated: true)
+            
+        case .canceling:
+            view.setDragState(.none, animated: true)
+            
+        default: break
+            
+        }
+    }
 }
