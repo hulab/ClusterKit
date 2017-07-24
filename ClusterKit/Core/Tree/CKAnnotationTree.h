@@ -53,12 +53,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @protocol CKAnnotationTree <NSObject>
 
-@property (nonatomic,weak) id<CKAnnotationTreeDelegate> delegate;
+@property (nonatomic, weak) id<CKAnnotationTreeDelegate> delegate;
 
 /**
  The tree's annotation set.
  */
-@property (nonatomic,readonly) NSArray<id<CKAnnotation>> *annotations;
+@property (nonatomic, readonly) NSArray<id<CKAnnotation>> *annotations;
 
 /**
  Initializes a KPAnnotationTree object.
