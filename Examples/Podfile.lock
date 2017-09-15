@@ -1,0 +1,28 @@
+PODS:
+  - ClusterKit/Core (0.1.2)
+  - ClusterKit/MapKit (0.1.2):
+    - ClusterKit/Core
+  - GeoJSONSerialization (0.0.4)
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
+
+DEPENDENCIES:
+  - ClusterKit/MapKit (from `../.`)
+  - GeoJSONSerialization
+  - GoogleMaps (~> 2.2)
+
+EXTERNAL SOURCES:
+  ClusterKit:
+    :path: ../.
+
+SPEC CHECKSUMS:
+  ClusterKit: 4f28aa069364e8448bb9ee8a810f551f862220fa
+  GeoJSONSerialization: 55a3d24fe9af26508e3af76873114b39b13ba479
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
+
+PODFILE CHECKSUM: ad7d2a601bdf1444cedfe0f7b300e3688b53343b
+
+COCOAPODS: 1.2.1
