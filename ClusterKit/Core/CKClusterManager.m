@@ -105,6 +105,12 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     [self updateClusters];
 }
 
+- (void)setQuadTree:(id<CKAnnotationTree>)quadTree {
+    _tree = quadTree;
+    _tree.delegate = self;
+    [self updateClusters];
+}
+
 - (NSArray<id<CKAnnotation>> *)annotations {
     return self.tree ? self.tree.annotations : @[];
 }
@@ -260,3 +266,4 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 }
 
 @end
+

@@ -35,5 +35,4 @@ FOUNDATION_EXPORT const unsigned char ClusterKitVersionString[];
 #import <ClusterKit/CKGridBasedAlgorithm.h>
 #import <ClusterKit/CKMap.h>
 #import <ClusterKit/CKCluster.h>
-
-
+#import <ClusterKit/CKQuadTree.h>

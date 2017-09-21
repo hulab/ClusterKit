@@ -24,6 +24,7 @@
 
 #import "CKGridBasedAlgorithm.h"
 #import "CKNonHierarchicalDistanceBasedAlgorithm.h"
+#import <ClusterKit/CKQuadTree.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -113,6 +114,11 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 @property (nonatomic,copy) NSArray<id<CKAnnotation>> *annotations;
 
 /**
+ Adds an external QuadTree used as annotations source
+ */
+
+- (void)setQuadTree:(id<CKAnnotationTree>) quadTree;
+/**
  Adds an annotation.
  
  @param annotation The annotation to add.
@@ -167,3 +173,4 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 @end
 
 NS_ASSUME_NONNULL_END
+

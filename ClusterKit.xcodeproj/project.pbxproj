@@ -17,7 +17,7 @@
 		9C53CD201E03F51C000AD9B8 /* CKClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C53CD0B1E03F51C000AD9B8 /* CKClusterManager.m */; };
 		9C53CD211E03F51C000AD9B8 /* CKMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD0C1E03F51C000AD9B8 /* CKMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C53CD221E03F51C000AD9B8 /* CKAnnotationTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD0E1E03F51C000AD9B8 /* CKAnnotationTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C53CD231E03F51C000AD9B8 /* CKQuadTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD0F1E03F51C000AD9B8 /* CKQuadTree.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9C53CD231E03F51C000AD9B8 /* CKQuadTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD0F1E03F51C000AD9B8 /* CKQuadTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C53CD241E03F51C000AD9B8 /* CKQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C53CD101E03F51C000AD9B8 /* CKQuadTree.m */; };
 		9C53CD291E03F51C000AD9B8 /* MKMapView+ClusterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD171E03F51C000AD9B8 /* MKMapView+ClusterKit.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		9C53CD2A1E03F51C000AD9B8 /* MKMapView+ClusterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C53CD181E03F51C000AD9B8 /* MKMapView+ClusterKit.m */; };
