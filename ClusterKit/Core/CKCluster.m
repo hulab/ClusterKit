@@ -30,9 +30,16 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
     return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
 }
 
+MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {    
+    return MKMapRectUnion(rect, MKMapRectMake(point.x, point.y, 0.1, 0.1));
+}
+
 @implementation CKCluster {
-    @protected
-    NSMutableArray<id<CKAnnotation>> *_annotations;
+@protected
+    NSMutableOrderedSet<id<CKAnnotation>> *_annotations;
+    
+    MKMapRect _bounds;
+    BOOL _invalidate_bounds;
 }
 
 @synthesize coordinate = _coordinate;
@@ -40,14 +47,28 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
 - (instancetype)init{
     self = [super init];
     if (self) {
-        _annotations = [NSMutableArray array];
+        _annotations = [NSMutableOrderedSet orderedSet];
         _coordinate = kCLLocationCoordinate2DInvalid;
+        _bounds = MKMapRectNull;
+        _invalidate_bounds = NO;
     }
     return self;
 }
 
 - (NSArray<id<CKAnnotation>> *)annotations {
-    return [_annotations copy];
+    return _annotations.array;
+}
+
+- (MKMapRect)bounds {
+    if (_invalidate_bounds) {
+        _bounds = MKMapRectNull;
+        for (id<CKAnnotation> annotation in _annotations) {
+            _bounds = MKMapRectByAddingPoint(_bounds, MKMapPointForCoordinate(annotation.coordinate));
+        }
+        
+        _invalidate_bounds = NO;
+    }
+    return _bounds;
 }
 
 - (NSUInteger)count {
@@ -73,17 +94,47 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
 - (void)addAnnotation:(id<CKAnnotation>)annotation {
     [_annotations addObject:annotation];
     annotation.cluster = self;
+    
+    _bounds = MKMapRectByAddingPoint(_bounds, MKMapPointForCoordinate(annotation.coordinate));
 }
 
 - (void)removeAnnotation:(id<CKAnnotation>)annotation {
     if (annotation.cluster == self) {
         [_annotations removeObject:annotation];
         annotation.cluster = nil;
+        
+        _invalidate_bounds = YES;
     }
 }
 
 - (BOOL)containsAnnotation:(id<CKAnnotation>)annotation {
     return [_annotations containsObject:annotation];
+}
+
+- (NSUInteger)hash {
+    return _annotations.hash;
+}
+
+- (BOOL)isEqual:(id)object {
+    if (object == self) {
+        return YES;
+    }
+    if (![object isKindOfClass:[CKCluster class]]) {
+        return NO;
+    }
+    return [self isEqualToCluster:object];
+}
+
+- (BOOL)isEqualToCluster:(CKCluster *)cluster {
+    return [_annotations isEqual:cluster->_annotations];
+}
+
+- (BOOL)intersectsCluster:(CKCluster *)cluster {
+    return [_annotations intersectsOrderedSet:cluster->_annotations];
+}
+
+- (BOOL)isSubsetOfCluster:(CKCluster *)cluster {
+    return [_annotations isSubsetOfOrderedSet:cluster->_annotations];
 }
 
 #pragma mark <CKCluster>
@@ -173,6 +224,8 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
         
         _center = [self coordinateByAddingAnnotation:annotation];
         self.coordinate = [self coordinateByDistanceSort];
+        
+        _bounds = MKMapRectByAddingPoint(_bounds, MKMapPointForCoordinate(annotation.coordinate));
     }
 }
 
@@ -183,6 +236,8 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
         
         _center = [self coordinateByRemovingAnnotation:annotation];
         self.coordinate = [self coordinateByDistanceSort];
+        
+        _invalidate_bounds = YES;
     }
 }
 
@@ -205,18 +260,20 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
 - (void)addAnnotation:(id<CKAnnotation>)annotation {
     if (annotation.cluster != self) {
         NSUInteger index = [_annotations indexOfObject:annotation
-                                     inSortedRange:NSMakeRange(0, _annotations.count)
-                                           options:NSBinarySearchingInsertionIndex
-                                   usingComparator:^NSComparisonResult(id<CKAnnotation> _Nonnull obj1, id<CKAnnotation> _Nonnull obj2) {
-                                       if (obj1.coordinate.latitude > obj2.coordinate.latitude) return NSOrderedDescending;
-                                       if (obj1.coordinate.latitude < obj2.coordinate.latitude) return NSOrderedAscending;
-                                       return NSOrderedSame;
-                                   }];
+                                         inSortedRange:NSMakeRange(0, _annotations.count)
+                                               options:NSBinarySearchingInsertionIndex
+                                       usingComparator:^NSComparisonResult(id<CKAnnotation> _Nonnull obj1, id<CKAnnotation> _Nonnull obj2) {
+                                           if (obj1.coordinate.latitude > obj2.coordinate.latitude) return NSOrderedDescending;
+                                           if (obj1.coordinate.latitude < obj2.coordinate.latitude) return NSOrderedAscending;
+                                           return NSOrderedSame;
+                                       }];
         
         [_annotations insertObject:annotation atIndex:index];
         annotation.cluster = self;
         
         self.coordinate = _annotations.firstObject.coordinate;
+        
+        _bounds = MKMapRectByAddingPoint(_bounds, MKMapPointForCoordinate(annotation.coordinate));
     }
 }
 
@@ -226,7 +283,10 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
         annotation.cluster = nil;
         
         self.coordinate = _annotations.firstObject.coordinate;
+        
+        _invalidate_bounds = YES;
     }
 }
 
 @end
+

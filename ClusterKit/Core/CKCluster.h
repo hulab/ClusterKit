@@ -27,12 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Compute the square euclidean distance in MapKit projection.
-
+ 
  @param from Distance from point.
  @param to Distance to point.
  @return Euclidean distance in MapKit projection.
  */
-double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
+MK_EXTERN double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
+
+MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
 
 @class CKCluster;
 
@@ -63,7 +65,8 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
  
  @param coordinate The cluster coordinate.
  @return The newly-initialized cluster.
- */+ (__kindof CKCluster *)clusterWithCoordinate:(CLLocationCoordinate2D)coordinate;
+ */
++ (__kindof CKCluster *)clusterWithCoordinate:(CLLocationCoordinate2D)coordinate;
 
 @end
 
@@ -100,6 +103,11 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
 @property (nonatomic, readonly, nullable) id<CKAnnotation> lastAnnotation;
 
 /**
+ Represents a rectangular bounding box on the Earth's projection.
+ */
+@property (nonatomic, readonly) MKMapRect bounds;
+
+/**
  Adds a given annotation to the cluster, if it is not already a member.
  
  @param annotation The annotation to add.
@@ -116,7 +124,7 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
 /**
  Returns the annotation at the given index.
  If index is beyond the end of the array (that is, if index is greater than or equal to the value returned by count), an NSRangeException is raised.
-
+ 
  @param index An annotation index within the bounds of the array.
  @return The annotation located at index.
  */
@@ -125,7 +133,7 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
 /**
  Returns a Boolean value that indicates whether a given annotation is present in the cluster.
  Starting at index 0, each annotation of the cluster is passed as an argument to an isEqual: message sent to the given annotation until a match is found or the end of the cluster is reached. Annotations are considered equal if isEqual: (declared in the NSObject protocol) returns YES.
-
+ 
  @param annotation An annotation.
  @return YES if the gievn annotation is present in the cluster, otherwise NO.
  */
@@ -136,13 +144,37 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
  This method has the same behavior as the annotationAtIndex: method.
  If index is beyond the end of the cluster (that is, if index is greater than or equal to the value returned by count), an NSRangeException is raised.
  You shouldn’t need to call this method directly. Instead, this method is called when accessing an annotation by index using subscripting.
-
+ 
  `id<CKAnnotation> value = cluster[3]; // equivalent to [cluster annotationAtIndex:3]`
-
+ 
  @param index An index within the bounds of the cluster.
  @return The annotation located at index.
  */
 - (id<CKAnnotation>)objectAtIndexedSubscript:(NSUInteger)index;
+
+/**
+ Returns a Boolean value that indicates whether the receiver and a given cluster are equal.
+
+ @param cluster The cluster to be compared to the receiver. May be nil, in which case this method returns NO.
+ @return YES if the receiver and the given cluster are equal, otherwise NO.
+ */
+- (BOOL)isEqualToCluster:(CKCluster *)cluster;
+
+/**
+ Returns a Boolean value that indicates whether at least one annotion in the receiving cluster is also present in another given cluster.
+
+ @param cluster The other cluster
+ @return YES if at least one annotation in the receiving cluster is also present in other, otherwise NO.
+ */
+- (BOOL)intersectsCluster:(CKCluster *)cluster;
+
+/**
+ Returns a Boolean value that indicates whether every annotation in the receiving cluster is also present in another given cluster.
+
+ @param cluster The cluster with which to compare the receiving cluster.
+ @return YES if every annotation in the receiving cluster is also present in other, otherwise NO.
+ */
+- (BOOL)isSubsetOfCluster:(CKCluster *)cluster;
 
 @end
 
@@ -168,3 +200,4 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
 @end
 
 NS_ASSUME_NONNULL_END
+
