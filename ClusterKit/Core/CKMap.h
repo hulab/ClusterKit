@@ -67,28 +67,26 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)deselectCluster:(CKCluster *)cluster animated:(BOOL)animated;
 
 /**
- Adds the specified cluster to the map.
+ Removes clusters from the map.
  
- @param cluster The cluster object to add to the receiver.
+ @param clusters The clusters array to remove.
  */
-- (void)addCluster:(CKCluster *)cluster;
+- (void)removeClusters:(NSArray<CKCluster *> *)clusters;
 
 /**
- Removes the specified cluster object from the map.
+ Adds clusters from the map.
  
- @param cluster The cluster object to remove.
+ @param clusters The clusters array to add.
  */
-- (void)removeCluster:(CKCluster *)cluster;
+- (void)addClusters:(NSArray<CKCluster *> *)clusters;
 
 /**
- Moves the specified cluster on the map.
- 
- @param cluster    The cluster to move.
- @param from       The start move position.
- @param to         The target position.
- @param completion A block object to be executed when the move sequence ends. This block has no return value and takes a single Boolean argument that indicates whether or not the moves actually finished before the completion handler was called. This parameter may be NULL.
+ Perfoms the specidied cluster animations.
+
+ @param animations The animations to perfom.
+ @param completion A block object to be executed when the move sequence ends. This block has no return value and takes a single Boolean argument that indicates whether or not the moves actually finished before the completion handler was called. This parameter may be nil.
  */
-- (void)moveCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to completion:(void (^__nullable)(BOOL finished))completion;
+- (void)performAnimations:(NSArray<CKClusterAnimation *> *)animations completion:(void (^__nullable)(BOOL finished))completion;
 
 @end
 

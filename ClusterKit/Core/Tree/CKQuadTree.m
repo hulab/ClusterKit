@@ -231,14 +231,14 @@ static void * const CKQuadTreeKVOContext = (void *)&CKQuadTreeKVOContext;
     return [self initWithAnnotations:[NSArray array]];
 }
 
-- (instancetype)initWithAnnotations:(NSArray<id<CKAnnotation>> *)annotations {
+- (instancetype)initWithAnnotations:(NSArray<id<MKAnnotation>> *)annotations {
     self = [super init];
     if (self) {
         self.annotations = annotations;
         
         self.tree = hb_qtree_new(MKMapRectWorld, CK_QTREE_STDCAP);
         
-        for (NSObject<CKAnnotation> *annotation in annotations) {
+        for (NSObject<MKAnnotation> *annotation in annotations) {
             hb_qtree_insert(self.tree, annotation);
             
             [annotation addObserver:self
@@ -250,13 +250,13 @@ static void * const CKQuadTreeKVOContext = (void *)&CKQuadTreeKVOContext;
     return self;
 }
 
-- (NSArray<id<CKAnnotation>> *)annotationsInRect:(MKMapRect)rect {
+- (NSArray<id<MKAnnotation>> *)annotationsInRect:(MKMapRect)rect {
     NSMutableArray *results = [NSMutableArray new];
     
     // For map rects that span the 180th meridian, we get the portion outside the world.
     if (MKMapRectSpans180thMeridian(rect)) {
         
-        hb_qtree_find_in_range(self.tree, MKMapRectRemainder(rect), ^(id<CKAnnotation> annotation) {
+        hb_qtree_find_in_range(self.tree, MKMapRectRemainder(rect), ^(id<MKAnnotation> annotation) {
             if (!self->_responds || [self.delegate annotationTree:self shouldExtractAnnotation:annotation]) {
                 [results addObject:annotation];
             }
@@ -265,7 +265,7 @@ static void * const CKQuadTreeKVOContext = (void *)&CKQuadTreeKVOContext;
         rect = MKMapRectIntersection(rect, MKMapRectWorld);
     }
     
-    hb_qtree_find_in_range(self.tree, rect, ^(id<CKAnnotation> annotation) {
+    hb_qtree_find_in_range(self.tree, rect, ^(id<MKAnnotation> annotation) {
         if (!self->_responds || [self.delegate annotationTree:self shouldExtractAnnotation:annotation]) {
             [results addObject:annotation];
         }
@@ -282,7 +282,7 @@ static void * const CKQuadTreeKVOContext = (void *)&CKQuadTreeKVOContext;
 }
 
 - (void)dealloc {
-    for (NSObject<CKAnnotation> *annotation in self.annotations) {
+    for (NSObject<MKAnnotation> *annotation in self.annotations) {
         [annotation removeObserver:self
                         forKeyPath:NSStringFromSelector(@selector(coordinate))
                            context:CKQuadTreeKVOContext];

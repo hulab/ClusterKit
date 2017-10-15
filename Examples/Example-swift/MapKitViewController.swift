@@ -25,10 +25,13 @@ import MapKit
 import ClusterKit
 import ExampleData
 
+public let CKMapViewDefaultAnnotationViewReuseIdentifier = "annotation"
+public let CKMapViewDefaultClusterAnnotationViewReuseIdentifier = "cluster"
+
 class MapKitViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +41,10 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         mapView.clusterManager.algorithm = algorithm
         mapView.clusterManager.marginFactor = 1
         
+        if #available(iOS 11.0, *) {
+            mapView.register(CKAnnotationView.self, forAnnotationViewWithReuseIdentifier: CKMapViewDefaultAnnotationViewReuseIdentifier)
+            mapView.register(CKClusterView.self, forAnnotationViewWithReuseIdentifier: CKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+        }
         
         let paris = CLLocationCoordinate2D(latitude: 48.853, longitude: 2.35)
         mapView.setCenter(paris, animated: false)
@@ -61,22 +68,19 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotation") ??
-            MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
 
         if let cluster = annotation as? CKCluster {
             
             if cluster.count > 1 {
-                annotationView.canShowCallout = false
-                annotationView.image = UIImage(named: "cluster")
+                return mapView.dequeueReusableAnnotationView(withIdentifier: CKMapViewDefaultClusterAnnotationViewReuseIdentifier) ??
+                    MKAnnotationView(annotation: annotation, reuseIdentifier: CKMapViewDefaultClusterAnnotationViewReuseIdentifier)
             } else {
-                annotationView.canShowCallout = true
-                annotationView.isDraggable = true
-                annotationView.image = UIImage(named: "marker")
+                return mapView.dequeueReusableAnnotationView(withIdentifier: CKMapViewDefaultAnnotationViewReuseIdentifier) ??
+                    MKAnnotationView(annotation: annotation, reuseIdentifier: CKMapViewDefaultAnnotationViewReuseIdentifier)
             }
         }
-        return annotationView;
+        
+        return nil
     }
     
     // MARK: How To Update Clusters
@@ -130,5 +134,31 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         default: break
             
         }
+    }
+}
+
+class CKAnnotationView: MKAnnotationView {
+    
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        canShowCallout = true
+        isDraggable = true
+        image = UIImage(named: "marker")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("Not implemented")
+    }
+}
+
+class CKClusterView: MKAnnotationView {
+    
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        image = UIImage(named: "cluster")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("Not implemented")
     }
 }

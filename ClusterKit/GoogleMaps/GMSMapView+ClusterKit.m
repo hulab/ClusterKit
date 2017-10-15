@@ -55,10 +55,6 @@
     return objc_getAssociatedObject(self, @selector(dataSource));
 }
 
-- (GMSMarker *)markerForCluster:(CKCluster*)cluster {
-    return [self.markers objectForKey:cluster];
-}
-
 - (void)setDataSource:(id<GMSMapViewDataSource>)dataSource {
     objc_setAssociatedObject(self, @selector(dataSource), dataSource, OBJC_ASSOCIATION_ASSIGN);
 }
@@ -70,6 +66,10 @@
         objc_setAssociatedObject(self, @selector(markers), markers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return markers;
+}
+
+- (GMSMarker *)markerForCluster:(CKCluster*)cluster {
+    return [self.markers objectForKey:cluster];
 }
 
 - (MKMapRect)visibleMapRect {    
@@ -117,29 +117,48 @@
     [self.markers removeObjectForKey:cluster];
 }
 
-- (void)moveCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to completion:(void (^__nullable)(BOOL finished))completion {
+- (void)addClusters:(NSArray<CKCluster *> *)clusters {
+    for (CKCluster *cluster in clusters) {
+        [self addCluster:cluster];
+    }
+}
+
+- (void)removeClusters:(NSArray<CKCluster *> *)clusters {
+    for (CKCluster *cluster in clusters) {
+        [self removeCluster:cluster];
+    }
+}
+
+- (void)performAnimations:(NSArray<CKClusterAnimation *> *)animations completion:(void (^__nullable)(BOOL finished))completion {
     
-    GMSMarker *marker = [self.markers objectForKey:cluster];
-    marker.zIndex = 0;
-    marker.position = from;
+    void (^animationsBlock)(void) = ^{};
     
-    void (^animations)(void) = ^{
-        marker.layer.latitude = to.latitude;
-        marker.layer.longitude = to.longitude;
+    void (^completionBlock)(BOOL finished) = ^(BOOL finished){
+        if (completion) completion(finished);
     };
     
-    void (^block)(void) = ^{
-        marker.zIndex = 1;
-        completion(YES);
-    };
+    for (CKClusterAnimation *animation in animations) {
+        GMSMarker *marker = [self.markers objectForKey:animation.cluster];
+        
+        marker.zIndex = 0;
+        marker.position = animation.from;
+        
+        animationsBlock = ^{
+            animationsBlock();
+            marker.layer.latitude = animation.to.latitude;
+            marker.layer.longitude = animation.to.longitude;
+        };
+        
+        completionBlock = ^(BOOL finished){
+            marker.zIndex = 1;
+            completionBlock(finished);
+        };
+    }
     
     if ([self.clusterManager.delegate respondsToSelector:@selector(clusterManager:performAnimations:completion:)]) {
         [self.clusterManager.delegate clusterManager:self.clusterManager
-                                   performAnimations:animations
-                                          completion:^(BOOL finished) {
-                                              marker.zIndex = 1;
-                                              completion(finished);
-                                          }];
+                                   performAnimations:animationsBlock
+                                          completion:completionBlock];
     } else {
         CAMediaTimingFunction *curve = nil;
         switch (self.clusterManager.animationOptions) {
@@ -162,8 +181,10 @@
         [CATransaction begin];
         [CATransaction setAnimationDuration:self.clusterManager.animationDuration];
         [CATransaction setAnimationTimingFunction:curve];
-        [CATransaction setCompletionBlock:block];
-        animations();
+        [CATransaction setCompletionBlock:^{
+            completionBlock(YES);
+        }];
+        animationsBlock();
         [CATransaction commit];
     }
 }

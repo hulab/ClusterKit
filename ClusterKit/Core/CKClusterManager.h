@@ -95,7 +95,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 /**
  The current cluster array.
  */
-@property (nonatomic, readonly, copy, nullable) NSArray<CKCluster *> *clusters;
+@property (nonatomic, readonly, copy) NSArray<CKCluster *> *clusters;
 
 /**
  The maximum zoom level for clustering, 20 by default.
@@ -163,6 +163,41 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  Updates clusters if the area currently displayed has significantly moved.
  */
 - (void)updateClustersIfNeeded;
+
+@end
+
+/**
+ CKClusterAnimation defines a cluster animation from a start coordinate to an end coordinate on a map.
+ */
+@interface CKClusterAnimation : NSObject
+
+/**
+ The cluster to move.
+ */
+@property (nonatomic, readonly) CKCluster *cluster;
+
+/**
+ The cluster starting point.
+ */
+@property (nonatomic) CLLocationCoordinate2D from;
+
+/**
+ The cluster ending point.
+ */
+@property (nonatomic) CLLocationCoordinate2D to;
+
+/**
+ Initializes an animation for the given cluster.
+
+ @param cluster The cluster to animate.
+ @return The initialized CKClusterAnimation object.
+ */
+- (instancetype)initWithCluster:(CKCluster *)cluster NS_DESIGNATED_INITIALIZER;
+
+/// :nodoc:
+- (instancetype)init NS_UNAVAILABLE;
+/// :nodoc:
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 

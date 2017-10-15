@@ -57,7 +57,7 @@ FOUNDATION_EXPORT void hb_qtree_find_in_range(hb_qtree_t *tree, MKMapRect range,
  
  @return An initialized CKQuadTree.
  */
-- (instancetype)initWithAnnotations:(NSArray<id<CKAnnotation>> *)annotations NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithAnnotations:(NSArray<id<MKAnnotation>> *)annotations NS_DESIGNATED_INITIALIZER;
 
 @end
 
