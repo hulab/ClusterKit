@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C2C4A0E1F94BACE00B22745 /* MGLMapView+ClusterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */; };
 		9C53CD191E03F51C000AD9B8 /* CKClusterAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C53CD1A1E03F51C000AD9B8 /* CKClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C53CD051E03F51C000AD9B8 /* CKClusterAlgorithm.m */; };
 		9C53CD1B1E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD061E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MGLMapView+ClusterKit.h"; path = "ClusterKit/Mapbox/MGLMapView+ClusterKit.h"; sourceTree = SOURCE_ROOT; };
+		9C2C4A0D1F94BACE00B22745 /* MGLMapView+ClusterKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MGLMapView+ClusterKit.m"; path = "ClusterKit/Mapbox/MGLMapView+ClusterKit.m"; sourceTree = SOURCE_ROOT; };
 		9C4C93E11E4250D500927A42 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKClusterAlgorithm.h; sourceTree = "<group>"; };
 		9C53CD051E03F51C000AD9B8 /* CKClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKClusterAlgorithm.m; sourceTree = "<group>"; };
@@ -98,12 +101,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C2C4A0B1F94BA7D00B22745 /* Mapbox */ = {
+			isa = PBXGroup;
+			children = (
+				9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */,
+				9C2C4A0D1F94BACE00B22745 /* MGLMapView+ClusterKit.m */,
+			);
+			name = Mapbox;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		9C53CD011E03F51C000AD9B8 /* ClusterKit */ = {
 			isa = PBXGroup;
 			children = (
 				9C53CD021E03F51C000AD9B8 /* Core */,
-				9C53CD131E03F51C000AD9B8 /* GoogleMaps */,
 				9C53CD161E03F51C000AD9B8 /* MapKit */,
+				9C53CD131E03F51C000AD9B8 /* GoogleMaps */,
+				9C2C4A0B1F94BA7D00B22745 /* Mapbox */,
 			);
 			path = ClusterKit;
 			sourceTree = "<group>";
@@ -241,6 +255,7 @@
 				9CE1F2691E069F30007E2678 /* CKGridBasedAlgorithm.h in Headers */,
 				9C53CD1D1E03F51C000AD9B8 /* CKCluster.h in Headers */,
 				9C53CD211E03F51C000AD9B8 /* CKMap.h in Headers */,
+				9C2C4A0E1F94BACE00B22745 /* MGLMapView+ClusterKit.h in Headers */,
 				9C53CD191E03F51C000AD9B8 /* CKClusterAlgorithm.h in Headers */,
 				9CC875F31E02AE2D0019AA18 /* ClusterKit.h in Headers */,
 				9C53CD231E03F51C000AD9B8 /* CKQuadTree.h in Headers */,

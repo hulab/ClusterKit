@@ -72,22 +72,16 @@
     return [self.markers objectForKey:cluster];
 }
 
-- (MKMapRect)visibleMapRect {    
-    GMSCoordinateBounds * bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.projection.visibleRegion];
+- (MKMapRect)visibleMapRect {
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.projection.visibleRegion];
+    MKMapPoint sw = MKMapPointForCoordinate(bounds.southWest);
+    MKMapPoint ne = MKMapPointForCoordinate(bounds.northEast);
     
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake((bounds.southWest.latitude + bounds.northEast.latitude) / 2,
-                                                               (bounds.southWest.longitude + bounds.northEast.longitude) / 2);
-    
-    MKCoordinateSpan span = MKCoordinateSpanMake(bounds.northEast.latitude - bounds.southWest.latitude,
-                                                 bounds.northEast.longitude - bounds.southWest.longitude);
-    
-    MKMapPoint a = MKMapPointForCoordinate(CLLocationCoordinate2DMake(center.latitude + span.latitudeDelta / 2,
-                                                                      center.longitude - span.longitudeDelta / 2));
-    
-    MKMapPoint b = MKMapPointForCoordinate(CLLocationCoordinate2DMake(center.latitude - span.latitudeDelta / 2,
-                                                                      center.longitude + span.longitudeDelta / 2));
-    
-    return MKMapRectMake(MIN(a.x, b.x), MIN(a.y, b.y), ABS(a.x - b.x), ABS(a.y - b.y));
+    double x = sw.x;
+    double y = ne.y;
+    double width = ne.x - sw.x;
+    double height = sw.y - ne.y;
+    return MKMapRectMake(x, y, width, height);
 }
 
 - (double)zoom {

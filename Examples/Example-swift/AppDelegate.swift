@@ -22,6 +22,7 @@
 
 import UIKit
 import GoogleMaps
+import Mapbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         GMSServices.provideAPIKey("<#Enter your google API key#>")
+        MGLAccountManager.setAccessToken("<#Enter your Mapbox access token#>")
+        
         return true
     }
 

@@ -1,4 +1,4 @@
-// MapKitViewController.swift
+// MapboxViewController.swift
 //
 // Copyright © 2017 Hulab. All rights reserved.
 //
@@ -21,17 +21,14 @@
 // THE SOFTWARE.
 
 import UIKit
-import MapKit
+import Mapbox
 import ClusterKit
 import ExampleData
 
-public let CKMapViewDefaultAnnotationViewReuseIdentifier = "annotation"
-public let CKMapViewDefaultClusterAnnotationViewReuseIdentifier = "cluster"
+class MapboxViewController: UIViewController, MGLMapViewDelegate {
 
-class MapKitViewController: UIViewController, MKMapViewDelegate {
-
-    @IBOutlet weak var mapView: MKMapView!
-     
+    @IBOutlet weak var mapView: MGLMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +49,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+
     func loadData() {
         let operation = CKGeoPointOperation()
         
@@ -62,95 +60,115 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         operation.start()
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
         guard let cluster = annotation as? CKCluster else {
             return nil
         }
         
         if cluster.count > 1 {
             return mapView.dequeueReusableAnnotationView(withIdentifier: CKMapViewDefaultClusterAnnotationViewReuseIdentifier) ??
-                CKClusterView(annotation: annotation, reuseIdentifier: CKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+                MBXClusterView(annotation: annotation, reuseIdentifier: CKMapViewDefaultClusterAnnotationViewReuseIdentifier)
         }
         
         return mapView.dequeueReusableAnnotationView(withIdentifier: CKMapViewDefaultAnnotationViewReuseIdentifier) ??
-            CKAnnotationView(annotation: annotation, reuseIdentifier: CKMapViewDefaultAnnotationViewReuseIdentifier)
+            MBXAnnotationView(annotation: annotation, reuseIdentifier: CKMapViewDefaultAnnotationViewReuseIdentifier)
+    }
+    
+    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        guard let cluster = annotation as? CKCluster else {
+            return true
+        }
+        
+        return cluster.count == 1
     }
     
     // MARK: How To Update Clusters
     
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
         mapView.clusterManager.updateClustersIfNeeded()
     }
     
     // MARK: How To Handle Selection/Deselection
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let cluster = view.annotation as? CKCluster else {
+    func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
+        guard let cluster = annotation as? CKCluster else {
             return
         }
         
         if cluster.count > 1 {
+            
             let edgePadding = UIEdgeInsetsMake(40, 20, 44, 20)
-            mapView.show(cluster, edgePadding: edgePadding, animated: true)
+            let camera = mapView.cameraThatFitsCluster(cluster, edgePadding: edgePadding)
+            mapView.setCamera(camera, animated: true)
+            
         } else if let annotation = cluster.firstAnnotation {
             mapView.clusterManager.selectAnnotation(annotation, animated: false);
         }
     }
     
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        guard let cluster = view.annotation as? CKCluster, cluster.count == 1 else {
+    func mapView(_ mapView: MGLMapView, didDeselect annotation: MGLAnnotation) {
+        guard let cluster = annotation as? CKCluster, cluster.count == 1 else {
             return
         }
         
         mapView.clusterManager.deselectAnnotation(cluster.firstAnnotation, animated: false);
     }
+
+}
+
+class MBXAnnotationView: MGLAnnotationView {
     
-    // MARK: How To Handle Drag and Drop
+    var imageView: UIImageView!
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
-        guard let cluster = view.annotation as? CKCluster else {
-            return
-        }
+    override init(annotation: MGLAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        let image = UIImage(named: "marker")
+        imageView = UIImageView(image: image)
+        addSubview(imageView)
+        frame = imageView.frame
         
-        switch newState {
+        isDraggable = true
+        centerOffset = CGVector(dx: 0.5, dy: 1)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("Not implemented")
+    }
+    
+    override func setDragState(_ dragState: MGLAnnotationViewDragState, animated: Bool) {
+        super.setDragState(dragState, animated: animated)
+        
+        switch dragState {
+        case .starting:
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [.curveLinear], animations: {
+                self.transform = self.transform.scaledBy(x: 2, y: 2)
+            })
         case .ending:
-            
-            if let annotation = cluster.firstAnnotation as? MKPointAnnotation {
-                annotation.coordinate = cluster.coordinate
-            }
-            view.setDragState(.none, animated: true)
-            
-        case .canceling:
-            view.setDragState(.none, animated: true)
-            
-        default: break
-            
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [.curveLinear], animations: {
+                self.transform = CGAffineTransform.identity
+            })
+        default:
+            break
         }
     }
 }
 
-class CKAnnotationView: MKAnnotationView {
+class MBXClusterView: MGLAnnotationView {
     
-    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+    var imageView: UIImageView!
+    
+    override init(annotation: MGLAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        canShowCallout = true
-        isDraggable = true
-        image = UIImage(named: "marker")
+        let image = UIImage(named: "cluster")
+        imageView = UIImageView(image: image)
+        addSubview(imageView)
+        frame = imageView.frame
+        
+        centerOffset = CGVector(dx: 0.5, dy: 1)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not implemented")
     }
-}
-
-class CKClusterView: MKAnnotationView {
     
-    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        image = UIImage(named: "cluster")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("Not implemented")
-    }
 }

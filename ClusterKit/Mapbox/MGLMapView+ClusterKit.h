@@ -1,4 +1,4 @@
-// CKMapKitViewController.h
+// MGLMapView+ClusterKit.h
 //
 // Copyright © 2017 Hulab. All rights reserved.
 //
@@ -20,16 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <MapKit/MapKit.h>
+#import <Mapbox/Mapbox.h>
+#import <ClusterKit/ClusterKit.h>
 
-@interface CKMapKitViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
+
+MK_EXTERN MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds, CLLocationCoordinate2D coordinate);
+
+@interface CKCluster (Mapbox) <MGLAnnotation>
+
+@end
+
+@interface MGLMapView (ClusterKit) <CKMap>
+
+- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster;
+
+- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets;
 
 @end
 
-@interface CKAnnotationView : MKAnnotationView
-
-@end
-
-@interface CKClusterView : MKAnnotationView
-
-@end
+NS_ASSUME_NONNULL_END

@@ -25,6 +25,9 @@
 
 #import "CKMapKitViewController.h"
 
+NSString * const CKMapViewDefaultAnnotationViewReuseIdentifier = @"annotation";
+NSString * const CKMapViewDefaultClusterAnnotationViewReuseIdentifier = @"cluster";
+
 @interface CKMapKitViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @end
@@ -56,27 +59,21 @@
 #pragma mark <MKMapViewDelegate>
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    static NSString *identifier = @"annotation";
-    MKAnnotationView *annotationView = (id)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    CKCluster *cluster = (CKCluster *)annotation;
     
-    if (!annotationView) {
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-    }
-    
-    if ([annotation isKindOfClass:[CKCluster class]]) {
-        CKCluster *cluster = (CKCluster *)annotation;
-        if (cluster.count > 1) {
-            annotationView.canShowCallout = NO;
-            annotationView.image = [UIImage imageNamed:@"cluster"];
-            
-        } else {
-            annotationView.canShowCallout = YES;
-            annotationView.draggable = YES;
-            annotationView.image = [UIImage imageNamed:@"marker"];
+    if (cluster.count > 1) {
+        MKAnnotationView *view = [mapView dequeueReusableAnnotationViewWithIdentifier:CKMapViewDefaultClusterAnnotationViewReuseIdentifier];
+        if (view) {
+            return view;
         }
+        return [[CKClusterView alloc] initWithAnnotation:cluster reuseIdentifier:CKMapViewDefaultClusterAnnotationViewReuseIdentifier];
     }
     
-    return annotationView;
+    MKAnnotationView *view = [mapView dequeueReusableAnnotationViewWithIdentifier:CKMapViewDefaultAnnotationViewReuseIdentifier];
+    if (view) {
+        return view;
+    }
+    return [[CKClusterView alloc] initWithAnnotation:cluster reuseIdentifier:CKMapViewDefaultAnnotationViewReuseIdentifier];
 }
 
 #pragma mark How To Update Clusters
@@ -88,49 +85,69 @@
 #pragma mark How To Handle Selection/Deselection
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    CKCluster *cluster = (CKCluster *)view.annotation;
     
-    if ([view.annotation isKindOfClass:[CKCluster class]]) {
-        CKCluster *cluster = (CKCluster *)view.annotation;
-        
-        if (cluster.count > 1) {
-            UIEdgeInsets edgePadding = UIEdgeInsetsMake(40, 20, 44, 20);
-            [mapView showCluster:cluster edgePadding:edgePadding animated:YES];
-        } else {
-            [mapView.clusterManager selectAnnotation:cluster.firstAnnotation animated:NO];
-        }
+    if (cluster.count > 1) {
+        UIEdgeInsets edgePadding = UIEdgeInsetsMake(40, 20, 44, 20);
+        [mapView showCluster:cluster edgePadding:edgePadding animated:YES];
+    } else {
+        [mapView.clusterManager selectAnnotation:cluster.firstAnnotation animated:NO];
     }
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-    if ([view.annotation isKindOfClass:[CKCluster class]]) {
-        CKCluster *cluster = (CKCluster *)view.annotation;
-        [mapView.clusterManager deselectAnnotation:cluster.firstAnnotation animated:NO];
-    }
+    CKCluster *cluster = (CKCluster *)view.annotation;
+    [mapView.clusterManager deselectAnnotation:cluster.firstAnnotation animated:NO];
 }
 
 #pragma mark How To Handle Drag and Drop
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+    CKCluster *cluster = (CKCluster *)view.annotation;
     
-    if ([view.annotation isKindOfClass:[CKCluster class]]) {
-        CKCluster *cluster = (CKCluster *)view.annotation;
-        
-        switch (newState) {
-                
-            case MKAnnotationViewDragStateEnding:
-                cluster.firstAnnotation.coordinate = cluster.coordinate;
-                view.dragState = MKAnnotationViewDragStateNone;
-                [view setDragState:MKAnnotationViewDragStateNone animated:YES];
-                break;
-                
-            case MKAnnotationViewDragStateCanceling:
-                [view setDragState:MKAnnotationViewDragStateNone animated:YES];
-                break;
-                
-            default:
-                break;
-        }
+    switch (newState) {
+            
+        case MKAnnotationViewDragStateEnding:
+            cluster.firstAnnotation.coordinate = cluster.coordinate;
+            view.dragState = MKAnnotationViewDragStateNone;
+            [view setDragState:MKAnnotationViewDragStateNone animated:YES];
+            break;
+            
+        case MKAnnotationViewDragStateCanceling:
+            [view setDragState:MKAnnotationViewDragStateNone animated:YES];
+            break;
+            
+        default:
+            break;
     }
+}
+
+@end
+
+@implementation CKAnnotationView
+
+- (instancetype)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
+    if (self) {
+        
+        self.canShowCallout = YES;
+        self.draggable = YES;
+        self.image = [UIImage imageNamed:@"marker"];
+    }
+    return self;
+}
+
+
+@end
+
+@implementation CKClusterView
+
+- (instancetype)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.image = [UIImage imageNamed:@"cluster"];
+    }
+    return self;
 }
 
 @end

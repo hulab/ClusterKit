@@ -31,7 +31,10 @@ double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
 }
 
 MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {    
-    return MKMapRectUnion(rect, MKMapRectMake(point.x, point.y, 0.1, 0.1));
+    return MKMapRectUnion(rect, (MKMapRect) {
+        .origin = point,
+        .size = MKMapRectNull.size
+    });
 }
 
 @implementation CKCluster {

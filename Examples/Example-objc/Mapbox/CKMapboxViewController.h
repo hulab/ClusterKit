@@ -1,4 +1,4 @@
-// CKMapKitViewController.h
+// CKMapboxViewController.h
 //
 // Copyright © 2017 Hulab. All rights reserved.
 //
@@ -20,16 +20,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <MapKit/MapKit.h>
+#import <Mapbox/Mapbox.h>
 
-@interface CKMapKitViewController : UIViewController
-
-@end
-
-@interface CKAnnotationView : MKAnnotationView
+@interface CKMapboxViewController : UIViewController
 
 @end
 
-@interface CKClusterView : MKAnnotationView
+@interface MBXAnnotationView : MGLAnnotationView
+
+@property (nonatomic, strong) UIImageView *imageView;
+
+@end
+
+@interface MBXClusterView : MGLAnnotationView
+
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end

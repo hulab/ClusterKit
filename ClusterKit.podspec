@@ -39,5 +39,11 @@ Pod::Spec.new do |s|
 #    ss.dependency 'GoogleMaps', '~> 2.1'
 #    ss.source_files = 'ClusterKit/GoogleMaps'
 #  end
-  
+
+  s.subspec 'Mapbox' do |ss|
+    ss.dependency 'ClusterKit/Core'
+    ss.dependency 'Mapbox-iOS-SDK', '~> 3.6'
+    ss.source_files = 'ClusterKit/Mapbox'
+  end
+
 end

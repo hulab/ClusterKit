@@ -12,6 +12,8 @@
 		9C1A99ED1EB9225800BEB563 /* ExampleData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1A99EB1EB9225800BEB563 /* ExampleData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C1A99F01EB9225800BEB563 /* ExampleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; };
 		9C1A99F11EB9225800BEB563 /* ExampleData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C2C4A061F94B36400B22745 /* MapboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C4A051F94B36400B22745 /* MapboxViewController.swift */; };
+		9C2C4A0A1F94B74C00B22745 /* CKMapboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C4A091F94B74C00B22745 /* CKMapboxViewController.m */; };
 		9C5C83DC1EB92678002F4C73 /* CKGeoPointOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C5C83DA1EB92678002F4C73 /* CKGeoPointOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C5C83DD1EB92678002F4C73 /* CKGeoPointOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C83DB1EB92678002F4C73 /* CKGeoPointOperation.m */; };
 		9C5C83E21EB930F3002F4C73 /* random.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A99F51EB922A400BEB563 /* random.geojson */; };
@@ -101,6 +103,9 @@
 		9C1A99EB1EB9225800BEB563 /* ExampleData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleData.h; sourceTree = "<group>"; };
 		9C1A99EC1EB9225800BEB563 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C1A99F51EB922A400BEB563 /* random.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = random.geojson; sourceTree = "<group>"; };
+		9C2C4A051F94B36400B22745 /* MapboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxViewController.swift; sourceTree = "<group>"; };
+		9C2C4A081F94B74C00B22745 /* CKMapboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKMapboxViewController.h; sourceTree = "<group>"; };
+		9C2C4A091F94B74C00B22745 /* CKMapboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKMapboxViewController.m; sourceTree = "<group>"; };
 		9C5C83DA1EB92678002F4C73 /* CKGeoPointOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKGeoPointOperation.h; sourceTree = "<group>"; };
 		9C5C83DB1EB92678002F4C73 /* CKGeoPointOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKGeoPointOperation.m; sourceTree = "<group>"; };
 		9C5C83E81EB961DA002F4C73 /* stations.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stations.geojson; sourceTree = "<group>"; };
@@ -222,6 +227,15 @@
 			path = "Example-data";
 			sourceTree = "<group>";
 		};
+		9C2C4A071F94B72900B22745 /* Mapbox */ = {
+			isa = PBXGroup;
+			children = (
+				9C2C4A081F94B74C00B22745 /* CKMapboxViewController.h */,
+				9C2C4A091F94B74C00B22745 /* CKMapboxViewController.m */,
+			);
+			path = Mapbox;
+			sourceTree = "<group>";
+		};
 		9CAFE26B1E23E8D100337FD1 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +276,7 @@
 				9CD80B0B1E23077000DFCB89 /* CKAppDelegate.m */,
 				9CD80B0E1E23078200DFCB89 /* MapKit */,
 				9CD80B071E23077000DFCB89 /* GoogleMaps */,
+				9C2C4A071F94B72900B22745 /* Mapbox */,
 				9CD80AE51E2306E000DFCB89 /* Main.storyboard */,
 				9CD80AEA1E2306E000DFCB89 /* LaunchScreen.storyboard */,
 				9CD80AED1E2306E000DFCB89 /* Info.plist */,
@@ -284,6 +299,7 @@
 				9CD80AF71E2306F400DFCB89 /* AppDelegate.swift */,
 				9C6EBCD21E23DBC3008FAC7A /* MapKitViewController.swift */,
 				9C6EBCD41E23DBDE008FAC7A /* GoogleMapsViewController.swift */,
+				9C2C4A051F94B36400B22745 /* MapboxViewController.swift */,
 				9CAFE26B1E23E8D100337FD1 /* GoogleMaps */,
 				9CD80AFB1E2306F400DFCB89 /* Main.storyboard */,
 				9CD80B001E2306F400DFCB89 /* LaunchScreen.storyboard */,
@@ -568,11 +584,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/GeoJSONSerialization/GeoJSONSerialization.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoJSONSerialization.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,11 +608,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/GeoJSONSerialization/GeoJSONSerialization.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoJSONSerialization.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,7 +631,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -625,7 +649,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -654,6 +678,7 @@
 				9CD80B0D1E23077000DFCB89 /* CKAppDelegate.m in Sources */,
 				9CD80B0C1E23077000DFCB89 /* CKGoogleMapsViewController.m in Sources */,
 				9CD80B111E23078200DFCB89 /* CKMapKitViewController.m in Sources */,
+				9C2C4A0A1F94B74C00B22745 /* CKMapboxViewController.m in Sources */,
 				9CD80ADE1E2306E000DFCB89 /* main.m in Sources */,
 				9CD80B151E2307AF00DFCB89 /* GMSMapView+ClusterKit.m in Sources */,
 			);
@@ -663,6 +688,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C2C4A061F94B36400B22745 /* MapboxViewController.swift in Sources */,
 				9C6EBCD31E23DBC3008FAC7A /* MapKitViewController.swift in Sources */,
 				9CD80AF81E2306F400DFCB89 /* AppDelegate.swift in Sources */,
 				9CAFE26E1E23E8D100337FD1 /* GMSMapView+ClusterKit.m in Sources */,
