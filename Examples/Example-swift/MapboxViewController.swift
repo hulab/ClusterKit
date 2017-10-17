@@ -33,7 +33,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         super.viewDidLoad()
 
         let algorithm = CKNonHierarchicalDistanceBasedAlgorithm()
-        algorithm.cellSize = 100
+        algorithm.cellSize = 200
         
         mapView.clusterManager.algorithm = algorithm
         mapView.clusterManager.marginFactor = 1

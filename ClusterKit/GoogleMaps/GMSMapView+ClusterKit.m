@@ -85,7 +85,10 @@
 }
 
 - (double)zoom {
-    return self.camera.zoom;
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.projection.visibleRegion];
+    MKCoordinateSpan span = MKCoordinateSpanMake(bounds.northEast.latitude - bounds.southWest.latitude,
+                                                 bounds.northEast.longitude - bounds.southWest.longitude);
+    return log2(360 * ((self.frame.size.width/256) / span.longitudeDelta));
 }
 
 - (void)addCluster:(CKCluster *)cluster {

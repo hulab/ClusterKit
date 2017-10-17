@@ -70,7 +70,10 @@ MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds,
 }
 
 - (double)zoom {
-    return self.zoomLevel;
+    MGLCoordinateBounds bounds = self.visibleCoordinateBounds;
+    MKCoordinateSpan span = MKCoordinateSpanMake(bounds.ne.latitude - bounds.sw.latitude,
+                                                 bounds.ne.longitude - bounds.sw.longitude);
+    return log2(360 * ((self.frame.size.width/256) / span.longitudeDelta));
 }
 
 - (MKMapRect)visibleMapRect {
