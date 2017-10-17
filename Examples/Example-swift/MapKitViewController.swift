@@ -62,6 +62,8 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         operation.start()
     }
     
+    // MARK: MKMapViewDelegate
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let cluster = annotation as? CKCluster else {
             return nil
@@ -76,13 +78,13 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
             CKAnnotationView(annotation: annotation, reuseIdentifier: CKMapViewDefaultAnnotationViewReuseIdentifier)
     }
     
-    // MARK: How To Update Clusters
+    // MARK: - How To Update Clusters
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         mapView.clusterManager.updateClustersIfNeeded()
     }
     
-    // MARK: How To Handle Selection/Deselection
+    // MARK: - How To Handle Selection/Deselection
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let cluster = view.annotation as? CKCluster else {
@@ -105,7 +107,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         mapView.clusterManager.deselectAnnotation(cluster.firstAnnotation, animated: false);
     }
     
-    // MARK: How To Handle Drag and Drop
+    // MARK: - How To Handle Drag and Drop
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
         guard let cluster = view.annotation as? CKCluster else {

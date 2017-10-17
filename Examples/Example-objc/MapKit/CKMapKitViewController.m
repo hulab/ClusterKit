@@ -38,7 +38,7 @@ NSString * const CKMapViewDefaultClusterAnnotationViewReuseIdentifier = @"cluste
     [super viewDidLoad];
     
     CKNonHierarchicalDistanceBasedAlgorithm *algorithm = [CKNonHierarchicalDistanceBasedAlgorithm new];
-    algorithm.cellSize = 200;
+    algorithm.cellSize = 100;
     
     self.mapView.clusterManager.algorithm = algorithm;
     self.mapView.clusterManager.marginFactor = 1;
@@ -76,13 +76,13 @@ NSString * const CKMapViewDefaultClusterAnnotationViewReuseIdentifier = @"cluste
     return [[CKClusterView alloc] initWithAnnotation:cluster reuseIdentifier:CKMapViewDefaultAnnotationViewReuseIdentifier];
 }
 
-#pragma mark How To Update Clusters
+#pragma mark - How To Update Clusters
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     [mapView.clusterManager updateClustersIfNeeded];
 }
 
-#pragma mark How To Handle Selection/Deselection
+#pragma mark - How To Handle Selection/Deselection
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     CKCluster *cluster = (CKCluster *)view.annotation;
@@ -100,7 +100,7 @@ NSString * const CKMapViewDefaultClusterAnnotationViewReuseIdentifier = @"cluste
     [mapView.clusterManager deselectAnnotation:cluster.firstAnnotation animated:NO];
 }
 
-#pragma mark How To Handle Drag and Drop
+#pragma mark - How To Handle Drag and Drop
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
     CKCluster *cluster = (CKCluster *)view.annotation;

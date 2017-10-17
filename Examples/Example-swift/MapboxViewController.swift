@@ -33,7 +33,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         super.viewDidLoad()
 
         let algorithm = CKNonHierarchicalDistanceBasedAlgorithm()
-        algorithm.cellSize = 200
+        algorithm.cellSize = 100
         
         mapView.clusterManager.algorithm = algorithm
         mapView.clusterManager.marginFactor = 1
@@ -60,6 +60,8 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         operation.start()
     }
     
+    // MARK: MGLMapViewDelegate
+    
     func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
         guard let cluster = annotation as? CKCluster else {
             return nil
@@ -82,13 +84,13 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         return cluster.count == 1
     }
     
-    // MARK: How To Update Clusters
+    // MARK: - How To Update Clusters
     
     func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
         mapView.clusterManager.updateClustersIfNeeded()
     }
     
-    // MARK: How To Handle Selection/Deselection
+    // MARK: - How To Handle Selection/Deselection
     
     func mapView(_ mapView: MGLMapView, didSelect annotation: MGLAnnotation) {
         guard let cluster = annotation as? CKCluster else {
@@ -115,6 +117,8 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
     }
 
 }
+
+// MARK: - Custom annotation view
 
 class MBXAnnotationView: MGLAnnotationView {
     

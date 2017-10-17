@@ -81,13 +81,13 @@ NSString * const MBXMapViewDefaultClusterAnnotationViewReuseIdentifier = @"clust
     return cluster.count == 1;
 }
 
-#pragma mark How To Update Clusters
+#pragma mark - How To Update Clusters
 
 - (void)mapView:(MGLMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     [mapView.clusterManager updateClustersIfNeeded];
 }
 
-#pragma mark How To Handle Selection/Deselection
+#pragma mark - How To Handle Selection/Deselection
 
 - (void)mapView:(MGLMapView *)mapView didSelectAnnotation:(nonnull id<MGLAnnotation>)annotation {
     CKCluster *cluster = (CKCluster *)annotation;

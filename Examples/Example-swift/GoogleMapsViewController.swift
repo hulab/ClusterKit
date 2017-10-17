@@ -64,6 +64,8 @@ class GoogleMapsViewController: UIViewController, GMSMapViewDelegate, GMSMapView
         operation.start()
     }
     
+    // MARK: GMSMapViewDataSource
+    
     func mapView(_ mapView: GMSMapView, markerFor cluster: CKCluster) -> GMSMarker {
         let marker = GMSMarker(position: cluster.coordinate)
         
@@ -78,13 +80,13 @@ class GoogleMapsViewController: UIViewController, GMSMapViewDelegate, GMSMapView
         return marker;
     }
     
-    // MARK: How To Update Clusters
+    // MARK: - How To Update Clusters
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         mapView.clusterManager.updateClustersIfNeeded()
     }
     
-    // MARK: How To Handle Selection/Deselection
+    // MARK: - How To Handle Selection/Deselection
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
@@ -113,7 +115,7 @@ class GoogleMapsViewController: UIViewController, GMSMapViewDelegate, GMSMapView
         }
     }
     
-    // MARK: How To Handle Drag and Drop
+    // MARK: - How To Handle Drag and Drop
     
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         

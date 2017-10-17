@@ -10,10 +10,10 @@ target 'Example-data' do
 end
 
 target 'Example-objc' do
-    pod 'GoogleMaps', '~> 2.2'
+    pod 'GoogleMaps'
 end
 
 target 'Example-swift' do
-    pod 'GoogleMaps', '~> 2.2'
+    pod 'GoogleMaps'
 end
 
