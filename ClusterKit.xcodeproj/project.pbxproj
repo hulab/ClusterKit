@@ -107,8 +107,7 @@
 				9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */,
 				9C2C4A0D1F94BACE00B22745 /* MGLMapView+ClusterKit.m */,
 			);
-			name = Mapbox;
-			path = "New Group";
+			path = Mapbox;
 			sourceTree = "<group>";
 		};
 		9C53CD011E03F51C000AD9B8 /* ClusterKit */ = {

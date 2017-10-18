@@ -1,15 +1,16 @@
 
 Pod::Spec.new do |s|
   s.name             = "ClusterKit"
-  s.version          = "0.2.0"
-  s.summary          = "ClusterKit is a map clustering framework targeting MapKit and Google Maps."
+  s.version          = "0.3.0"
+  s.summary          = "ClusterKit is a map clustering framework targeting MapKit, Google Maps and Mapbox."
 
   s.description      = <<-DESC
                         ClusterKit is an efficient clustering framework with the following features:
-                        - Supports MapKit AND GoogleMaps.
+                        - Native supports of MapKit, GoogleMaps and Mapbox.
                         - Comes with 2 clustering algorithms, a Grid Based Algorithm and a Non Hierarchical Distance Based Algorithm. Other algorithms can easily be integrated.
                         - Annotations are stored in a QuadTree for efficient region queries.
                         - Cluster center can be switched to Centroid, Nearest Centroid, Bottom.
+                        - Handles pin selection as well as drag and dropping.
                         - Written in Objective-C with full Swift interop support.
                        DESC
 
