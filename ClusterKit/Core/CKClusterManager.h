@@ -47,7 +47,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  
  @return Yes to permit clusterization of the given annotation.
  */
-- (BOOL)clusterManager:(CKClusterManager *)clusterManager shouldClusterAnnotation:(id<CKAnnotation>)annotation;
+- (BOOL)clusterManager:(CKClusterManager *)clusterManager shouldClusterAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Tells the delegate to perform an animation.
@@ -90,7 +90,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 /**
  The currently selected annotation.
  */
-@property (nonatomic,readonly) id<CKAnnotation> selectedAnnotation;
+@property (nonatomic,readonly) id<MKAnnotation> selectedAnnotation;
 
 /**
  The current cluster array.
@@ -110,49 +110,49 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 /**
  The annotations to clusterize.
  */
-@property (nonatomic,copy) NSArray<id<CKAnnotation>> *annotations;
+@property (nonatomic,copy) NSArray<id<MKAnnotation>> *annotations;
 
 /**
  Adds an annotation.
  
  @param annotation The annotation to add.
  */
-- (void)addAnnotation:(id<CKAnnotation>)annotation;
+- (void)addAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Adds annotations.
  
  @param annotations Annotations to add.
  */
-- (void)addAnnotations:(NSArray<id<CKAnnotation>> *)annotations;
+- (void)addAnnotations:(NSArray<id<MKAnnotation>> *)annotations;
 
 /**
  Removes an annotation.
  
  @param annotation The annotation to remove.
  */
-- (void)removeAnnotation:(id<CKAnnotation>)annotation;
+- (void)removeAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Removes annotations.
  
  @param annotations Annotations to remove.
  */
-- (void)removeAnnotations:(NSArray<id<CKAnnotation>> *)annotations;
+- (void)removeAnnotations:(NSArray<id<MKAnnotation>> *)annotations;
 
 /**
  Selects an annotation. Look for the annotation in clusters and extract it if necessary.
  
  @param annotation   The annotation to be selected.
  */
-- (void)selectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated;
+- (void)selectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated;
 
 /**
  Deselects an annotation.
  
  @param annotation   The annotation to be deselected.
  */
-- (void)deselectAnnotation:(nullable id<CKAnnotation>)annotation animated:(BOOL)animated;
+- (void)deselectAnnotation:(nullable id<MKAnnotation>)annotation animated:(BOOL)animated;
 
 /**
  Updates displayed clusters.

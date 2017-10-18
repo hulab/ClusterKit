@@ -38,21 +38,6 @@ MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
 
 @class CKCluster;
 
-#pragma - CKAnnotation protocol
-
-/**
- The CKAnnotation protocol is used to provide clusterized place information to a map. To use this protocol, you adopt it in any custom objects that store or represent a place data. Annotation objects do not provide the visual representation of the place but typically coordinate and parent cluster.
- @discussion An object that adopts this protocol must implement the coordinate and cluster properties. The other methods of this protocol are optional.
- */
-@protocol CKAnnotation <MKAnnotation>
-
-/**
- The cluster that the annotation is related to.
- */
-@property (nonatomic, weak, nullable) CKCluster *cluster;
-
-@end
-
 #pragma - Cluster definitions
 
 /**
@@ -83,7 +68,7 @@ MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
 /**
  Cluster annotation array.
  */
-@property (nonatomic, readonly, copy) NSArray<id<CKAnnotation>> *annotations;
+@property (nonatomic, readonly, copy) NSArray<id<MKAnnotation>> *annotations;
 
 /**
  The number of annotations in the cluster.
@@ -94,13 +79,13 @@ MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
  The first annotation in the cluster.
  If the cluster is empty, returns nil.
  */
-@property (nonatomic, readonly, nullable) id<CKAnnotation> firstAnnotation;
+@property (nonatomic, readonly, nullable) id<MKAnnotation> firstAnnotation;
 
 /**
  The last annotation in the cluster.
  If the cluster is empty, returns nil.
  */
-@property (nonatomic, readonly, nullable) id<CKAnnotation> lastAnnotation;
+@property (nonatomic, readonly, nullable) id<MKAnnotation> lastAnnotation;
 
 /**
  Represents a rectangular bounding box on the Earth's projection.
@@ -112,14 +97,14 @@ MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
  
  @param annotation The annotation to add.
  */
-- (void)addAnnotation:(id<CKAnnotation>)annotation;
+- (void)addAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Removes a given annotation from the cluster.
  
  @param annotation The annotation to remove.
  */
-- (void)removeAnnotation:(id<CKAnnotation>)annotation;
+- (void)removeAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Returns the annotation at the given index.
@@ -128,7 +113,7 @@ MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
  @param index An annotation index within the bounds of the array.
  @return The annotation located at index.
  */
-- (id<CKAnnotation>)annotationAtIndex:(NSUInteger)index;
+- (id<MKAnnotation>)annotationAtIndex:(NSUInteger)index;
 
 /**
  Returns a Boolean value that indicates whether a given annotation is present in the cluster.
@@ -137,7 +122,7 @@ MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
  @param annotation An annotation.
  @return YES if the gievn annotation is present in the cluster, otherwise NO.
  */
-- (BOOL)containsAnnotation:(id<CKAnnotation>)annotation;
+- (BOOL)containsAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Returns the annotation at the specified index.
@@ -145,12 +130,12 @@ MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
  If index is beyond the end of the cluster (that is, if index is greater than or equal to the value returned by count), an NSRangeException is raised.
  You shouldn’t need to call this method directly. Instead, this method is called when accessing an annotation by index using subscripting.
  
- `id<CKAnnotation> value = cluster[3]; // equivalent to [cluster annotationAtIndex:3]`
+ `id<MKAnnotation> value = cluster[3]; // equivalent to [cluster annotationAtIndex:3]`
  
  @param index An index within the bounds of the cluster.
  @return The annotation located at index.
  */
-- (id<CKAnnotation>)objectAtIndexedSubscript:(NSUInteger)index;
+- (id<MKAnnotation>)objectAtIndexedSubscript:(NSUInteger)index;
 
 /**
  Returns a Boolean value that indicates whether the receiver and a given cluster are equal.

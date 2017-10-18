@@ -217,7 +217,7 @@
 + (GMSCameraUpdate *)fitCluster:(CKCluster *)cluster withEdgeInsets:(UIEdgeInsets)edgeInsets {
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:cluster.coordinate coordinate:cluster.coordinate];
     
-    for (id<CKAnnotation> marker in cluster) {
+    for (id<MKAnnotation> marker in cluster) {
         bounds = [bounds includingCoordinate:marker.coordinate];
     }
     return [GMSCameraUpdate fitBounds:bounds withEdgeInsets:edgeInsets];

@@ -99,61 +99,61 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 
 #pragma mark Manage Annotations
 
-- (void)setAnnotations:(NSArray<id<CKAnnotation>> *)annotations {
+- (void)setAnnotations:(NSArray<id<MKAnnotation>> *)annotations {
     self.tree = [[CKQuadTree alloc] initWithAnnotations:annotations];
     self.tree.delegate = self;
     [self updateClusters];
 }
 
-- (NSArray<id<CKAnnotation>> *)annotations {
+- (NSArray<id<MKAnnotation>> *)annotations {
     return self.tree ? self.tree.annotations : @[];
 }
 
-- (void)addAnnotation:(id<CKAnnotation>)annotation {
+- (void)addAnnotation:(id<MKAnnotation>)annotation {
     self.annotations = [self.annotations arrayByAddingObject:annotation];
 }
 
-- (void)addAnnotations:(NSArray<id<CKAnnotation>> *)annotations {
+- (void)addAnnotations:(NSArray<id<MKAnnotation>> *)annotations {
     self.annotations = [self.annotations arrayByAddingObjectsFromArray:annotations];
 }
 
-- (void)removeAnnotation:(id<CKAnnotation>)annotation {
+- (void)removeAnnotation:(id<MKAnnotation>)annotation {
     NSMutableArray *annotations = [self.annotations mutableCopy];
     [annotations removeObject:annotation];
     self.annotations = annotations;
 }
 
-- (void)removeAnnotations:(NSArray<id<CKAnnotation>> *)annotations {
+- (void)removeAnnotations:(NSArray<id<MKAnnotation>> *)annotations {
     NSMutableArray *_annotations = [self.annotations mutableCopy];
     [_annotations removeObjectsInArray:annotations];
     self.annotations = _annotations;
 }
 
-- (void)selectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated {
+- (void)selectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated {
     
     if (annotation) {
-        CKCluster *cluster = nil;
+        CKCluster *cluster = [self clusterForAnnotation:annotation];
         
-        if (!annotation.cluster || annotation.cluster.count > 1) {
+        if (!cluster || cluster.count > 1) {
+            [cluster removeAnnotation:annotation];
+            
             cluster = [self.algorithm clusterWithCoordinate:annotation.coordinate];
             [cluster addAnnotation:annotation];
             [self.map addClusters:@[cluster]];
-        } else {
-            cluster = annotation.cluster;
         }
         
         [self setSelectedCluster:cluster animated:animated];
     }
 }
 
-- (void)deselectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated {
+- (void)deselectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated {
     
     if (!annotation || annotation == self.selectedAnnotation) {
         [self setSelectedCluster:nil animated:animated];
     }
 }
 
-- (id<CKAnnotation>)selectedAnnotation {
+- (id<MKAnnotation>)selectedAnnotation {
     return self.selectedCluster.firstAnnotation;
 }
 
@@ -216,6 +216,15 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
         [_clusters removeObject:selectedCluster];
         [self.map selectCluster:selectedCluster animated:animated];
     }
+}
+
+- (CKCluster *)clusterForAnnotation:(id<MKAnnotation>)annotation {
+    for (CKCluster *cluster in _clusters) {
+        if ([cluster containsAnnotation:annotation]) {
+            return cluster;
+        }
+    }
+    return nil;
 }
 
 - (void)expand:(NSArray<CKCluster *> *)newClusters from:(NSArray<CKCluster *> *)oldClusters in:(MKMapRect)rect {
@@ -297,7 +306,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 
 #pragma mark <KPAnnotationTreeDelegate>
 
-- (BOOL)annotationTree:(id<CKAnnotationTree>)annotationTree shouldExtractAnnotation:(id<CKAnnotation>)annotation {
+- (BOOL)annotationTree:(id<CKAnnotationTree>)annotationTree shouldExtractAnnotation:(id<MKAnnotation>)annotation {
     if (annotation == self.selectedAnnotation) {
         return NO;
     }

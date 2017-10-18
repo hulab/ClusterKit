@@ -24,8 +24,6 @@
 
 @implementation CKAnnotation
 
-@synthesize cluster;
-
 - (NSString *)title {
     return [NSString stringWithFormat:@"(%f, %f)", self.coordinate.latitude, self.coordinate.longitude];
 }

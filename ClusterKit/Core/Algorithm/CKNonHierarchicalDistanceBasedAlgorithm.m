@@ -46,13 +46,13 @@ MKMapRect CKCreateRectFromSpan(CLLocationCoordinate2D center, double span);
     
     NSMutableArray<CKCluster *> *clusters = [[NSMutableArray alloc] init];
     
-    NSMapTable<id<CKAnnotation>, CKCandidate *> *visited = [NSMapTable strongToStrongObjectsMapTable];
+    NSMapTable<id<MKAnnotation>, CKCandidate *> *visited = [NSMapTable strongToStrongObjectsMapTable];
 
     @synchronized(tree) {
         
         NSArray *annotations = [tree annotationsInRect:rect];
         
-        for (id<CKAnnotation> annotation in annotations) {
+        for (id<MKAnnotation> annotation in annotations) {
             
             if ([visited objectForKey:annotation]) {
                 continue;
@@ -64,7 +64,7 @@ MKMapRect CKCreateRectFromSpan(CLLocationCoordinate2D center, double span);
             MKMapRect clusterRect = CKCreateRectFromSpan(annotation.coordinate, zoomSpecificSpan);
             NSArray *neighbors  = [tree annotationsInRect:clusterRect];
             
-            for (id<CKAnnotation> neighbor in neighbors) {
+            for (id<MKAnnotation> neighbor in neighbors) {
                 
                 CKCandidate *candidate = [visited objectForKey:neighbor];
                 

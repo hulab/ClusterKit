@@ -78,15 +78,3 @@
 }
 
 @end
-
-@implementation MKPointAnnotation (CKAnnotation)
-
-- (CKCluster *)cluster {
-    return objc_getAssociatedObject(self, @selector(cluster));
-}
-
-- (void)setCluster:(CKCluster *)cluster {
-    objc_setAssociatedObject(self, @selector(cluster), cluster, OBJC_ASSOCIATION_ASSIGN);
-}
-
-@end

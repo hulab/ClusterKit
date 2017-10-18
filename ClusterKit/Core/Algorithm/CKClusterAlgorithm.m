@@ -38,7 +38,7 @@
     NSArray *annotations = [tree annotationsInRect:rect];
     NSMutableArray *clusters = [NSMutableArray arrayWithCapacity:annotations.count];
     
-    for (id<CKAnnotation> annotation in annotations) {
+    for (id<MKAnnotation> annotation in annotations) {
         CKCluster *cluster = [self clusterWithCoordinate:annotation.coordinate];
         [cluster addAnnotation:annotation];
         [clusters addObject:cluster];

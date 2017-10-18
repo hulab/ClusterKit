@@ -31,7 +31,7 @@
 
 - (void)showCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets animated:(BOOL)animated {
     MKMapRect zoomRect = MKMapRectNull;
-    for (id<CKAnnotation> annotation in cluster) {
+    for (id<MKAnnotation> annotation in cluster) {
         zoomRect = MKMapRectByAddingPoint(zoomRect, MKMapPointForCoordinate(annotation.coordinate));
     }
     [self setVisibleMapRect:zoomRect edgePadding:insets animated:animated];

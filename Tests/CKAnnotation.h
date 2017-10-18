@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <ClusterKit/CKCluster.h>
+#import <MapKit/MapKit.h>
 
-@interface CKAnnotation : NSObject <CKAnnotation>
+@interface CKAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 

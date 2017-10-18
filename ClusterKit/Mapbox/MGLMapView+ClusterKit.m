@@ -50,7 +50,7 @@ MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds,
 - (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets {
     MGLCoordinateBounds bounds = MGLCoordinateBoundsMake(cluster.firstAnnotation.coordinate, cluster.firstAnnotation.coordinate);
     
-    for (id<CKAnnotation> annotation in cluster) {
+    for (id<MKAnnotation> annotation in cluster) {
         bounds = MGLCoordinateIncludingCoordinate(bounds, annotation.coordinate);
     }
     
