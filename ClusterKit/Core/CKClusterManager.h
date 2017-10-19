@@ -187,8 +187,13 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 @property (nonatomic) CLLocationCoordinate2D to;
 
 /**
- Initializes an animation for the given cluster.
+ Boolean value indicating wheter cluster will disappear once animation is finished
+ */
+@property (nonatomic) BOOL removalAnimation;
 
+/**
+ Initializes an animation for the given cluster.
+ 
  @param cluster The cluster to animate.
  @return The initialized CKClusterAnimation object.
  */
@@ -202,3 +207,4 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 @end
 
 NS_ASSUME_NONNULL_END
+

@@ -31,6 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MKMapView (ClusterKit) <CKMap>
 
 /**
+ Fades out while removing animation. Defaults to NO
+ */
+@property (nonatomic) BOOL fadesOutWhileRemoving;
+
+/**
  Shows the specified cluster centered on screen at the greatest possible zoom level.
  
  @param cluster  The cluster to show.
@@ -50,3 +55,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+
