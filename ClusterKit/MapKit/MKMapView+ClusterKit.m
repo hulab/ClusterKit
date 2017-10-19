@@ -25,6 +25,14 @@
 
 @implementation MKMapView (ClusterKit)
 
+- (BOOL)fadesOutWhileRemoving {
+    return [objc_getAssociatedObject(self, @selector(fadesOutWhileRemoving)) boolValue];
+}
+
+- (void)setFadesOutWhileRemoving:(BOOL)fadesOutWhileRemoving {
+    objc_setAssociatedObject(self, @selector(fadesOutWhileRemoving), @(fadesOutWhileRemoving), OBJC_ASSOCIATION_RETAIN);
+}
+
 - (void)showCluster:(CKCluster *)cluster animated:(BOOL)animated {
     [self showCluster:cluster edgePadding:UIEdgeInsetsZero animated:animated];
 }
@@ -49,7 +57,7 @@
     return clusterManager;
 }
 
-- (double)zoom {    
+- (double)zoom {
     return log2(360 * ((self.frame.size.width/256) / self.region.span.longitudeDelta));
 }
 
@@ -69,10 +77,16 @@
     
     void (^animationsBlock)(void) = ^{};
     
+    NSMutableDictionary *alphaForAnnotation = [NSMutableDictionary dictionaryWithCapacity:animations.count];
     for (CKClusterAnimation *animation in animations) {
         animationsBlock = ^{
             animationsBlock();
             animation.cluster.coordinate = animation.to;
+            if(self.fadesOutWhileRemoving && animation.removalAnimation) {
+                MKAnnotationView *annotationView = [self viewForAnnotation:animation.cluster];
+                alphaForAnnotation[@(animation.cluster.hash)] = @(annotationView.alpha);
+                annotationView.alpha = 0;
+            }
         };
     }
     
@@ -87,7 +101,19 @@
                               delay:0
                             options:self.clusterManager.animationOptions
                          animations:animationsBlock
-                         completion:completion];
+                         completion:^(BOOL finished) {
+                             if(self.fadesOutWhileRemoving) {
+                                 for (CKClusterAnimation *animation in animations) {
+                                     if(animation.removalAnimation) {
+                                         MKAnnotationView *annotationView = [self viewForAnnotation:animation.cluster];
+                                         annotationView.alpha = [alphaForAnnotation[@(animation.cluster.hash)] floatValue];
+                                     }
+                                 }
+                             }
+                             if (completion) {
+                                 completion(finished);
+                             }
+                         }];
     }
 }
 
@@ -100,3 +126,4 @@
 }
 
 @end
+

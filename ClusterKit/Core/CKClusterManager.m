@@ -270,7 +270,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     
     [self.map addClusters:newClusters];
     
-     NSMutableSet *animations = [NSMutableSet set];
+    NSMutableSet *animations = [NSMutableSet set];
     
     for (CKCluster *newCluster in newClusters) {
         
@@ -288,6 +288,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
                 animation = [[CKClusterAnimation alloc] initWithCluster:neighbor];
                 animation.from = neighbor.coordinate;
                 animation.to = newCluster.coordinate;
+                animation.removalAnimation = YES;
                 [animations addObject:animation];
                 continue;
             }
@@ -326,6 +327,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
         _cluster = cluster;
         _from = kCLLocationCoordinate2DInvalid;
         _to = kCLLocationCoordinate2DInvalid;
+        _removalAnimation = NO;
     }
     return self;
 }
@@ -349,3 +351,4 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 }
 
 @end
+
