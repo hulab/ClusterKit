@@ -66,12 +66,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
-/**
- MKPointAnnotation extension adopting the `CKAnnotation` protocol.
- */
-@interface MKPointAnnotation (CKAnnotation) <CKAnnotation>
-
-@end
-
 NS_ASSUME_NONNULL_END

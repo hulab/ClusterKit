@@ -3,16 +3,17 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'ClusterKit/MapKit', :path => '../.'
+pod 'ClusterKit/Mapbox', :path => '../.'
 
 target 'Example-data' do
     pod 'GeoJSONSerialization'
 end
 
 target 'Example-objc' do
-    pod 'GoogleMaps', '~> 2.2'
+    pod 'GoogleMaps'
 end
 
 target 'Example-swift' do
-    pod 'GoogleMaps', '~> 2.2'
+    pod 'GoogleMaps'
 end
 

@@ -38,7 +38,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 @end
 
 @implementation CKClusterManager {
-    NSMutableArray<CKCluster *> *_clusters;
+    NSMutableSet<CKCluster *> *_clusters;
     dispatch_queue_t _queue;
 }
 
@@ -50,7 +50,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
         self.marginFactor = kCKMarginFactorWorld;
         self.animationDuration = .5;
         self.animationOptions = UIViewAnimationOptionCurveEaseOut;
-        _clusters = [NSMutableArray new];
+        _clusters = [NSMutableSet set];
         
         _queue = dispatch_queue_create("com.hulab.cluster", DISPATCH_QUEUE_CONCURRENT);
     }
@@ -92,14 +92,14 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 
 - (NSArray<CKCluster *> *)clusters {
     if (self.selectedCluster) {
-        return [_clusters arrayByAddingObject:self.selectedCluster];
+        return [_clusters setByAddingObject:self.selectedCluster].allObjects;
     }
-    return _clusters.copy;
+    return _clusters.allObjects;
 }
 
 #pragma mark Manage Annotations
 
-- (void)setAnnotations:(NSArray<id<CKAnnotation>> *)annotations {
+- (void)setAnnotations:(NSArray<id<MKAnnotation>> *)annotations {
     self.tree = [[CKQuadTree alloc] initWithAnnotations:annotations];
     self.tree.delegate = self;
     [self updateClusters];
@@ -111,76 +111,56 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     [self updateClusters];
 }
 
-- (NSArray<id<CKAnnotation>> *)annotations {
+- (NSArray<id<MKAnnotation>> *)annotations {
     return self.tree ? self.tree.annotations : @[];
 }
 
-- (void)addAnnotation:(id<CKAnnotation>)annotation {
+- (void)addAnnotation:(id<MKAnnotation>)annotation {
     self.annotations = [self.annotations arrayByAddingObject:annotation];
 }
 
-- (void)addAnnotations:(NSArray<id<CKAnnotation>> *)annotations {
+- (void)addAnnotations:(NSArray<id<MKAnnotation>> *)annotations {
     self.annotations = [self.annotations arrayByAddingObjectsFromArray:annotations];
 }
 
-- (void)removeAnnotation:(id<CKAnnotation>)annotation {
+- (void)removeAnnotation:(id<MKAnnotation>)annotation {
     NSMutableArray *annotations = [self.annotations mutableCopy];
     [annotations removeObject:annotation];
     self.annotations = annotations;
 }
 
-- (void)removeAnnotations:(NSArray<id<CKAnnotation>> *)annotations {
+- (void)removeAnnotations:(NSArray<id<MKAnnotation>> *)annotations {
     NSMutableArray *_annotations = [self.annotations mutableCopy];
     [_annotations removeObjectsInArray:annotations];
     self.annotations = _annotations;
 }
 
-- (void)selectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated {
+- (void)selectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated {
     
     if (annotation) {
-        CKCluster *cluster = nil;
+        CKCluster *cluster = [self clusterForAnnotation:annotation];
         
-        if (!annotation.cluster || annotation.cluster.count > 1) {
+        if (!cluster || cluster.count > 1) {
+            [cluster removeAnnotation:annotation];
+            
             cluster = [self.algorithm clusterWithCoordinate:annotation.coordinate];
             [cluster addAnnotation:annotation];
-            [self.map addCluster:cluster];
-        } else {
-            cluster = annotation.cluster;
+            [self.map addClusters:@[cluster]];
         }
         
         [self setSelectedCluster:cluster animated:animated];
     }
 }
 
-- (void)deselectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated {
+- (void)deselectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated {
     
     if (!annotation || annotation == self.selectedAnnotation) {
         [self setSelectedCluster:nil animated:animated];
     }
 }
 
-- (id<CKAnnotation>)selectedAnnotation {
+- (id<MKAnnotation>)selectedAnnotation {
     return self.selectedCluster.firstAnnotation;
-}
-
-- (void)setSelectedCluster:(CKCluster *)selectedCluster animated:(BOOL)animated {
-    if (selectedCluster == _selectedCluster) {
-        return;
-    }
-    
-    CKCluster *prev = _selectedCluster;
-    _selectedCluster = selectedCluster;
-    
-    if (prev) {
-        [_clusters addObject:prev];
-        [self.map deselectCluster:prev animated:animated];
-    }
-    
-    if (selectedCluster) {
-        [_clusters removeObject:selectedCluster];
-        [self.map selectCluster:selectedCluster animated:animated];
-    }
-    
 }
 
 #pragma mark - Private
@@ -202,60 +182,137 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     CKClusterAlgorithm *algorithm = (zoom < self.maxZoomLevel)? self.algorithm : [CKClusterAlgorithm new];
     NSArray *clusters = [algorithm clustersInRect:clusterMapRect zoom:zoom tree:self.tree];
     
-    NSMutableArray *toRemove = _clusters.mutableCopy;
+    NSMutableSet *newClusters = [NSMutableSet setWithArray:clusters];
+    NSMutableSet *oldClusters = [NSMutableSet setWithSet:_clusters];
     
-    for (CKCluster *newCluster in clusters) {
+    [oldClusters minusSet:newClusters];
+    [newClusters minusSet:_clusters];
+    
+    if (visibleMapRect.size.width > _visibleMapRect.size.width) {
+        [self collapse:oldClusters.allObjects to:newClusters.allObjects in:visibleMapRect];
         
-        [self.map addCluster:newCluster];
+    } else if (visibleMapRect.size.width < _visibleMapRect.size.width) {
+        [self expand:newClusters.allObjects from:oldClusters.allObjects in:visibleMapRect];
         
-        if (!MKMapRectContainsPoint(visibleMapRect, MKMapPointForCoordinate(newCluster.coordinate)) ||
-            !animated) {
-            continue;
-        }
-        
-        for (CKCluster *oldCluster in _clusters) {
-            
-            if (!MKMapRectContainsPoint(clusterMapRect, MKMapPointForCoordinate(oldCluster.coordinate))) {
-                continue;
-            }
-            
-            if (CLLocationCoordinateEqual(newCluster.coordinate, oldCluster.coordinate)) {
-                continue;
-            }
-            
-            if ([oldCluster containsAnnotation:newCluster.firstAnnotation]) {
-                
-                [self.map moveCluster:newCluster
-                                 from:oldCluster.coordinate
-                                   to:newCluster.coordinate
-                           completion:^(BOOL finished) {
-                           }];
-                
-            } else if ([newCluster containsAnnotation:oldCluster.firstAnnotation]) {
-                
-                [self.map moveCluster:oldCluster
-                                 from:oldCluster.coordinate
-                                   to:newCluster.coordinate
-                           completion:^(BOOL finished) {
-                               [self.map removeCluster:oldCluster];
-                           }];
-                
-                [toRemove removeObject:oldCluster];
-            }
-        }
+    } else {
+        [self.map addClusters:newClusters.allObjects];
+        [self.map removeClusters:oldClusters.allObjects];
     }
     
-    for (CKCluster *cluster in toRemove) {
-        [self.map removeCluster:cluster];
-    }
+    [_clusters minusSet:oldClusters];
+    [_clusters unionSet:newClusters];
     
-    _clusters = clusters.mutableCopy;
     _visibleMapRect = visibleMapRect;
+}
+
+- (void)setSelectedCluster:(CKCluster *)selectedCluster animated:(BOOL)animated {
+    if (selectedCluster == _selectedCluster) {
+        return;
+    }
+    
+    CKCluster *prev = _selectedCluster;
+    _selectedCluster = selectedCluster;
+    
+    if (prev) {
+        [_clusters addObject:prev];
+        [self.map deselectCluster:prev animated:animated];
+    }
+    
+    if (selectedCluster) {
+        [_clusters removeObject:selectedCluster];
+        [self.map selectCluster:selectedCluster animated:animated];
+    }
+}
+
+- (CKCluster *)clusterForAnnotation:(id<MKAnnotation>)annotation {
+    for (CKCluster *cluster in _clusters) {
+        if ([cluster containsAnnotation:annotation]) {
+            return cluster;
+        }
+    }
+    return nil;
+}
+
+- (void)expand:(NSArray<CKCluster *> *)newClusters from:(NSArray<CKCluster *> *)oldClusters in:(MKMapRect)rect {
+    id<CKAnnotationTree> tree = [[CKQuadTree alloc] initWithAnnotations:newClusters];
+    
+    [self.map addClusters:newClusters];
+    
+    NSMutableSet *animations = [NSMutableSet set];
+    
+    for (CKCluster *oldCluster in oldClusters) {
+        
+        NSArray *neighbors = [tree annotationsInRect:oldCluster.bounds];
+        for (CKCluster *neighbor in neighbors) {
+            
+            if (!MKMapRectContainsPoint(rect, MKMapPointForCoordinate(oldCluster.coordinate)) &&
+                !MKMapRectContainsPoint(rect, MKMapPointForCoordinate(neighbor.coordinate))) {
+                continue;
+            }
+            
+            CKClusterAnimation *animation = [animations member:neighbor];
+            
+            if (!animation) {
+                animation = [[CKClusterAnimation alloc] initWithCluster:neighbor];
+                animation.from = oldCluster.coordinate;
+                animation.to = neighbor.coordinate;
+                [animations addObject:animation];
+                continue;
+            }
+            
+            if (CKDistance(animation.from, animation.to) > CKDistance(oldCluster.coordinate, neighbor.coordinate)) {
+                animation.from = oldCluster.coordinate;
+                animation.to = neighbor.coordinate;
+            }
+        }
+    }
+    
+    [self.map performAnimations:animations.allObjects completion:nil];
+    [self.map removeClusters:oldClusters];
+}
+
+- (void)collapse:(NSArray<CKCluster *> *)oldClusters to:(NSArray<CKCluster *> *)newClusters in:(MKMapRect)rect {
+    id<CKAnnotationTree> tree = [[CKQuadTree alloc] initWithAnnotations:oldClusters];
+    
+    [self.map addClusters:newClusters];
+    
+     NSMutableSet *animations = [NSMutableSet set];
+    
+    for (CKCluster *newCluster in newClusters) {
+        
+        NSArray *neighbors = [tree annotationsInRect:newCluster.bounds];
+        for (CKCluster *neighbor in neighbors) {
+            
+            if (!MKMapRectContainsPoint(rect, MKMapPointForCoordinate(newCluster.coordinate)) &&
+                !MKMapRectContainsPoint(rect, MKMapPointForCoordinate(neighbor.coordinate))) {
+                continue;
+            }
+            
+            CKClusterAnimation *animation = [animations member:neighbor];
+            
+            if (!animation) {
+                animation = [[CKClusterAnimation alloc] initWithCluster:neighbor];
+                animation.from = neighbor.coordinate;
+                animation.to = newCluster.coordinate;
+                [animations addObject:animation];
+                continue;
+            }
+            
+            if (CKDistance(animation.from, animation.to) > CKDistance(neighbor.coordinate, newCluster.coordinate)) {
+                animation.from = neighbor.coordinate;
+                animation.to = newCluster.coordinate;
+            }
+        }
+    }
+    
+    [self.map performAnimations:animations.allObjects completion:^(BOOL finished) {
+        [self.map removeClusters:oldClusters];
+    }];
 }
 
 #pragma mark <KPAnnotationTreeDelegate>
 
-- (BOOL)annotationTree:(id<CKAnnotationTree>)annotationTree shouldExtractAnnotation:(id<CKAnnotation>)annotation {
+- (BOOL)annotationTree:(id<CKAnnotationTree>)annotationTree shouldExtractAnnotation:(id<MKAnnotation>)annotation {
     if (annotation == self.selectedAnnotation) {
         return NO;
     }
@@ -267,3 +324,34 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 
 @end
 
+@implementation CKClusterAnimation
+
+- (instancetype)initWithCluster:(CKCluster *)cluster {
+    self = [super init];
+    if (self) {
+        _cluster = cluster;
+        _from = kCLLocationCoordinate2DInvalid;
+        _to = kCLLocationCoordinate2DInvalid;
+    }
+    return self;
+}
+
+- (BOOL)isEqual:(id)object {
+    if (object == self) {
+        return YES;
+    }
+    if ([object isKindOfClass:[CKCluster class]]) {
+        return [_cluster isEqualToCluster:object];
+    }
+    if (![object isKindOfClass:[CKClusterAnimation class]]) {
+        return NO;
+    }
+    CKClusterAnimation *obj = object;
+    return [_cluster isEqualToCluster:obj->_cluster];
+}
+
+- (NSUInteger)hash {
+    return _cluster.hash;
+}
+
+@end

@@ -31,11 +31,8 @@
 
 - (void)showCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets animated:(BOOL)animated {
     MKMapRect zoomRect = MKMapRectNull;
-    for (id<CKAnnotation> annotation in cluster) {
-        MKMapRect pointRect;
-        pointRect.origin = MKMapPointForCoordinate(annotation.coordinate);
-        pointRect.size = MKMapSizeMake(0.1, 0.1);
-        zoomRect = MKMapRectUnion(zoomRect, pointRect);
+    for (id<MKAnnotation> annotation in cluster) {
+        zoomRect = MKMapRectByAddingPoint(zoomRect, MKMapPointForCoordinate(annotation.coordinate));
     }
     [self setVisibleMapRect:zoomRect edgePadding:insets animated:animated];
 }
@@ -56,31 +53,40 @@
     return log2(360 * ((self.frame.size.width/256) / self.region.span.longitudeDelta));
 }
 
-- (void)addCluster:(CKCluster *)cluster {
-    [self addAnnotation:cluster];
+- (void)addClusters:(NSArray<CKCluster *> *)clusters {
+    [self addAnnotations:clusters];
 }
 
-- (void)removeCluster:(CKCluster *)cluster {
-    [self removeAnnotation:cluster];
+- (void)removeClusters:(NSArray<CKCluster *> *)clusters {
+    [self removeAnnotations:clusters];
 }
 
-- (void)moveCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to completion:(void (^__nullable)(BOOL finished))completion {
+- (void)performAnimations:(NSArray<CKClusterAnimation *> *)animations completion:(void (^__nullable)(BOOL finished))completion {
     
-    cluster.coordinate = from;
+    for (CKClusterAnimation *animation in animations) {
+        animation.cluster.coordinate = animation.from;
+    }
     
-    void (^animations)(void) = ^{
-        cluster.coordinate = to;
-    };
+    void (^animationsBlock)(void) = ^{};
+    
+    for (CKClusterAnimation *animation in animations) {
+        animationsBlock = ^{
+            animationsBlock();
+            animation.cluster.coordinate = animation.to;
+        };
+    }
     
     if ([self.clusterManager.delegate respondsToSelector:@selector(clusterManager:performAnimations:completion:)]) {
         [self.clusterManager.delegate clusterManager:self.clusterManager
-                                   performAnimations:animations
-                                          completion:completion];
+                                   performAnimations:animationsBlock
+                                          completion:^(BOOL finished) {
+                                              if (completion) completion(finished);
+                                          }];
     } else {
         [UIView animateWithDuration:self.clusterManager.animationDuration
                               delay:0
                             options:self.clusterManager.animationOptions
-                         animations:animations
+                         animations:animationsBlock
                          completion:completion];
     }
 }

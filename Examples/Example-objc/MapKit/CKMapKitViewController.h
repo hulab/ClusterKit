@@ -25,3 +25,11 @@
 @interface CKMapKitViewController : UIViewController
 
 @end
+
+@interface CKAnnotationView : MKAnnotationView
+
+@end
+
+@interface CKClusterView : MKAnnotationView
+
+@end

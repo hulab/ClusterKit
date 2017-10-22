@@ -48,7 +48,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  
  @return Yes to permit clusterization of the given annotation.
  */
-- (BOOL)clusterManager:(CKClusterManager *)clusterManager shouldClusterAnnotation:(id<CKAnnotation>)annotation;
+- (BOOL)clusterManager:(CKClusterManager *)clusterManager shouldClusterAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Tells the delegate to perform an animation.
@@ -91,12 +91,12 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 /**
  The currently selected annotation.
  */
-@property (nonatomic,readonly) id<CKAnnotation> selectedAnnotation;
+@property (nonatomic,readonly) id<MKAnnotation> selectedAnnotation;
 
 /**
  The current cluster array.
  */
-@property (nonatomic, readonly, copy, nullable) NSArray<CKCluster *> *clusters;
+@property (nonatomic, readonly, copy) NSArray<CKCluster *> *clusters;
 
 /**
  The maximum zoom level for clustering, 20 by default.
@@ -111,7 +111,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 /**
  The annotations to clusterize.
  */
-@property (nonatomic,copy) NSArray<id<CKAnnotation>> *annotations;
+@property (nonatomic,copy) NSArray<id<MKAnnotation>> *annotations;
 
 /**
  Adds an external QuadTree used as annotations source
@@ -123,42 +123,42 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  
  @param annotation The annotation to add.
  */
-- (void)addAnnotation:(id<CKAnnotation>)annotation;
+- (void)addAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Adds annotations.
  
  @param annotations Annotations to add.
  */
-- (void)addAnnotations:(NSArray<id<CKAnnotation>> *)annotations;
+- (void)addAnnotations:(NSArray<id<MKAnnotation>> *)annotations;
 
 /**
  Removes an annotation.
  
  @param annotation The annotation to remove.
  */
-- (void)removeAnnotation:(id<CKAnnotation>)annotation;
+- (void)removeAnnotation:(id<MKAnnotation>)annotation;
 
 /**
  Removes annotations.
  
  @param annotations Annotations to remove.
  */
-- (void)removeAnnotations:(NSArray<id<CKAnnotation>> *)annotations;
+- (void)removeAnnotations:(NSArray<id<MKAnnotation>> *)annotations;
 
 /**
  Selects an annotation. Look for the annotation in clusters and extract it if necessary.
  
  @param annotation   The annotation to be selected.
  */
-- (void)selectAnnotation:(id<CKAnnotation>)annotation animated:(BOOL)animated;
+- (void)selectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated;
 
 /**
  Deselects an annotation.
  
  @param annotation   The annotation to be deselected.
  */
-- (void)deselectAnnotation:(nullable id<CKAnnotation>)annotation animated:(BOOL)animated;
+- (void)deselectAnnotation:(nullable id<MKAnnotation>)annotation animated:(BOOL)animated;
 
 /**
  Updates displayed clusters.
@@ -169,6 +169,41 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  Updates clusters if the area currently displayed has significantly moved.
  */
 - (void)updateClustersIfNeeded;
+
+@end
+
+/**
+ CKClusterAnimation defines a cluster animation from a start coordinate to an end coordinate on a map.
+ */
+@interface CKClusterAnimation : NSObject
+
+/**
+ The cluster to move.
+ */
+@property (nonatomic, readonly) CKCluster *cluster;
+
+/**
+ The cluster starting point.
+ */
+@property (nonatomic) CLLocationCoordinate2D from;
+
+/**
+ The cluster ending point.
+ */
+@property (nonatomic) CLLocationCoordinate2D to;
+
+/**
+ Initializes an animation for the given cluster.
+
+ @param cluster The cluster to animate.
+ @return The initialized CKClusterAnimation object.
+ */
+- (instancetype)initWithCluster:(CKCluster *)cluster NS_DESIGNATED_INITIALIZER;
+
+/// :nodoc:
+- (instancetype)init NS_UNAVAILABLE;
+/// :nodoc:
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 

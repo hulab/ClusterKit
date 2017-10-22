@@ -22,6 +22,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CKAnnotationTree.h"
+#import "CKCluster.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

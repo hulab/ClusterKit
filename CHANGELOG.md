@@ -1,7 +1,36 @@
 # Change Log
 All notable changes to `ClusterKit` project will be documented in this file.
 
---- 
+---
+
+## [0.3.0](https://github.com/hulab/ClusterKit/releases/tag/0.3.0) - October 18, 2017
+
+
+> <span style="color:red"> **Breaking changes**: </span>
+> 
+> + <span style="color:red">Your model do not need to adopt the `CKAnnotation` protocol anymore, only `MKAnnotation`.</span>
+> 
+> + <span style="color:red">For **GoogleMaps**: don't forget to update the `GMSMapView+ClusterKit` files.</span>
+
+
+### Fixed
+
+- **[Issue #23](https://github.com/hulab/ClusterKit/issues/23)**: Fix flickering pin on MapKit when updating clusters.
+Identical clusters are no more replaced and the clusters animation have been improved to be performed by batch.
+
+### Added
+
+- **Mapbox**: ClusterKit is now compatible with [Mapbox](https://www.mapbox.com/).
+
+### Removed
+
+- **CKAnnotation protocol**: CKAnnotation is no more accurate since we don't replace identical clusters.
+
+### Updated
+
+- **CKCluster**:  Compute the cluster bounds. Add cluster comparison methods.
+
+### Fixed
 
 ## [0.2.0](https://github.com/hulab/ClusterKit/releases/tag/0.2.0) - July 24, 2017
 

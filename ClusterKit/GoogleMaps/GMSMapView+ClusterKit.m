@@ -55,10 +55,6 @@
     return objc_getAssociatedObject(self, @selector(dataSource));
 }
 
-- (GMSMarker *)markerForCluster:(CKCluster*)cluster {
-    return [self.markers objectForKey:cluster];
-}
-
 - (void)setDataSource:(id<GMSMapViewDataSource>)dataSource {
     objc_setAssociatedObject(self, @selector(dataSource), dataSource, OBJC_ASSOCIATION_ASSIGN);
 }
@@ -72,26 +68,27 @@
     return markers;
 }
 
-- (MKMapRect)visibleMapRect {    
-    GMSCoordinateBounds * bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.projection.visibleRegion];
+- (GMSMarker *)markerForCluster:(CKCluster*)cluster {
+    return [self.markers objectForKey:cluster];
+}
+
+- (MKMapRect)visibleMapRect {
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.projection.visibleRegion];
+    MKMapPoint sw = MKMapPointForCoordinate(bounds.southWest);
+    MKMapPoint ne = MKMapPointForCoordinate(bounds.northEast);
     
-    CLLocationCoordinate2D center = CLLocationCoordinate2DMake((bounds.southWest.latitude + bounds.northEast.latitude) / 2,
-                                                               (bounds.southWest.longitude + bounds.northEast.longitude) / 2);
-    
-    MKCoordinateSpan span = MKCoordinateSpanMake(bounds.northEast.latitude - bounds.southWest.latitude,
-                                                 bounds.northEast.longitude - bounds.southWest.longitude);
-    
-    MKMapPoint a = MKMapPointForCoordinate(CLLocationCoordinate2DMake(center.latitude + span.latitudeDelta / 2,
-                                                                      center.longitude - span.longitudeDelta / 2));
-    
-    MKMapPoint b = MKMapPointForCoordinate(CLLocationCoordinate2DMake(center.latitude - span.latitudeDelta / 2,
-                                                                      center.longitude + span.longitudeDelta / 2));
-    
-    return MKMapRectMake(MIN(a.x, b.x), MIN(a.y, b.y), ABS(a.x - b.x), ABS(a.y - b.y));
+    double x = sw.x;
+    double y = ne.y;
+    double width = ne.x - sw.x;
+    double height = sw.y - ne.y;
+    return MKMapRectMake(x, y, width, height);
 }
 
 - (double)zoom {
-    return self.camera.zoom;
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.projection.visibleRegion];
+    MKCoordinateSpan span = MKCoordinateSpanMake(bounds.northEast.latitude - bounds.southWest.latitude,
+                                                 bounds.northEast.longitude - bounds.southWest.longitude);
+    return log2(360 * ((self.frame.size.width/256) / span.longitudeDelta));
 }
 
 - (void)addCluster:(CKCluster *)cluster {
@@ -117,29 +114,48 @@
     [self.markers removeObjectForKey:cluster];
 }
 
-- (void)moveCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to completion:(void (^__nullable)(BOOL finished))completion {
+- (void)addClusters:(NSArray<CKCluster *> *)clusters {
+    for (CKCluster *cluster in clusters) {
+        [self addCluster:cluster];
+    }
+}
+
+- (void)removeClusters:(NSArray<CKCluster *> *)clusters {
+    for (CKCluster *cluster in clusters) {
+        [self removeCluster:cluster];
+    }
+}
+
+- (void)performAnimations:(NSArray<CKClusterAnimation *> *)animations completion:(void (^__nullable)(BOOL finished))completion {
     
-    GMSMarker *marker = [self.markers objectForKey:cluster];
-    marker.zIndex = 0;
-    marker.position = from;
+    void (^animationsBlock)(void) = ^{};
     
-    void (^animations)(void) = ^{
-        marker.layer.latitude = to.latitude;
-        marker.layer.longitude = to.longitude;
+    void (^completionBlock)(BOOL finished) = ^(BOOL finished){
+        if (completion) completion(finished);
     };
     
-    void (^block)(void) = ^{
-        marker.zIndex = 1;
-        completion(YES);
-    };
+    for (CKClusterAnimation *animation in animations) {
+        GMSMarker *marker = [self.markers objectForKey:animation.cluster];
+        
+        marker.zIndex = 0;
+        marker.position = animation.from;
+        
+        animationsBlock = ^{
+            animationsBlock();
+            marker.layer.latitude = animation.to.latitude;
+            marker.layer.longitude = animation.to.longitude;
+        };
+        
+        completionBlock = ^(BOOL finished){
+            marker.zIndex = 1;
+            completionBlock(finished);
+        };
+    }
     
     if ([self.clusterManager.delegate respondsToSelector:@selector(clusterManager:performAnimations:completion:)]) {
         [self.clusterManager.delegate clusterManager:self.clusterManager
-                                   performAnimations:animations
-                                          completion:^(BOOL finished) {
-                                              marker.zIndex = 1;
-                                              completion(finished);
-                                          }];
+                                   performAnimations:animationsBlock
+                                          completion:completionBlock];
     } else {
         CAMediaTimingFunction *curve = nil;
         switch (self.clusterManager.animationOptions) {
@@ -162,8 +178,10 @@
         [CATransaction begin];
         [CATransaction setAnimationDuration:self.clusterManager.animationDuration];
         [CATransaction setAnimationTimingFunction:curve];
-        [CATransaction setCompletionBlock:block];
-        animations();
+        [CATransaction setCompletionBlock:^{
+            completionBlock(YES);
+        }];
+        animationsBlock();
         [CATransaction commit];
     }
 }
@@ -199,7 +217,7 @@
 + (GMSCameraUpdate *)fitCluster:(CKCluster *)cluster withEdgeInsets:(UIEdgeInsets)edgeInsets {
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:cluster.coordinate coordinate:cluster.coordinate];
     
-    for (id<CKAnnotation> marker in cluster) {
+    for (id<MKAnnotation> marker in cluster) {
         bounds = [bounds includingCoordinate:marker.coordinate];
     }
     return [GMSCameraUpdate fitBounds:bounds withEdgeInsets:edgeInsets];

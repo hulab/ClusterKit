@@ -61,6 +61,8 @@
     [operation start];
 }
 
+#pragma mark <GMSMapViewDataSource>
+
 - (GMSMarker *)mapView:(GMSMapView *)mapView markerForCluster:(CKCluster *)cluster {
     GMSMarker *marker = [GMSMarker markerWithPosition:cluster.coordinate];
     if(cluster.count > 1) {
@@ -74,13 +76,13 @@
     return marker;
 }
 
-#pragma mark How To Update Clusters
+#pragma mark - How To Update Clusters
 
 - (void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position {
     [mapView.clusterManager updateClustersIfNeeded];
 }
 
-#pragma mark How To Handle Selection/Deselection
+#pragma mark - How To Handle Selection/Deselection
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
     if (marker.cluster.count > 1) {
@@ -101,7 +103,7 @@
      [mapView.clusterManager deselectAnnotation:marker.cluster.firstAnnotation animated:NO];
 }
 
-#pragma mark How To Handle Drag and Drop
+#pragma mark - How To Handle Drag and Drop
 
 - (void)mapView:(GMSMapView *)mapView didEndDraggingMarker:(GMSMarker *)marker {
     marker.cluster.firstAnnotation.coordinate = marker.position;

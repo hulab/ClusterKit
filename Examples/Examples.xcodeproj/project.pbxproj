@@ -12,6 +12,8 @@
 		9C1A99ED1EB9225800BEB563 /* ExampleData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1A99EB1EB9225800BEB563 /* ExampleData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C1A99F01EB9225800BEB563 /* ExampleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; };
 		9C1A99F11EB9225800BEB563 /* ExampleData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C2C4A061F94B36400B22745 /* MapboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C4A051F94B36400B22745 /* MapboxViewController.swift */; };
+		9C2C4A0A1F94B74C00B22745 /* CKMapboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C4A091F94B74C00B22745 /* CKMapboxViewController.m */; };
 		9C5C83DC1EB92678002F4C73 /* CKGeoPointOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C5C83DA1EB92678002F4C73 /* CKGeoPointOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C5C83DD1EB92678002F4C73 /* CKGeoPointOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C83DB1EB92678002F4C73 /* CKGeoPointOperation.m */; };
 		9C5C83E21EB930F3002F4C73 /* random.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A99F51EB922A400BEB563 /* random.geojson */; };
@@ -101,6 +103,9 @@
 		9C1A99EB1EB9225800BEB563 /* ExampleData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleData.h; sourceTree = "<group>"; };
 		9C1A99EC1EB9225800BEB563 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C1A99F51EB922A400BEB563 /* random.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = random.geojson; sourceTree = "<group>"; };
+		9C2C4A051F94B36400B22745 /* MapboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxViewController.swift; sourceTree = "<group>"; };
+		9C2C4A081F94B74C00B22745 /* CKMapboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKMapboxViewController.h; sourceTree = "<group>"; };
+		9C2C4A091F94B74C00B22745 /* CKMapboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKMapboxViewController.m; sourceTree = "<group>"; };
 		9C5C83DA1EB92678002F4C73 /* CKGeoPointOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKGeoPointOperation.h; sourceTree = "<group>"; };
 		9C5C83DB1EB92678002F4C73 /* CKGeoPointOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKGeoPointOperation.m; sourceTree = "<group>"; };
 		9C5C83E81EB961DA002F4C73 /* stations.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stations.geojson; sourceTree = "<group>"; };
@@ -222,6 +227,15 @@
 			path = "Example-data";
 			sourceTree = "<group>";
 		};
+		9C2C4A071F94B72900B22745 /* Mapbox */ = {
+			isa = PBXGroup;
+			children = (
+				9C2C4A081F94B74C00B22745 /* CKMapboxViewController.h */,
+				9C2C4A091F94B74C00B22745 /* CKMapboxViewController.m */,
+			);
+			path = Mapbox;
+			sourceTree = "<group>";
+		};
 		9CAFE26B1E23E8D100337FD1 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +276,7 @@
 				9CD80B0B1E23077000DFCB89 /* CKAppDelegate.m */,
 				9CD80B0E1E23078200DFCB89 /* MapKit */,
 				9CD80B071E23077000DFCB89 /* GoogleMaps */,
+				9C2C4A071F94B72900B22745 /* Mapbox */,
 				9CD80AE51E2306E000DFCB89 /* Main.storyboard */,
 				9CD80AEA1E2306E000DFCB89 /* LaunchScreen.storyboard */,
 				9CD80AED1E2306E000DFCB89 /* Info.plist */,
@@ -284,6 +299,7 @@
 				9CD80AF71E2306F400DFCB89 /* AppDelegate.swift */,
 				9C6EBCD21E23DBC3008FAC7A /* MapKitViewController.swift */,
 				9C6EBCD41E23DBDE008FAC7A /* GoogleMapsViewController.swift */,
+				9C2C4A051F94B36400B22745 /* MapboxViewController.swift */,
 				9CAFE26B1E23E8D100337FD1 /* GoogleMaps */,
 				9CD80AFB1E2306F400DFCB89 /* Main.storyboard */,
 				9CD80B001E2306F400DFCB89 /* LaunchScreen.storyboard */,
@@ -407,7 +423,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Hulab;
 				TargetAttributes = {
 					9C1A99E81EB9225800BEB563 = {
@@ -416,6 +432,7 @@
 					};
 					9CD80AD91E2306E000DFCB89 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = Q95SQ3447E;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -426,6 +443,8 @@
 					};
 					9CD80AF41E2306F400DFCB89 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = Q95SQ3447E;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -494,13 +513,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Example-swift-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		16AADC9C44222CF58CA905D6 /* [CP] Copy Pods Resources */ = {
@@ -524,13 +546,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Example-objc-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3760CD69C0639C1A7DE13AA3 /* [CP] Check Pods Manifest.lock */ = {
@@ -539,13 +564,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Example-data-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		51077C0232745E78C7061F83 /* [CP] Embed Pods Frameworks */ = {
@@ -554,9 +582,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/GeoJSONSerialization/GeoJSONSerialization.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoJSONSerialization.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -569,9 +606,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/GeoJSONSerialization/GeoJSONSerialization.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoJSONSerialization.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -584,9 +630,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -599,9 +648,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -626,6 +678,7 @@
 				9CD80B0D1E23077000DFCB89 /* CKAppDelegate.m in Sources */,
 				9CD80B0C1E23077000DFCB89 /* CKGoogleMapsViewController.m in Sources */,
 				9CD80B111E23078200DFCB89 /* CKMapKitViewController.m in Sources */,
+				9C2C4A0A1F94B74C00B22745 /* CKMapboxViewController.m in Sources */,
 				9CD80ADE1E2306E000DFCB89 /* main.m in Sources */,
 				9CD80B151E2307AF00DFCB89 /* GMSMapView+ClusterKit.m in Sources */,
 			);
@@ -635,6 +688,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C2C4A061F94B36400B22745 /* MapboxViewController.swift in Sources */,
 				9C6EBCD31E23DBC3008FAC7A /* MapKitViewController.swift in Sources */,
 				9CD80AF81E2306F400DFCB89 /* AppDelegate.swift in Sources */,
 				9CAFE26E1E23E8D100337FD1 /* GMSMapView+ClusterKit.m in Sources */,
@@ -744,7 +798,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -752,7 +808,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -795,7 +855,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -803,7 +865,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -838,7 +904,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Q95SQ3447E;
 				INFOPLIST_FILE = "Example-objc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -856,7 +922,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Q95SQ3447E;
 				INFOPLIST_FILE = "Example-objc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -872,7 +938,7 @@
 			baseConfigurationReference = 53319BB1285E4BB84F1CA340 /* Pods-Example-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Q95SQ3447E;
 				INFOPLIST_FILE = "Example-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -881,7 +947,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "../ClusterKit/GoogleMaps/GMSMapView+ClusterKit.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -890,7 +956,7 @@
 			baseConfigurationReference = CE1A20DCEC46304D571DC07A /* Pods-Example-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Q95SQ3447E;
 				INFOPLIST_FILE = "Example-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -898,7 +964,7 @@
 				PRODUCT_NAME = "ClusterKit Swift";
 				SWIFT_OBJC_BRIDGING_HEADER = "../ClusterKit/GoogleMaps/GMSMapView+ClusterKit.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

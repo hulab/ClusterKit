@@ -42,7 +42,7 @@
         // Divide the whole map into a numCells x numCells grid and assign annotations to them.
         long numCells = (long)ceil(256 * pow(2, zoom) / self.cellSize);
         
-        for (id<CKAnnotation> annotation in annotations) {
+        for (id<MKAnnotation> annotation in annotations) {
             
             MKMapPoint point = MKMapPointForCoordinate(annotation.coordinate);
             NSUInteger col = numCells * point.x / MKMapSizeWorld.width;

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iw1-cE-3YC">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iw1-cE-3YC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,7 +45,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="-14"/>
+            <point key="canvasLocation" x="-895" y="1158"/>
+        </scene>
+        <!--Delegate-->
+        <scene sceneID="8Wv-Ew-q9v">
+            <objects>
+                <viewController id="gCX-fw-eq4" customClass="CKMapboxViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ebL-bF-zf0"/>
+                        <viewControllerLayoutGuide type="bottom" id="ETb-8i-LmE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7sR-cB-LwB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1d-n4-Cat" customClass="MGLMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gCX-fw-eq4" id="Oc0-Vw-oN2"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u1d-n4-Cat" firstAttribute="leading" secondItem="7sR-cB-LwB" secondAttribute="leading" id="1bU-pH-NMc"/>
+                            <constraint firstItem="u1d-n4-Cat" firstAttribute="top" secondItem="7sR-cB-LwB" secondAttribute="top" id="HjT-eL-1TL"/>
+                            <constraint firstAttribute="trailing" secondItem="u1d-n4-Cat" secondAttribute="trailing" id="LFd-vt-MU9"/>
+                            <constraint firstItem="ETb-8i-LmE" firstAttribute="top" secondItem="u1d-n4-Cat" secondAttribute="bottom" id="z4W-CK-pyy"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="mapbox-logo-white" id="qNn-Gx-mx0">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="mapView" destination="u1d-n4-Cat" id="f2R-0F-rcb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VMA-Xb-Uc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-88" y="1158"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vgz-aY-8ks">
@@ -59,11 +98,12 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="lJu-aR-6Hb"/>
                         <segue destination="8Cd-Fo-uDp" kind="relationship" relationship="viewControllers" id="dxs-ig-ghB"/>
+                        <segue destination="gCX-fw-eq4" kind="relationship" relationship="viewControllers" id="n2c-UN-u73"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTr-3Y-sJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-894" y="322"/>
+            <point key="canvasLocation" x="-896" y="101"/>
         </scene>
         <!--Google Maps View Controller-->
         <scene sceneID="ego-j2-wlP">
@@ -99,12 +139,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqX-Da-Tzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="656"/>
+            <point key="canvasLocation" x="-1697" y="1158"/>
         </scene>
     </scenes>
     <resources>
         <image name="apple" width="21" height="25"/>
         <image name="google" width="70" height="23"/>
+        <image name="mapbox-logo-white" width="93" height="21"/>
     </resources>
     <color key="tintColor" red="0.054901960784313725" green="0.47450980392156861" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
