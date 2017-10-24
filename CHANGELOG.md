@@ -3,6 +3,12 @@ All notable changes to `ClusterKit` project will be documented in this file.
 
 ---
 
+## [0.3.1](https://github.com/hulab/ClusterKit/releases/tag/0.3.0) - October 24, 2017
+
+### Fixed
+
+- **CKClusterManager.m**: Fix annotation selection.
+
 ## [0.3.0](https://github.com/hulab/ClusterKit/releases/tag/0.3.0) - October 18, 2017
 
 
@@ -29,8 +35,6 @@ Identical clusters are no more replaced and the clusters animation have been imp
 ### Updated
 
 - **CKCluster**:  Compute the cluster bounds. Add cluster comparison methods.
-
-### Fixed
 
 ## [0.2.0](https://github.com/hulab/ClusterKit/releases/tag/0.2.0) - July 24, 2017
 
