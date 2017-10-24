@@ -61,6 +61,18 @@
     [self removeAnnotations:clusters];
 }
 
+- (void)selectCluster:(CKCluster *)cluster animated:(BOOL)animated {
+    if (![self.selectedAnnotations containsObject:cluster]) {
+        [self selectAnnotation:cluster animated:animated];
+    }
+}
+
+- (void)deselectCluster:(CKCluster *)cluster animated:(BOOL)animated {
+    if ([self.selectedAnnotations containsObject:cluster]) {
+        [self deselectAnnotation:cluster animated:animated];
+    }
+}
+
 - (void)performAnimations:(NSArray<CKClusterAnimation *> *)animations completion:(void (^__nullable)(BOOL finished))completion {
     
     for (CKClusterAnimation *animation in animations) {
@@ -89,14 +101,6 @@
                          animations:animationsBlock
                          completion:completion];
     }
-}
-
-- (void)selectCluster:(CKCluster *)cluster animated:(BOOL)animated {
-    [self selectAnnotation:cluster animated:animated];
-}
-
-- (void)deselectCluster:(CKCluster *)cluster animated:(BOOL)animated {
-    [self deselectAnnotation:cluster animated:animated];
 }
 
 @end

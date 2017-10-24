@@ -160,8 +160,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 #pragma mark - Private
 
 - (void)updateMapRect:(MKMapRect)visibleMapRect animated:(BOOL)animated {
-    
-    if (! self.tree || MKMapRectIsNull(visibleMapRect) || MKMapRectIsEmpty(visibleMapRect)) {
+    if (!self.tree || MKMapRectIsNull(visibleMapRect) || MKMapRectIsEmpty(visibleMapRect)) {
         return;
     }
     
@@ -200,12 +199,12 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 }
 
 - (void)setSelectedCluster:(CKCluster *)selectedCluster animated:(BOOL)animated {
-    if (selectedCluster == _selectedCluster) {
+    if (selectedCluster == self.selectedCluster) {
         return;
     }
     
-    CKCluster *prev = _selectedCluster;
-    _selectedCluster = selectedCluster;
+    CKCluster *prev = self.selectedCluster;
+    self.selectedCluster = selectedCluster;
     
     if (prev) {
         [_clusters addObject:prev];
@@ -219,6 +218,10 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 }
 
 - (CKCluster *)clusterForAnnotation:(id<MKAnnotation>)annotation {
+    if ([self.selectedCluster containsAnnotation:annotation]) {
+        return self.selectedCluster;
+    }
+    
     for (CKCluster *cluster in _clusters) {
         if ([cluster containsAnnotation:annotation]) {
             return cluster;
