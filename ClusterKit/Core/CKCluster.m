@@ -100,7 +100,7 @@ MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {
 }
 
 - (void)removeAnnotation:(id<MKAnnotation>)annotation {
-    if ([_annotations containsObject:self]) {
+    if ([_annotations containsObject:annotation]) {
         [_annotations removeObject:annotation];
         _invalidate_bounds = YES;
     }
@@ -176,7 +176,7 @@ MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {
 }
 
 - (void)removeAnnotation:(id<MKAnnotation>)annotation {
-    if ([_annotations containsObject:self]) {
+    if ([_annotations containsObject:annotation]) {
         [_annotations removeObject:annotation];
         _invalidate_bounds = YES;
         self.coordinate = [self coordinateByRemovingAnnotation:annotation];
@@ -217,7 +217,7 @@ MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {
 }
 
 - (void)addAnnotation:(id<MKAnnotation>)annotation {
-    if (![_annotations containsObject:self]) {
+    if (![_annotations containsObject:annotation]) {
         [_annotations addObject:annotation];
         
         _center = [self coordinateByAddingAnnotation:annotation];
@@ -228,7 +228,7 @@ MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {
 }
 
 - (void)removeAnnotation:(id<MKAnnotation>)annotation {
-    if ([_annotations containsObject:self]) {
+    if ([_annotations containsObject:annotation]) {
         [_annotations removeObject:annotation];
         
         _center = [self coordinateByRemovingAnnotation:annotation];
@@ -255,7 +255,7 @@ MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {
 @implementation CKBottomCluster
 
 - (void)addAnnotation:(id<MKAnnotation>)annotation {
-    if (![_annotations containsObject:self]) {
+    if (![_annotations containsObject:annotation]) {
         NSUInteger index = [_annotations indexOfObject:annotation
                                          inSortedRange:NSMakeRange(0, _annotations.count)
                                                options:NSBinarySearchingInsertionIndex
@@ -274,7 +274,7 @@ MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {
 }
 
 - (void)removeAnnotation:(id<MKAnnotation>)annotation {
-    if ([_annotations containsObject:self]) {
+    if ([_annotations containsObject:annotation]) {
         [_annotations removeObject:annotation];
         
         self.coordinate = _annotations.firstObject.coordinate;
