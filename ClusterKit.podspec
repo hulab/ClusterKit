@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ClusterKit"
-  s.version          = "0.3.1"
+  s.version          = "0.3.2"
   s.summary          = "ClusterKit is a map clustering framework targeting MapKit, Google Maps and Mapbox."
 
   s.description      = <<-DESC

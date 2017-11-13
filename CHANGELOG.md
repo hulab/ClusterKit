@@ -3,7 +3,13 @@ All notable changes to `ClusterKit` project will be documented in this file.
 
 ---
 
-## [0.3.1](https://github.com/hulab/ClusterKit/releases/tag/0.3.0) - October 24, 2017
+## [0.3.2](https://github.com/hulab/ClusterKit/releases/tag/0.3.2) - November 13, 2017
+
+### Fixed
+
+- **CKCluster**: Fix annotation membership.
+
+## [0.3.1](https://github.com/hulab/ClusterKit/releases/tag/0.3.1) - October 24, 2017
 
 ### Fixed
 
