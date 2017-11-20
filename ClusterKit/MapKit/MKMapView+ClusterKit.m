@@ -50,7 +50,7 @@
 }
 
 - (double)zoom {    
-    return log2(360 * ((self.frame.size.width/256) / self.region.span.longitudeDelta));
+    return log2(360 * self.frame.size.width / (256 * self.region.span.longitudeDelta));
 }
 
 - (void)addClusters:(NSArray<CKCluster *> *)clusters {

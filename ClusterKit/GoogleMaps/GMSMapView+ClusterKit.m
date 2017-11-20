@@ -79,16 +79,31 @@
     
     double x = sw.x;
     double y = ne.y;
+    
     double width = ne.x - sw.x;
     double height = sw.y - ne.y;
+    
+    // Handle antimeridian crossing
+    if (width < 0) {
+        width = ne.x + MKMapSizeWorld.width - sw.x;
+    }
+    if (height < 0) {
+        height = sw.y + MKMapSizeWorld.height - ne.y;
+    }
+    
     return MKMapRectMake(x, y, width, height);
 }
 
 - (double)zoom {
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithRegion:self.projection.visibleRegion];
-    MKCoordinateSpan span = MKCoordinateSpanMake(bounds.northEast.latitude - bounds.southWest.latitude,
-                                                 bounds.northEast.longitude - bounds.southWest.longitude);
-    return log2(360 * ((self.frame.size.width/256) / span.longitudeDelta));
+    double longitudeDelta = bounds.northEast.longitude - bounds.southWest.longitude;
+    
+    // Handle antimeridian crossing
+    if (longitudeDelta < 0) {
+        longitudeDelta = 360 + bounds.northEast.longitude - bounds.southWest.longitude;
+    }
+    
+    return log2(360 * self.frame.size.width / (256 * longitudeDelta));
 }
 
 - (void)addCluster:(CKCluster *)cluster {

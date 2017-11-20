@@ -71,9 +71,14 @@ MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds,
 
 - (double)zoom {
     MGLCoordinateBounds bounds = self.visibleCoordinateBounds;
-    MKCoordinateSpan span = MKCoordinateSpanMake(bounds.ne.latitude - bounds.sw.latitude,
-                                                 bounds.ne.longitude - bounds.sw.longitude);
-    return log2(360 * ((self.frame.size.width/256) / span.longitudeDelta));
+    double longitudeDelta = bounds.ne.longitude - bounds.sw.longitude;
+    
+    // Handle antimeridian crossing
+    if (longitudeDelta < 0) {
+        longitudeDelta = 360 + bounds.ne.longitude - bounds.sw.longitude;
+    }
+    
+    return log2(360 * self.frame.size.width / (256 * longitudeDelta));
 }
 
 - (MKMapRect)visibleMapRect {
@@ -83,8 +88,18 @@ MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds,
     
     double x = sw.x;
     double y = ne.y;
+    
     double width = ne.x - sw.x;
     double height = sw.y - ne.y;
+    
+    // Handle 180th Meridian
+    if (width < 0) {
+        width = ne.x + MKMapSizeWorld.width - sw.x;
+    }
+    if (height < 0) {
+        height = sw.y + MKMapSizeWorld.height - ne.y;
+    }
+    
     return MKMapRectMake(x, y, width, height);
 }
 
