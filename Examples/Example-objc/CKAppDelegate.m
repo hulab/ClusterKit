@@ -34,7 +34,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [GMSServices provideAPIKey:@"<#Enter your google API key#>"];
-    [MGLAccountManager setAccessToken:"<#Enter your Mapbox access token#>"];
+    [MGLAccountManager setAccessToken:@"<#Enter your Mapbox access token#>"];
     
     return YES;
 }
