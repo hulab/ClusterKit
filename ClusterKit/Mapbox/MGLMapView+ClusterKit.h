@@ -27,6 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 MK_EXTERN MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds, CLLocationCoordinate2D coordinate);
 
+/**
+ Convinient extension to make all MGLShape complying to the `MKAnnotation` and make the usable in ClusterKit
+ */
+@interface MGLShape (ClusterKit) <MKAnnotation>
+
+@end
+
 @interface CKCluster (Mapbox) <MGLAnnotation>
 
 @end
