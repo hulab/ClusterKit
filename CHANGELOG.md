@@ -3,6 +3,18 @@ All notable changes to `ClusterKit` project will be documented in this file.
 
 ---
 
+## [0.3.3](https://github.com/hulab/ClusterKit/releases/tag/0.3.3) - January 9, 2018
+
+### Updated
+
+- **Mapbox**: 3.7
+
+### Fixed
+
+- **CKClusterManager.m**: recursion introduced by Mapbox 3.7
+- **GMSMapView+ClusterKit.m**: Fix [#31](https://github.com/hulab/ClusterKit/issues/31)  Disappearing cluster while crossing the antimerdian.
+- **MKMapView+ClusterKit.m**: Fix [#31](https://github.com/hulab/ClusterKit/issues/31)  Disappearing cluster while crossing the antimerdian.
+
 ## [0.3.2](https://github.com/hulab/ClusterKit/releases/tag/0.3.2) - November 13, 2017
 
 ### Fixed
