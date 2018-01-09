@@ -2,7 +2,7 @@ PODS:
   - ClusterKit/Core (0.3.2)
   - ClusterKit/Mapbox (0.3.2):
     - ClusterKit/Core
-    - Mapbox-iOS-SDK (~> 3.6)
+    - Mapbox-iOS-SDK (~> 3.7)
   - ClusterKit/MapKit (0.3.2):
     - ClusterKit/Core
   - GeoJSONSerialization (0.0.4)
@@ -11,7 +11,7 @@ PODS:
   - GoogleMaps/Base (2.5.0)
   - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
-  - Mapbox-iOS-SDK (3.6.4)
+  - Mapbox-iOS-SDK (3.7.2)
 
 DEPENDENCIES:
   - ClusterKit/Mapbox (from `../.`)
@@ -24,10 +24,10 @@ EXTERNAL SOURCES:
     :path: ../.
 
 SPEC CHECKSUMS:
-  ClusterKit: b98e3f15297aa761dabc1fbe7870a684a16a3aee
+  ClusterKit: 7d5b7cbbdd0eb82e70a1d146fc5c12b07050fa3a
   GeoJSONSerialization: 55a3d24fe9af26508e3af76873114b39b13ba479
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
-  Mapbox-iOS-SDK: 47847dd44285477e0dfffd0130f65c8a52823ada
+  Mapbox-iOS-SDK: d882f53debc26649b728755df5b7a160d9086367
 
 PODFILE CHECKSUM: 8f8d060a926963ecdc82652eff001cfb4af8e2c5
 
