@@ -36,6 +36,8 @@ MK_EXTERN double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D 
 
 MK_EXTERN MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point);
 
+MK_EXTERN NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2);
+
 @class CKCluster;
 
 #pragma - Cluster definitions

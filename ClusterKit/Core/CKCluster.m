@@ -37,6 +37,18 @@ MKMapRect MKMapRectByAddingPoint(MKMapRect rect, MKMapPoint point) {
     });
 }
 
+NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2) {
+    double area1 = size1.width * size1.height;
+    double area2 = size2.width * size2.height;
+    if (area1 < area2) {
+        return NSOrderedAscending;
+    }
+    if (area1 > area2) {
+        return NSOrderedDescending;
+    }
+    return NSOrderedSame;
+}
+
 @implementation CKCluster {
 @protected
     NSMutableOrderedSet<id<MKAnnotation>> *_annotations;

@@ -181,21 +181,26 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     [oldClusters minusSet:newClusters];
     [newClusters minusSet:_clusters];
     
-    if (visibleMapRect.size.width > _visibleMapRect.size.width) {
-        [self collapse:oldClusters.allObjects to:newClusters.allObjects in:visibleMapRect];
-        
-    } else if (visibleMapRect.size.width < _visibleMapRect.size.width) {
-        [self expand:newClusters.allObjects from:oldClusters.allObjects in:visibleMapRect];
-        
-    } else {
-        [self.map addClusters:newClusters.allObjects];
-        [self.map removeClusters:oldClusters.allObjects];
+    NSComparisonResult zoomOrder = MKMapSizeCompare(_visibleMapRect.size, visibleMapRect.size);
+    _visibleMapRect = visibleMapRect;
+    
+    switch (zoomOrder) {
+        case NSOrderedAscending:
+            [self collapse:oldClusters.allObjects to:newClusters.allObjects in:visibleMapRect];
+            break;
+            
+        case NSOrderedDescending:
+            [self expand:newClusters.allObjects from:oldClusters.allObjects in:visibleMapRect];
+            break;
+            
+        default:
+            [self.map addClusters:newClusters.allObjects];
+            [self.map removeClusters:oldClusters.allObjects];
+            break;
     }
     
     [_clusters minusSet:oldClusters];
     [_clusters unionSet:newClusters];
-    
-    _visibleMapRect = visibleMapRect;
 }
 
 - (void)setSelectedCluster:(CKCluster *)selectedCluster animated:(BOOL)animated {
