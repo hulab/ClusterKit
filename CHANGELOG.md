@@ -3,6 +3,12 @@ All notable changes to `ClusterKit` project will be documented in this file.
 
 ---
 
+## [0.3.4](https://github.com/hulab/ClusterKit/releases/tag/0.3.4) - June 4, 2018
+
+### Updated
+
+- **Mapbox**: 4.0
+
 ## [0.3.3](https://github.com/hulab/ClusterKit/releases/tag/0.3.3) - January 9, 2018
 
 ### Updated
