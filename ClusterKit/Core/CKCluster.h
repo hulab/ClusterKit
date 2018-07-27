@@ -40,7 +40,7 @@ MK_EXTERN NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2);
 
 @class CKCluster;
 
-#pragma - Cluster definitions
+#pragma mark - Cluster definitions
 
 /**
  CKCluster protocol that create a kind of CKCluster at the given coordinate.
