@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   
 #  s.subspec 'GoogleMaps' do |ss|
 #    ss.dependency 'ClusterKit/Core'
-#    ss.dependency 'GoogleMaps', '~> 2.1'
+#    ss.dependency 'GoogleMaps', '~> 2.7'
 #    ss.source_files = 'ClusterKit/GoogleMaps'
 #  end
 
