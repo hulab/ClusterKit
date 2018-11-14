@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode10.1
 env:
   global:
   - FRAMEWORK_NAME=ClusterKit
@@ -13,7 +13,7 @@ install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 
 script:
-- set -o pipefail && xcodebuild -project ClusterKit.xcodeproj -scheme $FRAMEWORK_NAME -sdk iphonesimulator11.0 -configuration Release -destination "platform=iOS Simulator,name=iPhone 8" clean build test | xcpretty -c
+- set -o pipefail && xcodebuild -project ClusterKit.xcodeproj -scheme $FRAMEWORK_NAME -sdk iphonesimulator12.1 -configuration Release -destination "platform=iOS Simulator,name=iPhone 8" clean build test | xcpretty -c
 - pod lib lint --quick
 
 before_deploy:
