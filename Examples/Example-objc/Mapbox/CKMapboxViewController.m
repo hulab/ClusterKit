@@ -73,7 +73,7 @@ NSString * const MBXMapViewDefaultClusterAnnotationViewReuseIdentifier = @"clust
     if (view) {
         return view;
     }
-    return [[MBXClusterView alloc] initWithAnnotation:cluster reuseIdentifier:MBXMapViewDefaultAnnotationViewReuseIdentifier];
+    return [[MBXAnnotationView alloc] initWithAnnotation:cluster reuseIdentifier:MBXMapViewDefaultAnnotationViewReuseIdentifier];
 }
 
 - (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id<MGLAnnotation>)annotation {
