@@ -316,7 +316,6 @@
 					};
 					9CC875771E0295A30019AA18 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q95SQ3447E;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -551,7 +550,7 @@
 		9CC875871E0295A30019AA18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.HBClusterManagerTests;
@@ -562,7 +561,7 @@
 		9CC875881E0295A30019AA18 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.HBClusterManagerTests;
