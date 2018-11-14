@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Mapbox' do |ss|
     ss.dependency 'ClusterKit/Core'
-    ss.dependency 'Mapbox-iOS-SDK', '~> 4.0'
+    ss.dependency 'Mapbox-iOS-SDK', '~> 4.6'
     ss.source_files = 'ClusterKit/Mapbox'
   end
 

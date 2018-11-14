@@ -431,7 +431,6 @@
 					};
 					9CD80AD91E2306E000DFCB89 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = Q95SQ3447E;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -442,7 +441,6 @@
 					};
 					9CD80AF41E2306F400DFCB89 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = Q95SQ3447E;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -736,7 +734,7 @@
 			baseConfigurationReference = 6342D7FB7C4927C2B322BA29 /* Pods-Example-data.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -892,9 +890,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Example-objc/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ClusterKit.example.objc;
 				PRODUCT_NAME = "ClusterKit ObjC";
@@ -910,9 +908,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Example-objc/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ClusterKit.example.objc;
 				PRODUCT_NAME = "ClusterKit ObjC";
@@ -926,9 +924,9 @@
 			baseConfigurationReference = 53319BB1285E4BB84F1CA340 /* Pods-Example-swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Example-swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ClusterKit.example.swift;
 				PRODUCT_NAME = "ClusterKit Swift";
@@ -944,9 +942,9 @@
 			baseConfigurationReference = CE1A20DCEC46304D571DC07A /* Pods-Example-swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q95SQ3447E;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Example-swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ClusterKit.example.swift;
 				PRODUCT_NAME = "ClusterKit Swift";
