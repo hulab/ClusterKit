@@ -307,9 +307,8 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
         }
     }
     
-    [self.map performAnimations:animations.allObjects completion:^(BOOL finished) {
-        [self.map removeClusters:oldClusters];
-    }];
+    [self.map performAnimations:animations.allObjects completion:nil];
+    [self.map removeClusters:oldClusters];
 }
 
 #pragma mark <KPAnnotationTreeDelegate>
