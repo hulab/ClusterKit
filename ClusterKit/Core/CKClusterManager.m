@@ -97,6 +97,23 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     return _clusters.allObjects;
 }
 
+- (NSArray<CKCluster *> *)visibleClusters {
+    NSMutableArray<CKCluster *> *result = [NSMutableArray<CKCluster *> new];
+
+    if (!self.map) return [result copy];
+
+    MKMapRect visibleMapRect = self.map.visibleMapRect;
+
+    NSArray<id<MKAnnotation>> *visibleAnnotations = [self.tree annotationsInRect:visibleMapRect];
+    NSSet<id<MKAnnotation>> *visibleAnnotationsSet = [NSSet setWithArray:visibleAnnotations];
+    for (CKCluster *cluster in _clusters) {
+        if ([visibleAnnotationsSet containsObject:cluster.firstAnnotation]) {
+            [result addObject:cluster];
+        }
+    }
+    return [result copy];
+}
+
 #pragma mark Manage Annotations
 
 - (void)setAnnotations:(NSArray<id<MKAnnotation>> *)annotations {

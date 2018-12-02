@@ -98,6 +98,11 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 @property (nonatomic, readonly, copy) NSArray<CKCluster *> *clusters;
 
 /**
+ The array of clusters that are currently visible on the map.
+ */
+@property (nonatomic, readonly, copy) NSArray<CKCluster *> *visibleClusters;
+
+/**
  The maximum zoom level for clustering, 20 by default.
  */
 @property (nonatomic) CGFloat maxZoomLevel;
