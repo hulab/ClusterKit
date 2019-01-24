@@ -11,9 +11,11 @@ end
 
 target 'Example-objc' do
     pod 'GoogleMaps'
+    pod 'YandexMapKit'
 end
 
 target 'Example-swift' do
     pod 'GoogleMaps'
+    pod 'YandexMapKit'
 end
 

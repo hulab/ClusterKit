@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		76436ED7CB2CBF845C3B3397 /* Pods_Example_data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991F94DAC9500A17E248ABC4 /* Pods_Example_data.framework */; };
+		782654F021F9E2190080F3B7 /* YMKMapView+ClusterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 782654EF21F9E2190080F3B7 /* YMKMapView+ClusterKit.m */; };
+		782654F221F9E25E0080F3B7 /* YandexMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782654F121F9E25E0080F3B7 /* YandexMapViewController.swift */; };
+		78E253A221F8B2720006DBEF /* CKYandexMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E253A121F8B2720006DBEF /* CKYandexMapViewController.m */; };
+		78E253A621F8BC810006DBEF /* YMKMapView+ClusterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E253A521F8BC810006DBEF /* YMKMapView+ClusterKit.m */; };
 		9ACFAA26A015E26A0B1CFEA9 /* Pods_Example_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC91060DA485011A40E2B07E /* Pods_Example_swift.framework */; };
 		9C1A99ED1EB9225800BEB563 /* ExampleData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1A99EB1EB9225800BEB563 /* ExampleData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C1A99F01EB9225800BEB563 /* ExampleData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1A99E91EB9225800BEB563 /* ExampleData.framework */; };
@@ -96,6 +100,14 @@
 		6342D7FB7C4927C2B322BA29 /* Pods-Example-data.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-data.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example-data/Pods-Example-data.debug.xcconfig"; sourceTree = "<group>"; };
 		637FE4EDF09CAF4306172F86 /* Pods-Example-objc-ParisOpenData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-objc-ParisOpenData.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example-objc-ParisOpenData/Pods-Example-objc-ParisOpenData.release.xcconfig"; sourceTree = "<group>"; };
 		71B6B6F461FC5E5896234105 /* Pods_Examples_Example_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Examples_Example_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		782654EE21F9E2190080F3B7 /* YMKMapView+ClusterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMKMapView+ClusterKit.h"; sourceTree = "<group>"; };
+		782654EF21F9E2190080F3B7 /* YMKMapView+ClusterKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMKMapView+ClusterKit.m"; sourceTree = "<group>"; };
+		782654F121F9E25E0080F3B7 /* YandexMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMapViewController.swift; sourceTree = "<group>"; };
+		782654F421F9E6E80080F3B7 /* Example-swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		78E253A021F8B2720006DBEF /* CKYandexMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKYandexMapViewController.h; sourceTree = "<group>"; };
+		78E253A121F8B2720006DBEF /* CKYandexMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKYandexMapViewController.m; sourceTree = "<group>"; };
+		78E253A421F8BC810006DBEF /* YMKMapView+ClusterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMKMapView+ClusterKit.h"; sourceTree = "<group>"; };
+		78E253A521F8BC810006DBEF /* YMKMapView+ClusterKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMKMapView+ClusterKit.m"; sourceTree = "<group>"; };
 		7A8F0DE8FC04429B60C3F0F1 /* Pods_Examples_ParisOpenDataUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Examples_ParisOpenDataUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		804AB2574059CD5C5BEDCE2C /* Pods_Example_objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		991F94DAC9500A17E248ABC4 /* Pods_Example_data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +208,36 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		782654ED21F9E2190080F3B7 /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				782654EE21F9E2190080F3B7 /* YMKMapView+ClusterKit.h */,
+				782654EF21F9E2190080F3B7 /* YMKMapView+ClusterKit.m */,
+			);
+			name = YandexMapKit;
+			path = ../../ClusterKit/YandexMapKit;
+			sourceTree = "<group>";
+		};
+		78E2539F21F8AFF40006DBEF /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				78E253A321F8BC810006DBEF /* YandexMapKit */,
+				78E253A021F8B2720006DBEF /* CKYandexMapViewController.h */,
+				78E253A121F8B2720006DBEF /* CKYandexMapViewController.m */,
+			);
+			path = YandexMapKit;
+			sourceTree = "<group>";
+		};
+		78E253A321F8BC810006DBEF /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				78E253A421F8BC810006DBEF /* YMKMapView+ClusterKit.h */,
+				78E253A521F8BC810006DBEF /* YMKMapView+ClusterKit.m */,
+			);
+			name = YandexMapKit;
+			path = ../../../ClusterKit/YandexMapKit;
+			sourceTree = "<group>";
+		};
 		987C1F00BBB2E64774D3A906 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +319,7 @@
 				9CD80B0E1E23078200DFCB89 /* MapKit */,
 				9CD80B071E23077000DFCB89 /* GoogleMaps */,
 				9C2C4A071F94B72900B22745 /* Mapbox */,
+				78E2539F21F8AFF40006DBEF /* YandexMapKit */,
 				9CD80AE51E2306E000DFCB89 /* Main.storyboard */,
 				9CD80AEA1E2306E000DFCB89 /* LaunchScreen.storyboard */,
 				9CD80AED1E2306E000DFCB89 /* Info.plist */,
@@ -300,10 +343,13 @@
 				9C6EBCD21E23DBC3008FAC7A /* MapKitViewController.swift */,
 				9C6EBCD41E23DBDE008FAC7A /* GoogleMapsViewController.swift */,
 				9C2C4A051F94B36400B22745 /* MapboxViewController.swift */,
+				782654F121F9E25E0080F3B7 /* YandexMapViewController.swift */,
 				9CAFE26B1E23E8D100337FD1 /* GoogleMaps */,
+				782654ED21F9E2190080F3B7 /* YandexMapKit */,
 				9CD80AFB1E2306F400DFCB89 /* Main.storyboard */,
 				9CD80B001E2306F400DFCB89 /* LaunchScreen.storyboard */,
 				9CD80B031E2306F400DFCB89 /* Info.plist */,
+				782654F421F9E6E80080F3B7 /* Example-swift-Bridging-Header.h */,
 			);
 			path = "Example-swift";
 			sourceTree = "<group>";
@@ -564,7 +610,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Example-swift/Pods-Example-swift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
@@ -579,7 +625,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-swift/Pods-Example-swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6FBEE0F289623D53A1361EBC /* [CP] Embed Pods Frameworks */ = {
@@ -588,7 +634,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Example-objc/Pods-Example-objc-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
@@ -603,7 +649,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-objc/Pods-Example-objc-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9DAAF5BB803B327C06843D22 /* [CP] Copy Pods Resources */ = {
@@ -612,16 +658,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Example-swift/Pods-Example-swift-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/YandexMapKit/YandexMapKit.framework/Versions/A/Resources/YandexMapKit.bundle",
+				"${PODS_ROOT}/YandexRuntime/YandexRuntime.framework/Versions/A/Resources/YandexRuntime.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YandexMapKit.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YandexRuntime.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-swift/Pods-Example-swift-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-swift/Pods-Example-swift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CB8CD84FCD0E5E344C49FE2C /* [CP] Copy Pods Resources */ = {
@@ -630,16 +680,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Example-objc/Pods-Example-objc-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/YandexMapKit/YandexMapKit.framework/Versions/A/Resources/YandexMapKit.bundle",
+				"${PODS_ROOT}/YandexRuntime/YandexRuntime.framework/Versions/A/Resources/YandexRuntime.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YandexMapKit.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/YandexRuntime.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-objc/Pods-Example-objc-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-objc/Pods-Example-objc-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -658,8 +712,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CD80B0D1E23077000DFCB89 /* CKAppDelegate.m in Sources */,
+				78E253A621F8BC810006DBEF /* YMKMapView+ClusterKit.m in Sources */,
 				9CD80B0C1E23077000DFCB89 /* CKGoogleMapsViewController.m in Sources */,
 				9CD80B111E23078200DFCB89 /* CKMapKitViewController.m in Sources */,
+				78E253A221F8B2720006DBEF /* CKYandexMapViewController.m in Sources */,
 				9C2C4A0A1F94B74C00B22745 /* CKMapboxViewController.m in Sources */,
 				9CD80ADE1E2306E000DFCB89 /* main.m in Sources */,
 				9CD80B151E2307AF00DFCB89 /* GMSMapView+ClusterKit.m in Sources */,
@@ -673,6 +729,8 @@
 				9C2C4A061F94B36400B22745 /* MapboxViewController.swift in Sources */,
 				9C6EBCD31E23DBC3008FAC7A /* MapKitViewController.swift in Sources */,
 				9CD80AF81E2306F400DFCB89 /* AppDelegate.swift in Sources */,
+				782654F021F9E2190080F3B7 /* YMKMapView+ClusterKit.m in Sources */,
+				782654F221F9E25E0080F3B7 /* YandexMapViewController.swift in Sources */,
 				9CAFE26E1E23E8D100337FD1 /* GMSMapView+ClusterKit.m in Sources */,
 				9C6EBCD51E23DBDE008FAC7A /* GoogleMapsViewController.swift in Sources */,
 			);
@@ -931,7 +989,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ClusterKit.example.swift;
 				PRODUCT_NAME = "ClusterKit Swift";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "../ClusterKit/GoogleMaps/GMSMapView+ClusterKit.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Example-swift/Example-swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
@@ -948,7 +1006,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ClusterKit.example.swift;
 				PRODUCT_NAME = "ClusterKit Swift";
-				SWIFT_OBJC_BRIDGING_HEADER = "../ClusterKit/GoogleMaps/GMSMapView+ClusterKit.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Example-swift/Example-swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 			};

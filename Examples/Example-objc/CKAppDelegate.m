@@ -22,6 +22,7 @@
 
 #import <GoogleMaps/GoogleMaps.h>
 #import <Mapbox/Mapbox.h>
+#import <YandexMapKit/YMKMapKit.h>
 
 #import "CKAppDelegate.h"
 
@@ -35,6 +36,7 @@
     
     [GMSServices provideAPIKey:@"<#Enter your google API key#>"];
     [MGLAccountManager setAccessToken:@"<#Enter your Mapbox access token#>"];
+    [YMKMapKit setApiKey:"<#Enter your YandexMapKit access token#>"];
     
     return YES;
 }

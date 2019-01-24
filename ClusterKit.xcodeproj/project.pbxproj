@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7884A92C21F1E1C000CCCA71 /* YMKMapView+ClusterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7884A92A21F1E1C000CCCA71 /* YMKMapView+ClusterKit.h */; };
+		7884A92D21F1E1C000CCCA71 /* YMKMapView+ClusterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7884A92B21F1E1C000CCCA71 /* YMKMapView+ClusterKit.m */; };
 		9C2C4A0E1F94BACE00B22745 /* MGLMapView+ClusterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */; };
 		9C53CD191E03F51C000AD9B8 /* CKClusterAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C53CD1A1E03F51C000AD9B8 /* CKClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C53CD051E03F51C000AD9B8 /* CKClusterAlgorithm.m */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7884A92A21F1E1C000CCCA71 /* YMKMapView+ClusterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMKMapView+ClusterKit.h"; sourceTree = "<group>"; };
+		7884A92B21F1E1C000CCCA71 /* YMKMapView+ClusterKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMKMapView+ClusterKit.m"; sourceTree = "<group>"; };
 		9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MGLMapView+ClusterKit.h"; path = "ClusterKit/Mapbox/MGLMapView+ClusterKit.h"; sourceTree = SOURCE_ROOT; };
 		9C2C4A0D1F94BACE00B22745 /* MGLMapView+ClusterKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MGLMapView+ClusterKit.m"; path = "ClusterKit/Mapbox/MGLMapView+ClusterKit.m"; sourceTree = SOURCE_ROOT; };
 		9C4C93E11E4250D500927A42 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -101,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7884A92921F1E1C000CCCA71 /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				7884A92A21F1E1C000CCCA71 /* YMKMapView+ClusterKit.h */,
+				7884A92B21F1E1C000CCCA71 /* YMKMapView+ClusterKit.m */,
+			);
+			path = YandexMapKit;
+			sourceTree = "<group>";
+		};
 		9C2C4A0B1F94BA7D00B22745 /* Mapbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 				9C53CD161E03F51C000AD9B8 /* MapKit */,
 				9C53CD131E03F51C000AD9B8 /* GoogleMaps */,
 				9C2C4A0B1F94BA7D00B22745 /* Mapbox */,
+				7884A92921F1E1C000CCCA71 /* YandexMapKit */,
 			);
 			path = ClusterKit;
 			sourceTree = "<group>";
@@ -255,6 +269,7 @@
 				9C53CD1D1E03F51C000AD9B8 /* CKCluster.h in Headers */,
 				9C53CD211E03F51C000AD9B8 /* CKMap.h in Headers */,
 				9C2C4A0E1F94BACE00B22745 /* MGLMapView+ClusterKit.h in Headers */,
+				7884A92C21F1E1C000CCCA71 /* YMKMapView+ClusterKit.h in Headers */,
 				9C53CD191E03F51C000AD9B8 /* CKClusterAlgorithm.h in Headers */,
 				9CC875F31E02AE2D0019AA18 /* ClusterKit.h in Headers */,
 				9C53CD231E03F51C000AD9B8 /* CKQuadTree.h in Headers */,
@@ -362,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C53CD241E03F51C000AD9B8 /* CKQuadTree.m in Sources */,
+				7884A92D21F1E1C000CCCA71 /* YMKMapView+ClusterKit.m in Sources */,
 				9C53CD201E03F51C000AD9B8 /* CKClusterManager.m in Sources */,
 				9C53CD2A1E03F51C000AD9B8 /* MKMapView+ClusterKit.m in Sources */,
 				9C53CD1A1E03F51C000AD9B8 /* CKClusterAlgorithm.m in Sources */,

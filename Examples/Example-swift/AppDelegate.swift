@@ -23,6 +23,7 @@
 import UIKit
 import GoogleMaps
 import Mapbox
+import YandexMapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey("<#Enter your google API key#>")
         MGLAccountManager.accessToken = "<#Enter your Mapbox access token#>"
+        YMKMapKit.setApiKey("<#Enter your YandexMapKit access token#>")
         
         return true
     }
