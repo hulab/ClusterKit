@@ -210,21 +210,11 @@
 }
 
 - (void)selectCluster:(CKCluster *)cluster animated:(BOOL)animated {
-    YMKPlacemarkMapObject *placemark = [self.placemarks objectForKey:cluster];
-    if (placemark) {
-        [self.delegate selectPlacemark:placemark
-                            forCluster:cluster
-                              animated:animated];
-    }
+    // handle selection in YMKMapObjectTapListener
 }
 
 - (void)deselectCluster:(CKCluster *)cluster animated:(BOOL)animated {
-    YMKPlacemarkMapObject *placemark = [self placemarkForCluster:cluster];
-    if (placemark) {
-        [self.delegate deselectPlacemark:placemark
-                              forCluster:cluster
-                                animated:animated];
-    }
+    // handle selection in YMKMapObjectTapListener
 }
 
 - (void)performAnimations:(NSArray<CKClusterAnimation *> *)animations completion:(void (^__nullable)(BOOL finished))completion {

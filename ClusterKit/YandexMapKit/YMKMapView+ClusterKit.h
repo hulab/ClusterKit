@@ -21,18 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@protocol YMKMapViewDelegate <NSObject>
-
-- (void)selectPlacemark:(YMKPlacemarkMapObject *)placemark
-             forCluster:(CKCluster *)cluster
-               animated:(BOOL)animated;
-
-- (void)deselectPlacemark:(YMKPlacemarkMapObject *)placemark
-               forCluster:(CKCluster *)cluster
-                 animated:(BOOL)animated;
-
-@end
-
 /**
  YMKPlacemarkMapObject category adopting the CKAnnotation protocol.
  */
@@ -51,11 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
  Data source instance that adopt the YMKMapViewDataSource.
  */
 @property(nonatomic, weak) IBOutlet id<YMKMapViewDataSource> dataSource;
-
-/**
- Delegate instance that adopt the YMKMapViewDelegate.
- */
-@property(nonatomic, weak) IBOutlet id<YMKMapViewDelegate> delegate;
 
 /**
  Returns the placemark representing the given cluster.
