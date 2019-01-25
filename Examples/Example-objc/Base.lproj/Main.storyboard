@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iw1-cE-3YC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="iw1-cE-3YC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -86,6 +86,41 @@
             </objects>
             <point key="canvasLocation" x="-88" y="1158"/>
         </scene>
+        <!--Yandex Map View Controller-->
+        <scene sceneID="2yS-d8-Wjw">
+            <objects>
+                <viewController id="QZR-li-f5D" customClass="CKYandexMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CqW-Xn-GMa"/>
+                        <viewControllerLayoutGuide type="bottom" id="2sW-z2-0Ko"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lBN-l8-i5o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ByF-B3-aJn" customClass="YMKMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2sW-z2-0Ko" firstAttribute="top" secondItem="ByF-B3-aJn" secondAttribute="bottom" id="HcR-0G-e0Q"/>
+                            <constraint firstItem="ByF-B3-aJn" firstAttribute="top" secondItem="lBN-l8-i5o" secondAttribute="top" constant="20" id="ILh-bR-TXU"/>
+                            <constraint firstAttribute="trailing" secondItem="ByF-B3-aJn" secondAttribute="trailing" id="N6J-eK-Tty"/>
+                            <constraint firstItem="ByF-B3-aJn" firstAttribute="leading" secondItem="lBN-l8-i5o" secondAttribute="leading" id="ilR-tb-58d"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="yandex" id="uEY-zT-pap"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="ByF-B3-aJn" id="EmV-Am-hlM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FbE-Za-P9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="631" y="1157"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vgz-aY-8ks">
             <objects>
@@ -99,11 +134,12 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="lJu-aR-6Hb"/>
                         <segue destination="8Cd-Fo-uDp" kind="relationship" relationship="viewControllers" id="dxs-ig-ghB"/>
                         <segue destination="gCX-fw-eq4" kind="relationship" relationship="viewControllers" id="n2c-UN-u73"/>
+                        <segue destination="QZR-li-f5D" kind="relationship" relationship="viewControllers" id="Iry-DC-CIS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTr-3Y-sJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-896" y="101"/>
+            <point key="canvasLocation" x="-455" y="110"/>
         </scene>
         <!--Google Maps View Controller-->
         <scene sceneID="ego-j2-wlP">
@@ -145,7 +181,8 @@
     <resources>
         <image name="apple" width="21" height="25"/>
         <image name="google" width="70" height="23"/>
-        <image name="mapbox-logo-white" width="93" height="21"/>
+        <image name="mapbox-logo-white" width="93.5" height="21"/>
+        <image name="yandex" width="28.079999923706055" height="11"/>
     </resources>
     <color key="tintColor" red="0.054901960784313725" green="0.47450980392156861" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

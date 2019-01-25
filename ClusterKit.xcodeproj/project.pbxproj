@@ -43,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7884A92A21F1E1C000CCCA71 /* YMKMapView+ClusterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMKMapView+ClusterKit.h"; sourceTree = "<group>"; };
+		7884A92B21F1E1C000CCCA71 /* YMKMapView+ClusterKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMKMapView+ClusterKit.m"; sourceTree = "<group>"; };
 		9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MGLMapView+ClusterKit.h"; path = "ClusterKit/Mapbox/MGLMapView+ClusterKit.h"; sourceTree = SOURCE_ROOT; };
 		9C2C4A0D1F94BACE00B22745 /* MGLMapView+ClusterKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MGLMapView+ClusterKit.m"; path = "ClusterKit/Mapbox/MGLMapView+ClusterKit.m"; sourceTree = SOURCE_ROOT; };
 		9C4C93E11E4250D500927A42 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -101,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7884A92921F1E1C000CCCA71 /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				7884A92A21F1E1C000CCCA71 /* YMKMapView+ClusterKit.h */,
+				7884A92B21F1E1C000CCCA71 /* YMKMapView+ClusterKit.m */,
+			);
+			path = YandexMapKit;
+			sourceTree = "<group>";
+		};
 		9C2C4A0B1F94BA7D00B22745 /* Mapbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +128,7 @@
 				9C53CD161E03F51C000AD9B8 /* MapKit */,
 				9C53CD131E03F51C000AD9B8 /* GoogleMaps */,
 				9C2C4A0B1F94BA7D00B22745 /* Mapbox */,
+				7884A92921F1E1C000CCCA71 /* YandexMapKit */,
 			);
 			path = ClusterKit;
 			sourceTree = "<group>";
