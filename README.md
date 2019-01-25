@@ -26,7 +26,7 @@ ClusterKit is an elegant and efficiant clustering controller for maps. Its flexi
 
 ## Features
 
-+ Native supports of [**MapKit**](https://developer.apple.com/documentation/mapkit), [**GoogleMaps**](https://developers.google.com/maps/documentation/ios-sdk) and [**Mapbox**](https://www.mapbox.com/ios-sdk/).
++ Native supports of [**MapKit**](https://developer.apple.com/documentation/mapkit), [**GoogleMaps**](https://developers.google.com/maps/documentation/ios-sdk), [**Mapbox**](https://www.mapbox.com/ios-sdk/) and [**YandexMapKit**](https://tech.yandex.com/maps/mapkit/).
 + Comes with 2 clustering algorithms, a Grid Based Algorithm and a Non Hierarchical Distance Based Algorithm.
 + Annotations are stored in a [QuadTree](https://en.wikipedia.org/wiki/Quadtree) for efficient region queries.
 + Cluster center can be switched to **Centroid**, **Nearest Centroid**, **Bottom**.
@@ -52,9 +52,13 @@ Or clone the repo and run `pod install` from the [Examples](Examples) directory 
 
 > Provide the [Mapbox Access Token](https://www.mapbox.com/studio/account/tokens/) in the AppDelegate in order to try it with Mapbox.
 
+> Provide the [Yandex API Key](https://developer.tech.yandex.ru/) in the AppDelegate in order to try it with YandexMapKit.
+
 ## Credits
 
 Assets by [Hugo des Gayets](https://dribbble.com/hugodesgayets).
+
+Thanks [@petropavel13](https://github.com/petropavel13) for the **YandexMapKit** integration.
 
 ## License
 
