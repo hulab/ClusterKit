@@ -34,26 +34,30 @@ Pod::Spec.new do |s|
     ss.dependency 'ClusterKit/Core'
     ss.source_files = 'ClusterKit/MapKit'
   end
+
+  # Like GoogleMaps sdk (googlemaps/google-maps-ios-utils#23) YandexMapKit is statically built,
+  # which mean we can't use them as subspec dependency yet. Better to keep both
+  # GoogleMaps and YandexMapKit commented until both of them are dynamically built!
   
-  s.subspec 'GoogleMaps' do |ss|
-   ss.platform = :ios, '8.0'
-   ss.dependency 'ClusterKit/Core'
-   ss.dependency 'GoogleMaps', '~> 2.7'
-   ss.source_files = 'ClusterKit/GoogleMaps'
-  end
+  # s.subspec 'GoogleMaps' do |ss|
+  #  ss.platform = :ios, '8.0'
+  #  ss.dependency 'ClusterKit/Core'
+  #  ss.dependency 'GoogleMaps', '~> 2.7'
+  #  ss.source_files = 'ClusterKit/GoogleMaps'
+  # end
+
+  # s.subspec 'YandexMapKit' do |ss|
+  #   ss.platform = :ios, '9.0'
+  #   ss.dependency 'ClusterKit/Core'
+  #   ss.dependency 'YandexMapKit', '~> 3.2'
+  #   ss.source_files = 'ClusterKit/YandexMapKit'
+  # end
 
   s.subspec 'Mapbox' do |ss|
     ss.platform = :ios, '9.0'
     ss.dependency 'ClusterKit/Core'
-    ss.dependency 'Mapbox-iOS-SDK', '~> 4.7'
+    ss.dependency 'Mapbox-iOS-SDK', '~> 4.6'
     ss.source_files = 'ClusterKit/Mapbox'
-  end
-
-  s.subspec 'YandexMapKit' do |ss|
-    ss.platform = :ios, '9.0'
-    ss.dependency 'ClusterKit/Core'
-    ss.dependency 'YandexMapKit', '~> 3.2'
-    ss.source_files = 'ClusterKit/YandexMapKit'
   end
 
   s.test_spec do |test_spec|
