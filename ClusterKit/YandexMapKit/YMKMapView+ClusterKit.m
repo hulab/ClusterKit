@@ -143,14 +143,6 @@
     objc_setAssociatedObject(self, @selector(dataSource), dataSource, OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (id<YMKMapViewDelegate>)delegate {
-    return objc_getAssociatedObject(self, @selector(delegate));
-}
-
-- (void)setDelegate:(id<YMKMapViewDelegate>)delegate {
-    objc_setAssociatedObject(self, @selector(delegate), delegate, OBJC_ASSOCIATION_ASSIGN);
-}
-
 - (NSMapTable<CKCluster *, YMKPlacemarkMapObject *> *)placemarks {
     NSMapTable *placemarks = objc_getAssociatedObject(self, @selector(placemarks));
     if (!placemarks) {
