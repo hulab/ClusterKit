@@ -3,6 +3,12 @@ All notable changes to `ClusterKit` project will be documented in this file.
 
 ---
 
+## [0.4.0](https://github.com/hulab/ClusterKit/releases/tag/0.4.0) - February 11, 2019
+
+### Added
+
+- **Yandex Map**: Thanks to [@petropavel13](https://github.com/petropavel13) for the **YandexMapKit** integration.
+
 ## [0.3.5](https://github.com/hulab/ClusterKit/releases/tag/0.3.5) - November 14, 2018
 
 ### Updated

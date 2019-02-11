@@ -36,7 +36,7 @@
     
     [GMSServices provideAPIKey:@"<#Enter your google API key#>"];
     [MGLAccountManager setAccessToken:@"<#Enter your Mapbox access token#>"];
-    [YMKMapKit setApiKey:"<#Enter your YandexMapKit access token#>"];
+    [YMKMapKit setApiKey:@"<#Enter your YandexMapKit access token#>"];
     
     return YES;
 }
