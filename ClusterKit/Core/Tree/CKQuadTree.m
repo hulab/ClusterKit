@@ -83,7 +83,7 @@ static void add_(hb_qnode_t *n, hb_qpoint_t *p) {
 
 static bool drop_(hb_qnode_t *n, id<MKAnnotation> a) {
     
-    for (hb_qpoint_t *cur = n->points , *prev = NULL;
+    for (hb_qpoint_t *cur = n->points, *prev = NULL;
          cur != NULL;
          prev = cur, cur = cur->next) {
         
@@ -119,10 +119,9 @@ static void subdivide_(hb_qnode_t *n) {
 }
 
 static bool hb_qnode_insert(hb_qnode_t *n, id<MKAnnotation> a) {
-
     MKMapPoint point = MKMapPointForCoordinate(a.coordinate);
-    if(!MKMapRectContainsPoint(n->bound, point))
-        return false;
+
+    if(!MKMapRectContainsPoint(n->bound, point)) return false;
     
     if(n->cnt < n->cap) {
         hb_qpoint_t *p = malloc(sizeof(hb_qpoint_t));
@@ -145,10 +144,7 @@ static bool hb_qnode_insert(hb_qnode_t *n, id<MKAnnotation> a) {
 }
 
 static bool hb_qnode_remove(hb_qnode_t *n, id<MKAnnotation> a) {
-    
-    if(drop_(n, a)) {
-        return true;
-    }
+    if(drop_(n, a)) return true;
     
     if(n->nw) {
         if(hb_qnode_remove(n->nw, a)) return true;
@@ -156,14 +152,14 @@ static bool hb_qnode_remove(hb_qnode_t *n, id<MKAnnotation> a) {
         if(hb_qnode_remove(n->sw, a)) return true;
         if(hb_qnode_remove(n->se, a)) return true;
     }
+
     return false;
 }
 
 static void hb_qnode_get_in_range(hb_qnode_t *n, MKMapRect range, void(^find)(id<MKAnnotation>annotation)) {
     
     if(n->cnt) {
-        if(!MKMapRectIntersectsRect(n->bound, range))
-            return;
+        if(!MKMapRectIntersectsRect(n->bound, range)) return;
         
         hb_qpoint_t *p = n->points;
         while (p) {
@@ -220,7 +216,7 @@ void hb_qtree_find_in_range(hb_qtree_t *t, MKMapRect range , void(^find)(id<MKAn
 @end
 
 @implementation CKQuadTree {
-    BOOL _responds;
+    BOOL _delegate_responds;
 }
 
 static void * const CKQuadTreeKVOContext = (void *)&CKQuadTreeKVOContext;
@@ -257,7 +253,7 @@ static void * const CKQuadTreeKVOContext = (void *)&CKQuadTreeKVOContext;
     if (MKMapRectSpans180thMeridian(rect)) {
         
         hb_qtree_find_in_range(self.tree, MKMapRectRemainder(rect), ^(id<MKAnnotation> annotation) {
-            if (!self->_responds || [self.delegate annotationTree:self shouldExtractAnnotation:annotation]) {
+            if (!self->_delegate_responds || [self.delegate annotationTree:self shouldExtractAnnotation:annotation]) {
                 [results addObject:annotation];
             }
         });
@@ -266,7 +262,7 @@ static void * const CKQuadTreeKVOContext = (void *)&CKQuadTreeKVOContext;
     }
     
     hb_qtree_find_in_range(self.tree, rect, ^(id<MKAnnotation> annotation) {
-        if (!self->_responds || [self.delegate annotationTree:self shouldExtractAnnotation:annotation]) {
+        if (!self->_delegate_responds || [self.delegate annotationTree:self shouldExtractAnnotation:annotation]) {
             [results addObject:annotation];
         }
     });
@@ -278,7 +274,7 @@ static void * const CKQuadTreeKVOContext = (void *)&CKQuadTreeKVOContext;
     _delegate = delegate;
     
     //Cache whether the delegate responds to a selector
-    _responds = [self.delegate respondsToSelector:@selector(annotationTree:shouldExtractAnnotation:)];
+    _delegate_responds = [self.delegate respondsToSelector:@selector(annotationTree:shouldExtractAnnotation:)];
 }
 
 - (void)dealloc {

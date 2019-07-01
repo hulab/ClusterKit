@@ -29,7 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CKAnnotationTree;
 
 /**
- The delegate of a CKAnnotationTree object may adopt the KPAnnotationTreeDelegate protocol. Optional method of the protocol allow the delegate to manage annotation extraction.
+ The delegate of a CKAnnotationTree object may adopt the KPAnnotationTreeDelegate protocol.
+ Optional method of the protocol allow the delegate to manage annotation extraction.
  */
 @protocol CKAnnotationTreeDelegate <NSObject>
 

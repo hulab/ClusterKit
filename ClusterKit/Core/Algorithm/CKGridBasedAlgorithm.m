@@ -50,7 +50,7 @@
             
             NSNumber *key = @(numCells * row + col);
             CKCluster *cluster = clusters[key];
-            if (cluster == nil) {
+            if (!cluster) {
                 cluster = [self clusterWithCoordinate:annotation.coordinate];
                 clusters[key] = cluster;
             }

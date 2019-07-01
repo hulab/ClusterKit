@@ -25,14 +25,17 @@
 /**
  A simple clustering algorithm with O(nlog n) performance.
  
- Non-hierarchical distance analysis aims to find a grouping of annotations which minimises the distance between an annotation and its cluster. These algorithm will iteratively assign annotations to different groups while searching for the optimal distance.
+ Non-hierarchical distance analysis aims to find a grouping of annotations which minimises the distance
+ between an annotation and its cluster. These algorithm will iteratively assign annotations to different
+ groups while searching for the optimal distance.
  
  1. Iterate througth the annotations that are not yet clusterized found in the given rect.
  2. Create a cluster with the center of the annotation.
  3. Add all items that are within a certain distance to the cluster.
  4. Move any items out of an existing cluster if they are closer to another cluster.
  
- CKNonHierarchicalDistanceBasedAlgorithm is an objective-c implementation of the non-hierarchical distance based clustering algorithm used by Google maps.
+ CKNonHierarchicalDistanceBasedAlgorithm is an objective-c implementation of the non-hierarchical distance
+ based clustering algorithm used by Google maps.
  @see https://github.com/googlemaps/android-maps-utils/blob/master/library/src/com/google/maps/android/clustering/algo/NonHierarchicalDistanceBasedAlgorithm.java
  */
 @interface CKNonHierarchicalDistanceBasedAlgorithm : CKClusterAlgorithm

@@ -74,8 +74,8 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     } else if (self.marginFactor != kCKMarginFactorWorld) {
         
         // Translation update
-        if(fabs(self.visibleMapRect.origin.x - visibleMapRect.origin.x) > self.visibleMapRect.size.width * self.marginFactor / 2||
-           fabs(self.visibleMapRect.origin.y - visibleMapRect.origin.y) > self.visibleMapRect.size.height* self.marginFactor / 2 ) {
+        if (fabs(self.visibleMapRect.origin.x - visibleMapRect.origin.x) > self.visibleMapRect.size.width * self.marginFactor / 2 ||
+            fabs(self.visibleMapRect.origin.y - visibleMapRect.origin.y) > self.visibleMapRect.size.height* self.marginFactor / 2 ) {
             [self updateMapRect:visibleMapRect animated:NO];
         }
     }
@@ -204,10 +204,8 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 }
 
 - (void)setSelectedCluster:(CKCluster *)selectedCluster animated:(BOOL)animated {
-    if (selectedCluster == self.selectedCluster) {
-        return;
-    }
-    
+    if (selectedCluster == self.selectedCluster) return;
+
     CKCluster *prev = self.selectedCluster;
     self.selectedCluster = selectedCluster;
     
@@ -232,6 +230,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
             return cluster;
         }
     }
+    
     return nil;
 }
 
@@ -255,9 +254,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
             CKClusterAnimation *animation = [animations member:neighbor];
             
             if (!animation) {
-                animation = [[CKClusterAnimation alloc] initWithCluster:neighbor];
-                animation.from = oldCluster.coordinate;
-                animation.to = neighbor.coordinate;
+                animation = [CKClusterAnimation animateCluster:neighbor from:oldCluster.coordinate to:neighbor.coordinate];
                 [animations addObject:animation];
                 continue;
             }
@@ -293,9 +290,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
             CKClusterAnimation *animation = [animations member:neighbor];
             
             if (!animation) {
-                animation = [[CKClusterAnimation alloc] initWithCluster:neighbor];
-                animation.from = neighbor.coordinate;
-                animation.to = newCluster.coordinate;
+                animation = [CKClusterAnimation animateCluster:neighbor from:neighbor.coordinate to:newCluster.coordinate];
                 [animations addObject:animation];
                 continue;
             }
@@ -318,9 +313,11 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     if (annotation == self.selectedAnnotation) {
         return NO;
     }
+
     if ([self.delegate respondsToSelector:@selector(clusterManager:shouldClusterAnnotation:)]) {
         return [self.delegate clusterManager:self shouldClusterAnnotation:annotation];
     }
+    
     return YES;
 }
 
@@ -328,12 +325,16 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 
 @implementation CKClusterAnimation
 
-- (instancetype)initWithCluster:(CKCluster *)cluster {
++ (instancetype)animateCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to {
+    return [[self alloc] initWithCluster:cluster from:from to:to];
+}
+
+- (instancetype)initWithCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to {
     self = [super init];
     if (self) {
         _cluster = cluster;
-        _from = kCLLocationCoordinate2DInvalid;
-        _to = kCLLocationCoordinate2DInvalid;
+        _from = from;
+        _to = to;
     }
     return self;
 }
@@ -342,12 +343,15 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
     if (object == self) {
         return YES;
     }
+
     if ([object isKindOfClass:[CKCluster class]]) {
         return [_cluster isEqualToCluster:object];
     }
+
     if (![object isKindOfClass:[CKClusterAnimation class]]) {
         return NO;
     }
+
     CKClusterAnimation *obj = object;
     return [_cluster isEqualToCluster:obj->_cluster];
 }

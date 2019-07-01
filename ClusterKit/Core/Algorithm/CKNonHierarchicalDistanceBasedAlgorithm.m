@@ -54,9 +54,7 @@ MKMapRect CKCreateRectFromSpan(CLLocationCoordinate2D center, double span);
         
         for (id<MKAnnotation> annotation in annotations) {
             
-            if ([visited objectForKey:annotation]) {
-                continue;
-            }
+            if ([visited objectForKey:annotation]) continue;
             
             CKCluster *cluster = [self clusterWithCoordinate:annotation.coordinate];
             [clusters addObject:cluster];
@@ -71,9 +69,7 @@ MKMapRect CKCreateRectFromSpan(CLLocationCoordinate2D center, double span);
                 CGFloat distance = CKDistance(neighbor.coordinate, cluster.coordinate);
                 
                 if (candidate) {
-                    if (candidate.distance < distance) {
-                        continue;
-                    }
+                    if (candidate.distance < distance) continue;
                     [candidate.cluster removeAnnotation:neighbor];
                 } else {
                     candidate = [[CKCandidate alloc] init];

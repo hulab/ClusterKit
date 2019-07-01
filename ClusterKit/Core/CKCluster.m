@@ -74,6 +74,10 @@ NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2) {
     return _annotations.array;
 }
 
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    _coordinate = newCoordinate;
+}
+
 - (MKMapRect)bounds {
     if (_invalidate_bounds) {
         _bounds = MKMapRectNull;
@@ -180,6 +184,8 @@ NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2) {
 
 @end
 
+#pragma mark - Centroid Cluster
+
 @implementation CKCentroidCluster
 
 - (void)addAnnotation:(id<MKAnnotation>)annotation {
@@ -224,6 +230,8 @@ NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2) {
 
 @end
 
+#pragma mark - Nearest Centroid Cluster
+
 @implementation CKNearestCentroidCluster {
     CLLocationCoordinate2D _center;
 }
@@ -263,6 +271,8 @@ NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2) {
 }
 
 @end
+
+#pragma mark - Bottom Cluster
 
 @implementation CKBottomCluster
 

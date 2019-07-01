@@ -468,7 +468,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Hulab;
 				TargetAttributes = {
 					9C1A99E81EB9225800BEB563 = {
@@ -487,7 +487,7 @@
 					};
 					9CD80AF41E2306F400DFCB89 = {
 						CreatedOnToolsVersion = 8.2;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -499,7 +499,7 @@
 			};
 			buildConfigurationList = 9CD80A861E23031700DFCB89 /* Build configuration list for PBXProject "Examples" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -614,6 +614,8 @@
 				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/E3F066DB-FB3F-3DB3-ADCA-FD22D28B3593.bcsymbolmap",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/314B394E-4B8A-3249-ACB5-C8B038156249.bcsymbolmap",
 				"${BUILT_PRODUCTS_DIR}/GeoJSONSerialization/GeoJSONSerialization.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -621,6 +623,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/E3F066DB-FB3F-3DB3-ADCA-FD22D28B3593.bcsymbolmap",
+				"${BUILT_PRODUCTS_DIR}/314B394E-4B8A-3249-ACB5-C8B038156249.bcsymbolmap",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoJSONSerialization.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,6 +642,8 @@
 				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/E3F066DB-FB3F-3DB3-ADCA-FD22D28B3593.bcsymbolmap",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/314B394E-4B8A-3249-ACB5-C8B038156249.bcsymbolmap",
 				"${BUILT_PRODUCTS_DIR}/GeoJSONSerialization/GeoJSONSerialization.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -645,6 +651,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/E3F066DB-FB3F-3DB3-ADCA-FD22D28B3593.bcsymbolmap",
+				"${BUILT_PRODUCTS_DIR}/314B394E-4B8A-3249-ACB5-C8B038156249.bcsymbolmap",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoJSONSerialization.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -792,7 +800,7 @@
 			baseConfigurationReference = 6342D7FB7C4927C2B322BA29 /* Pods-Example-data.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -833,6 +841,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -892,6 +901,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -991,7 +1001,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Example-swift/Example-swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1008,7 +1018,7 @@
 				PRODUCT_NAME = "ClusterKit Swift";
 				SWIFT_OBJC_BRIDGING_HEADER = "Example-swift/Example-swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

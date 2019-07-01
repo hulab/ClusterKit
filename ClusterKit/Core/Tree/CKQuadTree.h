@@ -46,7 +46,12 @@ FOUNDATION_EXPORT void hb_qtree_find_in_range(hb_qtree_t *tree, MKMapRect range,
  A quadtree is a tree data structure in which each internal node has exactly four children.
  It is used to partition {@see MKMapRectWorld} by recursively subdividing it into four quadrants or regions.
  
- The quadtree represents a partition of space in two dimensions by decomposing the region into four equal quadrants, subquadrants, and so on with each leaf node containing annotation corresponding to a specific rect. Each node in the tree either has maximum four children. The height of quadtrees that follow this decomposition strategy (i.e. subdividing subquadrants as long as there is interesting data in the subquadrant for which more refinement is desired) is sensitive to and dependent on the spatial distribution of interesting areas in the space being decomposed. The region quadtree is a type of trie. Regions are subdivided until each leaf contains at most a single point.
+ The quadtree represents a partition of space in two dimensions by decomposing the region into four equal quadrants, subquadrants,
+ and so on with each leaf node containing annotation corresponding to a specific rect. Each node in the tree either has maximum
+ four children. The height of quadtrees that follow this decomposition strategy (i.e. subdividing subquadrants as long as there is
+ interesting data in the subquadrant for which more refinement is desired) is sensitive to and dependent on the spatial distribution
+ of interesting areas in the space being decomposed. The region quadtree is a type of trie. Regions are subdivided until each leaf
+ contains at most a single point.
  */
 @interface CKQuadTree : NSObject <CKAnnotationTree>
 

@@ -33,7 +33,8 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 @class CKClusterManager;
 
 /**
- The delegate of a CKClusterManager object may adopt the CKClusterManagerDelegate protocol. Optional methods of the protocol allow the delegate to manage clustering and animations.
+ The delegate of a CKClusterManager object may adopt the CKClusterManagerDelegate protocol.
+ Optional methods of the protocol allow the delegate to manage clustering and animations.
  */
 @protocol CKClusterManagerDelegate <NSObject>
 
@@ -43,7 +44,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  Asks the delegate if the cluster manager should clusterized the given annotation.
  
  @param clusterManager The cluster manager object requesting this information.
- @param annotation         The annotation to clusterized.
+ @param annotation     The annotation to clusterized.
  
  @return Yes to permit clusterization of the given annotation.
  */
@@ -54,7 +55,9 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  
  @param clusterManager The cluster manager object requesting the animation.
  @param animations     A block object containing the animation. This block takes no parameters and has no return value. This parameter must not be NULL.
- @param completion     A block object to be executed when the animation sequence ends. This block has no return value and takes a single Boolean argument that indicates whether or not the animations actually finished before the completion handler was called. If the duration of the animation is 0, this block is performed at the beginning of the next run loop cycle. This parameter may be NULL.
+ @param completion     A block object to be executed when the animation sequence ends. This block has no return value and takes a single Boolean argument
+                       that indicates whether or not the animations actually finished before the completion handler was called. If the duration of the
+                       animation is 0, this block is performed at the beginning of the next run loop cycle. This parameter may be NULL.
  */
 - (void)clusterManager:(CKClusterManager *)clusterManager performAnimations:(void (^)(void))animations completion:(void (^ __nullable)(BOOL finished))completion;
 
@@ -65,22 +68,22 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 /**
  The total duration of the clusters animations, measured in seconds. If you specify a negative value or 0, the changes are made without animating them.
  */
-@property (assign, nonatomic) CGFloat animationDuration;
+@property (nonatomic, assign) CGFloat animationDuration;
 
 /**
  A mask of options indicating how you want to perform the animations. For a list of valid constants, @see UIViewAnimationOptions.
  */
-@property (assign, nonatomic) UIViewAnimationOptions animationOptions;
+@property (nonatomic, assign) UIViewAnimationOptions animationOptions;
 
 /**
  The cluster algorithm to use. @see CKClusterAlgorithm.
  */
-@property (nonatomic,strong) __kindof CKClusterAlgorithm *algorithm;
+@property (nonatomic, strong) __kindof CKClusterAlgorithm *algorithm;
 
 /**
  A map object adopting the CKMap protocol.
  */
-@property (nonatomic,weak) id<CKMap> map;
+@property (nonatomic, weak) id<CKMap> map;
 
 /**
  Delegate instance that adopt the CKClusterManagerDelegate protocol.
@@ -90,7 +93,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 /**
  The currently selected annotation.
  */
-@property (nonatomic,readonly) id<MKAnnotation> selectedAnnotation;
+@property (nonatomic, readonly) id<MKAnnotation> selectedAnnotation;
 
 /**
  The current cluster array.
@@ -110,7 +113,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 /**
  The annotations to clusterize.
  */
-@property (nonatomic,copy) NSArray<id<MKAnnotation>> *annotations;
+@property (nonatomic, copy) NSArray<id<MKAnnotation>> *annotations;
 
 /**
  Adds an annotation.
@@ -190,9 +193,21 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  Initializes an animation for the given cluster.
 
  @param cluster The cluster to animate.
+ @param from The cluster starting point.
+ @param to The cluster ending point.
  @return The initialized CKClusterAnimation object.
  */
-- (instancetype)initWithCluster:(CKCluster *)cluster NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to NS_DESIGNATED_INITIALIZER;
+
+/**
+ Creates an animation for the given cluster.
+
+ @param cluster The cluster to animate.
+ @param from The cluster starting point.
+ @param to The cluster ending point.
+ @return The initialized CKClusterAnimation object.
+ */
++ (instancetype)animateCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to;
 
 /// :nodoc:
 - (instancetype)init NS_UNAVAILABLE;

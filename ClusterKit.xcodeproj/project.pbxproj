@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C2C4A0E1F94BACE00B22745 /* MGLMapView+ClusterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */; };
 		9C53CD191E03F51C000AD9B8 /* CKClusterAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C53CD1A1E03F51C000AD9B8 /* CKClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C53CD051E03F51C000AD9B8 /* CKClusterAlgorithm.m */; };
 		9C53CD1B1E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD061E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -266,7 +265,6 @@
 				9CE1F2691E069F30007E2678 /* CKGridBasedAlgorithm.h in Headers */,
 				9C53CD1D1E03F51C000AD9B8 /* CKCluster.h in Headers */,
 				9C53CD211E03F51C000AD9B8 /* CKMap.h in Headers */,
-				9C2C4A0E1F94BACE00B22745 /* MGLMapView+ClusterKit.h in Headers */,
 				9C53CD191E03F51C000AD9B8 /* CKClusterAlgorithm.h in Headers */,
 				9CC875F31E02AE2D0019AA18 /* ClusterKit.h in Headers */,
 				9C53CD231E03F51C000AD9B8 /* CKQuadTree.h in Headers */,
@@ -319,7 +317,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CK;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Hulab;
 				TargetAttributes = {
 					9CC8756E1E0295A30019AA18 = {
@@ -334,7 +332,7 @@
 			};
 			buildConfigurationList = 9CC875691E0295A20019AA18 /* Build configuration list for PBXProject "ClusterKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -409,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -469,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

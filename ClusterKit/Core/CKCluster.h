@@ -65,7 +65,7 @@ MK_EXTERN NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2);
 /**
  Cluster coordinate.
  */
-@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 /**
  Cluster annotation array.
@@ -165,6 +165,8 @@ MK_EXTERN NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2);
 
 @end
 
+#pragma mark - Centroid Cluster
+
 /**
  Cluster with centroid coordinate.
  */
@@ -172,12 +174,16 @@ MK_EXTERN NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2);
 
 @end
 
+#pragma mark - Nearest Centroid Cluster
+
 /**
  Cluster with coordinate at the nearest annotation from centroid.
  */
 @interface CKNearestCentroidCluster : CKCentroidCluster
 
 @end
+
+#pragma mark - Bottom Cluster
 
 /**
  Cluster with coordinate at the bottom annotion.

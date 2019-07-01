@@ -25,12 +25,16 @@
 /**
  A simple grid-based clustering algorithm with O(n) performance.
  
- The great advantage of grid-based clustering is its significant reduction of the computational complexity, especially for clustering very large data sets. The grid-based clustering approach differs from the conventional clustering algorithms in that it is concerned not with the data points but with the value space that surrounds the data points.
+ The great advantage of grid-based clustering is its significant reduction of the computational complexity,
+ especially for clustering very large data sets. The grid-based clustering approach differs from the conventional
+ clustering algorithms in that it is concerned not with the data points but with the value space that surrounds
+ the data points.
  
  This grid-based implementation consists of the following the steps:
  
  1. Iterate througth the annotations found in the given rect.
- 2. Associate each annotation to a grid cell. The rect is partitioned in a finite number of cells using the cell size property at the given zoom level.
+ 2. Associate each annotation to a grid cell. The rect is partitioned in a finite number of cells using the cell
+    size property at the given zoom level.
  3. Annotation are added to a centroid cluster {@see CKCentroidCluster} by default.
  */
 @interface CKGridBasedAlgorithm : CKClusterAlgorithm
