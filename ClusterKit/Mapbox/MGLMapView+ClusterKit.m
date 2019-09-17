@@ -138,7 +138,13 @@ MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds,
         };
     }
     
-    if ([self.clusterManager.delegate respondsToSelector:@selector(clusterManager:performAnimations:completion:)]) {
+    if ([self.clusterManager.delegate respondsToSelector:@selector(clusterManager:performCustomAnimations:completion:)]) {
+        [self.clusterManager.delegate clusterManager:self.clusterManager
+                             performCustomAnimations:animations
+                                          completion:^(BOOL finished) {
+                                              if (completion) completion(finished);
+                                          }];
+    } else if ([self.clusterManager.delegate respondsToSelector:@selector(clusterManager:performAnimations:completion:)]) {
         [self.clusterManager.delegate clusterManager:self.clusterManager
                                    performAnimations:animationsBlock
                                           completion:^(BOOL finished) {

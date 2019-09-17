@@ -65,7 +65,7 @@ MK_EXTERN NSComparisonResult MKMapSizeCompare(MKMapSize size1, MKMapSize size2);
 /**
  Cluster coordinate.
  */
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 
 /**
  Cluster annotation array.

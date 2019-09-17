@@ -31,6 +31,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 
 @protocol CKMap;
 @class CKClusterManager;
+@class CKClusterAnimation;
 
 /**
  The delegate of a CKClusterManager object may adopt the CKClusterManagerDelegate protocol.
@@ -49,6 +50,15 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  @return Yes to permit clusterization of the given annotation.
  */
 - (BOOL)clusterManager:(CKClusterManager *)clusterManager shouldClusterAnnotation:(id<MKAnnotation>)annotation;
+
+/**
+ Tells the delegate to perform a custom animation based on the animations array.
+ 
+ @param clusterManager    The cluster manager object requesting the animation.
+ @param customAnimations  An array of CKClusterAnimation objects containing the animations. This parameter must not be NULL.
+ @param completion        A block object to be executed when the animation sequence ends. This block has no return value and                         takes a single Boolean argument that indicates whether or not the animations actually finished                             before the completion handler was called. If the duration of the animation is 0, this block is                             performed at the beginning of the next run loop cycle. This parameter may be NULL.
+ */
+- (void)clusterManager:(CKClusterManager *)clusterManager performCustomAnimations:(NSArray <CKClusterAnimation *> *)animations completion:(void (^ __nullable)(BOOL finished))completion;
 
 /**
  Tells the delegate to perform an animation.
