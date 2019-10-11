@@ -31,6 +31,7 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 
 @protocol CKMap;
 @class CKClusterManager;
+@class CKClusterAnimation;
 
 /**
  The delegate of a CKClusterManager object may adopt the CKClusterManagerDelegate protocol.
@@ -49,6 +50,15 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  @return Yes to permit clusterization of the given annotation.
  */
 - (BOOL)clusterManager:(CKClusterManager *)clusterManager shouldClusterAnnotation:(id<MKAnnotation>)annotation;
+
+/**
+ Tells the delegate to perform a custom animation based on the animations array.
+ 
+ @param clusterManager    The cluster manager object requesting the animation.
+ @param customAnimations  An array of CKClusterAnimation objects containing the animations. This parameter must not be NULL.
+ @param completion        A block object to be executed when the animation sequence ends. This block has no return value and                         takes a single Boolean argument that indicates whether or not the animations actually finished                             before the completion handler was called. If the duration of the animation is 0, this block is                             performed at the beginning of the next run loop cycle. This parameter may be NULL.
+ */
+- (void)clusterManager:(CKClusterManager *)clusterManager performCustomAnimations:(NSArray <CKClusterAnimation *> *)animations completion:(void (^ __nullable)(BOOL finished))completion;
 
 /**
  Tells the delegate to perform an animation.
@@ -170,6 +180,14 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 @end
 
 /**
+CKClusterAnimationType defines the type of the CKClusterAnimation object.
+*/
+typedef NS_ENUM(NSInteger, CKClusterAnimationType) {
+    CKClusterAnimationTypeCollapse,
+    CKClusterAnimationTypeExpand
+};
+
+/**
  CKClusterAnimation defines a cluster animation from a start coordinate to an end coordinate on a map.
  */
 @interface CKClusterAnimation : NSObject
@@ -190,14 +208,20 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
 @property (nonatomic) CLLocationCoordinate2D to;
 
 /**
+The type of the animation.
+*/
+@property (nonatomic) CKClusterAnimationType type;
+
+/**
  Initializes an animation for the given cluster.
 
  @param cluster The cluster to animate.
  @param from The cluster starting point.
  @param to The cluster ending point.
+ @param type The type of the animation.
  @return The initialized CKClusterAnimation object.
  */
-- (instancetype)initWithCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to type:(CKClusterAnimationType)type NS_DESIGNATED_INITIALIZER;
 
 /**
  Creates an animation for the given cluster.
@@ -205,9 +229,10 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  @param cluster The cluster to animate.
  @param from The cluster starting point.
  @param to The cluster ending point.
+  @param type The type of the animation.
  @return The initialized CKClusterAnimation object.
  */
-+ (instancetype)animateCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to;
++ (instancetype)animateCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to type:(CKClusterAnimationType)type;
 
 /// :nodoc:
 - (instancetype)init NS_UNAVAILABLE;

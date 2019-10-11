@@ -254,7 +254,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
             CKClusterAnimation *animation = [animations member:neighbor];
             
             if (!animation) {
-                animation = [CKClusterAnimation animateCluster:neighbor from:oldCluster.coordinate to:neighbor.coordinate];
+                animation = [CKClusterAnimation animateCluster:neighbor from:oldCluster.coordinate to:neighbor.coordinate type:CKClusterAnimationTypeExpand];
                 [animations addObject:animation];
                 continue;
             }
@@ -290,7 +290,7 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
             CKClusterAnimation *animation = [animations member:neighbor];
             
             if (!animation) {
-                animation = [CKClusterAnimation animateCluster:neighbor from:neighbor.coordinate to:newCluster.coordinate];
+                animation = [CKClusterAnimation animateCluster:neighbor from:neighbor.coordinate to:newCluster.coordinate type:CKClusterAnimationTypeCollapse];
                 [animations addObject:animation];
                 continue;
             }
@@ -325,16 +325,17 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
 
 @implementation CKClusterAnimation
 
-+ (instancetype)animateCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to {
-    return [[self alloc] initWithCluster:cluster from:from to:to];
++ (instancetype)animateCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to type:(CKClusterAnimationType)type {
+    return [[self alloc] initWithCluster:cluster from:from to:to type:type];
 }
 
-- (instancetype)initWithCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to {
+- (instancetype)initWithCluster:(CKCluster *)cluster from:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)to type:(CKClusterAnimationType)type {
     self = [super init];
     if (self) {
         _cluster = cluster;
         _from = from;
         _to = to;
+        _type = type;
     }
     return self;
 }
