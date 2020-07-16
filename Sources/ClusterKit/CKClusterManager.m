@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "CKClusterManager.h"
-#import "CKQuadTree.h"
-#import "CKMap.h"
+#import <ClusterKit/CKClusterManager.h>
+#import <ClusterKit/CKQuadTree.h>
+#import <ClusterKit/CKMap.h>
 
 const double kCKMarginFactorWorld = -1;
 
@@ -49,7 +49,9 @@ BOOL CLLocationCoordinateEqual(CLLocationCoordinate2D coordinate1, CLLocationCoo
         self.maxZoomLevel = 20;
         self.marginFactor = kCKMarginFactorWorld;
         self.animationDuration = .5;
+#if __has_include(<UIKit/UIKit.h>)
         self.animationOptions = UIViewAnimationOptionCurveEaseOut;
+#endif
         _clusters = [NSMutableSet set];
         
         _queue = dispatch_queue_create("com.hulab.cluster", DISPATCH_QUEUE_CONCURRENT);

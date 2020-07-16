@@ -22,6 +22,7 @@
 
 #import <GoogleMaps/GoogleMaps.h>
 #import <ClusterKit/CKMap.h>
+#import <ClusterKit/CKCluster.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

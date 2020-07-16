@@ -1,4 +1,4 @@
-// MGLMapView+ClusterKit.m
+// MKMapView+ClusterKit.m
 //
 // Copyright © 2017 Hulab. All rights reserved.
 //
@@ -20,42 +20,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#if __has_include(<UIKit/UIKit.h>)
+#import <UIKit/UIKit.h>
+#endif
+
 #import <objc/runtime.h>
-#import "MGLMapView+ClusterKit.h"
+#import <ClusterKit/MKMapView+ClusterKit.h>
 
-MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds, CLLocationCoordinate2D coordinate) {
-    
-    CLLocationCoordinate2D sw = (CLLocationCoordinate2D) {
-        .latitude = MIN(bounds.sw.latitude, coordinate.latitude),
-        .longitude = MIN(bounds.sw.longitude, coordinate.longitude)
-    };
-    
-    CLLocationCoordinate2D ne = (CLLocationCoordinate2D) {
-        .latitude = MAX(bounds.ne.latitude, coordinate.latitude),
-        .longitude = MAX(bounds.ne.longitude, coordinate.longitude)
-    };
-    return MGLCoordinateBoundsMake(sw, ne);
+@implementation MKMapView (ClusterKit)
+
+#if __has_include(<UIKit/UIKit.h>)
+
+- (void)showCluster:(CKCluster *)cluster animated:(BOOL)animated {
+    [self showCluster:cluster edgePadding:UIEdgeInsetsZero animated:animated];
 }
 
-@implementation CKCluster (Mapbox)
-
-@end
-
-@implementation MGLMapView (ClusterKit)
-
-- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster {
-    return [self cameraThatFitsCluster:cluster edgePadding:UIEdgeInsetsZero];
-}
-
-- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets {
-    MGLCoordinateBounds bounds = MGLCoordinateBoundsMake(cluster.firstAnnotation.coordinate, cluster.firstAnnotation.coordinate);
-    
+- (void)showCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets animated:(BOOL)animated {
+    MKMapRect zoomRect = MKMapRectNull;
     for (id<MKAnnotation> annotation in cluster) {
-        bounds = MGLCoordinateIncludingCoordinate(bounds, annotation.coordinate);
+        zoomRect = MKMapRectByAddingPoint(zoomRect, MKMapPointForCoordinate(annotation.coordinate));
     }
-    
-    return [self cameraThatFitsCoordinateBounds:bounds edgePadding:insets];
+    [self setVisibleMapRect:zoomRect edgePadding:insets animated:animated];
 }
+
+#endif
 
 #pragma mark - <CKMap>
 
@@ -69,38 +57,8 @@ MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds,
     return clusterManager;
 }
 
-- (double)zoom {
-    MGLCoordinateBounds bounds = self.visibleCoordinateBounds;
-    double longitudeDelta = bounds.ne.longitude - bounds.sw.longitude;
-    
-    // Handle antimeridian crossing
-    if (longitudeDelta < 0) {
-        longitudeDelta = 360 + bounds.ne.longitude - bounds.sw.longitude;
-    }
-    
-    return log2(360 * self.frame.size.width / (256 * longitudeDelta));
-}
-
-- (MKMapRect)visibleMapRect {
-    MGLCoordinateBounds bounds = self.visibleCoordinateBounds;
-    MKMapPoint sw = MKMapPointForCoordinate(bounds.sw);
-    MKMapPoint ne = MKMapPointForCoordinate(bounds.ne);
-    
-    double x = sw.x;
-    double y = ne.y;
-    
-    double width = ne.x - sw.x;
-    double height = sw.y - ne.y;
-    
-    // Handle 180th Meridian
-    if (width < 0) {
-        width = ne.x + MKMapSizeWorld.width - sw.x;
-    }
-    if (height < 0) {
-        height = sw.y + MKMapSizeWorld.height - ne.y;
-    }
-    
-    return MKMapRectMake(x, y, width, height);
+- (double)zoom {    
+    return log2(360 * self.frame.size.width / (256 * self.region.span.longitudeDelta));
 }
 
 - (void)addClusters:(NSArray<CKCluster *> *)clusters {
@@ -145,11 +103,13 @@ MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds,
                                               if (completion) completion(finished);
                                           }];
     } else {
+#if __has_include(<UIKit/UIKit.h>)
         [UIView animateWithDuration:self.clusterManager.animationDuration
                               delay:0
                             options:self.clusterManager.animationOptions
                          animations:animationsBlock
                          completion:completion];
+#endif
     }
 }
 

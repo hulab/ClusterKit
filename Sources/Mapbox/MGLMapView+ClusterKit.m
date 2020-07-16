@@ -1,4 +1,4 @@
-// MKMapView+ClusterKit.m
+// MGLMapView+ClusterKit.m
 //
 // Copyright © 2017 Hulab. All rights reserved.
 //
@@ -21,20 +21,41 @@
 // THE SOFTWARE.
 
 #import <objc/runtime.h>
-#import "MKMapView+ClusterKit.h"
 
-@implementation MKMapView (ClusterKit)
+#import "MGLMapView+ClusterKit.h"
 
-- (void)showCluster:(CKCluster *)cluster animated:(BOOL)animated {
-    [self showCluster:cluster edgePadding:UIEdgeInsetsZero animated:animated];
+MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds, CLLocationCoordinate2D coordinate) {
+    
+    CLLocationCoordinate2D sw = (CLLocationCoordinate2D) {
+        .latitude = MIN(bounds.sw.latitude, coordinate.latitude),
+        .longitude = MIN(bounds.sw.longitude, coordinate.longitude)
+    };
+    
+    CLLocationCoordinate2D ne = (CLLocationCoordinate2D) {
+        .latitude = MAX(bounds.ne.latitude, coordinate.latitude),
+        .longitude = MAX(bounds.ne.longitude, coordinate.longitude)
+    };
+    return MGLCoordinateBoundsMake(sw, ne);
 }
 
-- (void)showCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets animated:(BOOL)animated {
-    MKMapRect zoomRect = MKMapRectNull;
+@implementation CKCluster (Mapbox)
+
+@end
+
+@implementation MGLMapView (ClusterKit)
+
+- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster {
+    return [self cameraThatFitsCluster:cluster edgePadding:UIEdgeInsetsZero];
+}
+
+- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets {
+    MGLCoordinateBounds bounds = MGLCoordinateBoundsMake(cluster.firstAnnotation.coordinate, cluster.firstAnnotation.coordinate);
+    
     for (id<MKAnnotation> annotation in cluster) {
-        zoomRect = MKMapRectByAddingPoint(zoomRect, MKMapPointForCoordinate(annotation.coordinate));
+        bounds = MGLCoordinateIncludingCoordinate(bounds, annotation.coordinate);
     }
-    [self setVisibleMapRect:zoomRect edgePadding:insets animated:animated];
+    
+    return [self cameraThatFitsCoordinateBounds:bounds edgePadding:insets];
 }
 
 #pragma mark - <CKMap>
@@ -49,8 +70,38 @@
     return clusterManager;
 }
 
-- (double)zoom {    
-    return log2(360 * self.frame.size.width / (256 * self.region.span.longitudeDelta));
+- (double)zoom {
+    MGLCoordinateBounds bounds = self.visibleCoordinateBounds;
+    double longitudeDelta = bounds.ne.longitude - bounds.sw.longitude;
+    
+    // Handle antimeridian crossing
+    if (longitudeDelta < 0) {
+        longitudeDelta = 360 + bounds.ne.longitude - bounds.sw.longitude;
+    }
+    
+    return log2(360 * self.frame.size.width / (256 * longitudeDelta));
+}
+
+- (MKMapRect)visibleMapRect {
+    MGLCoordinateBounds bounds = self.visibleCoordinateBounds;
+    MKMapPoint sw = MKMapPointForCoordinate(bounds.sw);
+    MKMapPoint ne = MKMapPointForCoordinate(bounds.ne);
+    
+    double x = sw.x;
+    double y = ne.y;
+    
+    double width = ne.x - sw.x;
+    double height = sw.y - ne.y;
+    
+    // Handle 180th Meridian
+    if (width < 0) {
+        width = ne.x + MKMapSizeWorld.width - sw.x;
+    }
+    if (height < 0) {
+        height = sw.y + MKMapSizeWorld.height - ne.y;
+    }
+    
+    return MKMapRectMake(x, y, width, height);
 }
 
 - (void)addClusters:(NSArray<CKCluster *> *)clusters {
@@ -63,7 +114,7 @@
 
 - (void)selectCluster:(CKCluster *)cluster animated:(BOOL)animated {
     if (![self.selectedAnnotations containsObject:cluster]) {
-        [self selectAnnotation:cluster animated:animated];
+        [self selectAnnotation:cluster animated:animated completionHandler:nil];
     }
 }
 

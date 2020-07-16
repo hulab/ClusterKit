@@ -1,6 +1,7 @@
 #import <objc/runtime.h>
-#import "YMKMapView+ClusterKit.h"
 #import <MapKit/MapKit.h>
+
+#import "YMKMapView+ClusterKit.h"
 
 @implementation YMKPlacemarkMapObject (ClusterKit)
 

@@ -1,4 +1,4 @@
-// CKClusterAlgorithm.h
+// MGLMapView+ClusterKit.h
 //
 // Copyright © 2017 Hulab. All rights reserved.
 //
@@ -20,50 +20,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import "CKAnnotationTree.h"
-#import "CKCluster.h"
+#import <Mapbox/Mapbox.h>
+#import <ClusterKit/CKMap.h>
+#import <ClusterKit/CKCluster.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- CKClusterAlgorithm represents a cluster algorithm parent class.
- */
-@interface CKClusterAlgorithm : NSObject
+MK_EXTERN MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds, CLLocationCoordinate2D coordinate);
 
 /**
- Returns an array of clusters for the given map rect at a certain zoom.
- 
- @param rect The map rect in which the clusters will be computed.
- @param zoom The zoom value at which the clusters will be computed.
- @param tree The tree where containing the annotations.
- 
- @return The list of cluster.
+ Convinient extension to make all MGLShape complying to the `MKAnnotation` and make the usable in ClusterKit
  */
-- (NSArray<CKCluster *> *)clustersInRect:(MKMapRect)rect zoom:(double)zoom tree:(id<CKAnnotationTree>)tree;
+@interface MGLShape (ClusterKit) <MKAnnotation>
 
 @end
 
-/**
- CKClusterAlgorithm for CKCluster class registration.
- The algorithm will use the registrated class to instantiate a cluster.
- */
-@interface CKClusterAlgorithm (CKCluster)
+@interface CKCluster (Mapbox) <MGLAnnotation>
 
-/**
- Registers a CKCluster class initializer.
+@end
 
- @param clusterClass The CKCluster class initializer.
- */
-- (void)registerClusterClass:(Class<CKCluster>)clusterClass;
+@interface MGLMapView (ClusterKit) <CKMap>
 
-/**
- Instantiates a cluster using the registered class.
+- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster;
 
- @param coordinate The cluster coordinate.
- @return The newly-initialized cluster.
- */
-- (__kindof CKCluster *)clusterWithCoordinate:(CLLocationCoordinate2D)coordinate;
+- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets;
 
 @end
 

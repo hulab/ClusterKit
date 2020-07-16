@@ -21,8 +21,7 @@
 // THE SOFTWARE.
 
 #import <MapKit/MKGeometry.h>
-
-#import "CKCluster.h"
+#import <ClusterKit/CKCluster.h>
 
 double CKDistance(CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
     MKMapPoint a = MKMapPointForCoordinate(from);

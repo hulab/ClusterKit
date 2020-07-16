@@ -20,10 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-#import "CKGridBasedAlgorithm.h"
-#import "CKNonHierarchicalDistanceBasedAlgorithm.h"
+#if __has_include(<UIKit/UIKit.h>)
+#import <UIKit/UIKit.h>
+#endif
+
+#import <ClusterKit/CKGridBasedAlgorithm.h>
+#import <ClusterKit/CKNonHierarchicalDistanceBasedAlgorithm.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -70,10 +74,12 @@ FOUNDATION_EXTERN const double kCKMarginFactorWorld;
  */
 @property (nonatomic, assign) CGFloat animationDuration;
 
+#if __has_include(<UIKit/UIKit.h>)
 /**
  A mask of options indicating how you want to perform the animations. For a list of valid constants, @see UIViewAnimationOptions.
  */
 @property (nonatomic, assign) UIViewAnimationOptions animationOptions;
+#endif
 
 /**
  The cluster algorithm to use. @see CKClusterAlgorithm.

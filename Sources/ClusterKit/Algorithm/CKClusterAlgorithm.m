@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "CKClusterAlgorithm.h"
+#import <ClusterKit/CKClusterAlgorithm.h>
 
 @implementation CKClusterAlgorithm  {
     Class<CKCluster> _clusterClass;

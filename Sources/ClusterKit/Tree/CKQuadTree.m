@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "CKQuadTree.h"
+#import <ClusterKit/CKQuadTree.h>
 
 /// Quadtree point
 typedef struct hb_qpoint {

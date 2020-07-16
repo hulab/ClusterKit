@@ -1,4 +1,4 @@
-// MGLMapView+ClusterKit.h
+// MKMapView+ClusterKit.h
 //
 // Copyright © 2017 Hulab. All rights reserved.
 //
@@ -20,30 +20,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Mapbox/Mapbox.h>
-#import <ClusterKit/ClusterKit.h>
+#import <MapKit/MapKit.h>
+#import <ClusterKit/CKMap.h>
+#import <ClusterKit/CKCluster.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-MK_EXTERN MGLCoordinateBounds MGLCoordinateIncludingCoordinate(MGLCoordinateBounds bounds, CLLocationCoordinate2D coordinate);
+/**
+ MKMapView category adopting the CKMap protocol.
+ */
+@interface MKMapView (ClusterKit) <CKMap>
+
+#if __has_include(<UIKit/UIKit.h>)
 
 /**
- Convinient extension to make all MGLShape complying to the `MKAnnotation` and make the usable in ClusterKit
+ Shows the specified cluster centered on screen at the greatest possible zoom level.
+ 
+ @param cluster  The cluster to show.
+ @param animated Specify YES if you want the map view to animate the transition to the cluster rectangle or NO if you want the map to center on the specified cluster immediately.
  */
-@interface MGLShape (ClusterKit) <MKAnnotation>
+- (void)showCluster:(CKCluster *)cluster animated:(BOOL)animated;
 
-@end
+/**
+ Shows the specified cluster centered on screen at the greatest possible zoom level with the given edge padding.
+ 
+ @param cluster  The cluster to show.
+ @param insets   The amount of additional space (measured in screen points) to make visible around the specified rectangle.
+ @param animated Specify YES if you want the map view to animate the transition to the cluster rectangle or NO if you want the map to center on the specified cluster immediately.
+ */
+- (void)showCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets animated:(BOOL)animated;
 
-@interface CKCluster (Mapbox) <MGLAnnotation>
-
-@end
-
-@interface MGLMapView (ClusterKit) <CKMap>
-
-- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster;
-
-- (MGLMapCamera *)cameraThatFitsCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets;
-
+#endif
 @end
 
 NS_ASSUME_NONNULL_END

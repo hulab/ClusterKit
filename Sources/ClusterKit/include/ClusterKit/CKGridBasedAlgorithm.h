@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "CKClusterAlgorithm.h"
+#import <ClusterKit/CKClusterAlgorithm.h>
 
 /**
  A simple grid-based clustering algorithm with O(n) performance.

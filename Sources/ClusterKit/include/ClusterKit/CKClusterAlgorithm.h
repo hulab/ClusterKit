@@ -1,4 +1,4 @@
-// MKMapView+ClusterKit.h
+// CKClusterAlgorithm.h
 //
 // Copyright © 2017 Hulab. All rights reserved.
 //
@@ -20,32 +20,50 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <MapKit/MapKit.h>
-#import <ClusterKit/ClusterKit.h>
+#import <Foundation/Foundation.h>
+#import <ClusterKit/CKAnnotationTree.h>
+#import <ClusterKit/CKCluster.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- MKMapView category adopting the CKMap protocol.
+ CKClusterAlgorithm represents a cluster algorithm parent class.
  */
-@interface MKMapView (ClusterKit) <CKMap>
+@interface CKClusterAlgorithm : NSObject
 
 /**
- Shows the specified cluster centered on screen at the greatest possible zoom level.
+ Returns an array of clusters for the given map rect at a certain zoom.
  
- @param cluster  The cluster to show.
- @param animated Specify YES if you want the map view to animate the transition to the cluster rectangle or NO if you want the map to center on the specified cluster immediately.
+ @param rect The map rect in which the clusters will be computed.
+ @param zoom The zoom value at which the clusters will be computed.
+ @param tree The tree where containing the annotations.
+ 
+ @return The list of cluster.
  */
-- (void)showCluster:(CKCluster *)cluster animated:(BOOL)animated;
+- (NSArray<CKCluster *> *)clustersInRect:(MKMapRect)rect zoom:(double)zoom tree:(id<CKAnnotationTree>)tree;
+
+@end
 
 /**
- Shows the specified cluster centered on screen at the greatest possible zoom level with the given edge padding.
- 
- @param cluster  The cluster to show.
- @param insets   The amount of additional space (measured in screen points) to make visible around the specified rectangle.
- @param animated Specify YES if you want the map view to animate the transition to the cluster rectangle or NO if you want the map to center on the specified cluster immediately.
+ CKClusterAlgorithm for CKCluster class registration.
+ The algorithm will use the registrated class to instantiate a cluster.
  */
-- (void)showCluster:(CKCluster *)cluster edgePadding:(UIEdgeInsets)insets animated:(BOOL)animated;
+@interface CKClusterAlgorithm (CKCluster)
+
+/**
+ Registers a CKCluster class initializer.
+
+ @param clusterClass The CKCluster class initializer.
+ */
+- (void)registerClusterClass:(Class<CKCluster>)clusterClass;
+
+/**
+ Instantiates a cluster using the registered class.
+
+ @param coordinate The cluster coordinate.
+ @return The newly-initialized cluster.
+ */
+- (__kindof CKCluster *)clusterWithCoordinate:(CLLocationCoordinate2D)coordinate;
 
 @end
 

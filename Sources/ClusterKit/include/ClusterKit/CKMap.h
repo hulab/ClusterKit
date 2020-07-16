@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "CKClusterManager.h"
+#import <ClusterKit/CKClusterManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
