@@ -1,10 +1,9 @@
-framework module ClusterKit {
-    umbrella header "ClusterKit.h"
+module ClusterKit {
+    umbrella header "ClusterKit/ClusterKit.h"
     export *
-    module * { export * }
     
     explicit module MapKit {
-        header "MKMapView+ClusterKit.h"
+        header "ClusterKit/MKMapView+ClusterKit.h"
         export *
     }
 }
