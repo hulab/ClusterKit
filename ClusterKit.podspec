@@ -28,6 +28,10 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |ss|
     ss.frameworks = 'MapKit'
     ss.source_files = 'Sources/ClusterKit/**/*.{h,m}'
+
+    ss.test_spec do |test_spec|
+      test_spec.source_files = 'Tests/ClusterKitTests/*.{h,m}'
+    end
   end
 
   # Like GoogleMaps sdk (googlemaps/google-maps-ios-utils#23) YandexMapKit is statically built,
@@ -53,10 +57,6 @@ Pod::Spec.new do |s|
     ss.dependency 'ClusterKit/Core'
     ss.dependency 'Mapbox-iOS-SDK', '~> 5.0'
     ss.source_files = 'Sources/Mapbox'
-  end
-
-  s.test_spec do |test_spec|
-    test_spec.source_files = 'Tests/*.{h,m}'
   end
 
 end
