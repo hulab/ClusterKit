@@ -15,6 +15,9 @@
     <a href="http://cocoapods.org/pods/ClusterKit">
         <img src="https://img.shields.io/cocoapods/p/ClusterKit.svg?style=flat" alt="Platform">
     </a>
+    <a href="https://swift.org/package-manager">
+        <img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="Swift Package Manager" />
+    </a>
     <a href="https://github.com/Carthage/Carthage">
         <img src="https://img.shields.io/badge/Carthage-compatible-brightgreen.svg?style=flat" alt="Carthage">
     </a>
@@ -39,7 +42,7 @@ ClusterKit is an elegant and efficiant clustering controller for maps. Its flexi
 
 ## Installation & Usage
 
-### Please follow the [wiki](https://github.com/hulab/ClusterKit/wiki) for integration.
+**Please follow the [wiki](https://github.com/hulab/ClusterKit/wiki) for integration.**
 
 If you want to try it, simply run:
 
