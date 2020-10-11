@@ -92,7 +92,7 @@ class GoogleMapsViewController: UIViewController, GMSMapViewDelegate, GMSMapView
         
         if let cluster = marker.cluster, cluster.count > 1 {
             
-            let padding = UIEdgeInsetsMake(40, 20, 44, 20)
+            let padding = UIEdgeInsets.init(top: 40, left: 20, bottom: 44, right: 20)
             let cameraUpdate = GMSCameraUpdate.fit(cluster, with: padding)
             mapView.animate(with: cameraUpdate)
             return true

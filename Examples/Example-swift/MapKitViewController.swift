@@ -92,7 +92,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
         }
         
         if cluster.count > 1 {
-            let edgePadding = UIEdgeInsetsMake(40, 20, 44, 20)
+            let edgePadding = UIEdgeInsets.init(top: 40, left: 20, bottom: 44, right: 20)
             mapView.show(cluster, edgePadding: edgePadding, animated: true)
         } else if let annotation = cluster.firstAnnotation {
             mapView.clusterManager.selectAnnotation(annotation, animated: false);
@@ -109,7 +109,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - How To Handle Drag and Drop
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
         guard let cluster = view.annotation as? CKCluster else {
             return
         }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C2C4A0E1F94BACE00B22745 /* MGLMapView+ClusterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */; };
 		9C53CD191E03F51C000AD9B8 /* CKClusterAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C53CD1A1E03F51C000AD9B8 /* CKClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C53CD051E03F51C000AD9B8 /* CKClusterAlgorithm.m */; };
 		9C53CD1B1E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C53CD061E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,8 +44,6 @@
 /* Begin PBXFileReference section */
 		7884A92A21F1E1C000CCCA71 /* YMKMapView+ClusterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMKMapView+ClusterKit.h"; sourceTree = "<group>"; };
 		7884A92B21F1E1C000CCCA71 /* YMKMapView+ClusterKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMKMapView+ClusterKit.m"; sourceTree = "<group>"; };
-		9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MGLMapView+ClusterKit.h"; path = "ClusterKit/Mapbox/MGLMapView+ClusterKit.h"; sourceTree = SOURCE_ROOT; };
-		9C2C4A0D1F94BACE00B22745 /* MGLMapView+ClusterKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MGLMapView+ClusterKit.m"; path = "ClusterKit/Mapbox/MGLMapView+ClusterKit.m"; sourceTree = SOURCE_ROOT; };
 		9C4C93E11E4250D500927A42 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKClusterAlgorithm.h; sourceTree = "<group>"; };
 		9C53CD051E03F51C000AD9B8 /* CKClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKClusterAlgorithm.m; sourceTree = "<group>"; };
@@ -76,12 +73,15 @@
 		9CC875B71E029AB00019AA18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9CC875B81E029AB50019AA18 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		9CC875E01E02A1AF0019AA18 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		9CC875E41E02A66F0019AA18 /* ClusterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClusterKit.h; path = ../ClusterKit.h; sourceTree = "<group>"; };
+		9CC875E41E02A66F0019AA18 /* ClusterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterKit.h; sourceTree = "<group>"; };
 		9CE1F2671E069F30007E2678 /* CKGridBasedAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKGridBasedAlgorithm.h; sourceTree = "<group>"; };
 		9CE1F2681E069F30007E2678 /* CKGridBasedAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKGridBasedAlgorithm.m; sourceTree = "<group>"; };
 		9CE807D41E2BC74E0041E83B /* CKQuadTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKQuadTreeTest.m; sourceTree = "<group>"; };
 		9CE807D61E2BD05A0041E83B /* CKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKAnnotation.h; sourceTree = "<group>"; };
 		9CE807D71E2BD05A0041E83B /* CKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKAnnotation.m; sourceTree = "<group>"; };
+		9CE9154624C0830A00A26AD9 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		9CE9154D24C19DE500A26AD9 /* MGLMapView+ClusterKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MGLMapView+ClusterKit.m"; sourceTree = "<group>"; };
+		9CE9154E24C19DE500A26AD9 /* MGLMapView+ClusterKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MGLMapView+ClusterKit.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,50 +112,36 @@
 			path = YandexMapKit;
 			sourceTree = "<group>";
 		};
-		9C2C4A0B1F94BA7D00B22745 /* Mapbox */ = {
+		9C53CD011E03F51C000AD9B8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				9C2C4A0C1F94BACE00B22745 /* MGLMapView+ClusterKit.h */,
-				9C2C4A0D1F94BACE00B22745 /* MGLMapView+ClusterKit.m */,
-			);
-			path = Mapbox;
-			sourceTree = "<group>";
-		};
-		9C53CD011E03F51C000AD9B8 /* ClusterKit */ = {
-			isa = PBXGroup;
-			children = (
-				9C53CD021E03F51C000AD9B8 /* Core */,
-				9C53CD161E03F51C000AD9B8 /* MapKit */,
+				9C53CD021E03F51C000AD9B8 /* ClusterKit */,
 				9C53CD131E03F51C000AD9B8 /* GoogleMaps */,
-				9C2C4A0B1F94BA7D00B22745 /* Mapbox */,
+				9CE9154C24C19DE500A26AD9 /* Mapbox */,
 				7884A92921F1E1C000CCCA71 /* YandexMapKit */,
 			);
-			path = ClusterKit;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		9C53CD021E03F51C000AD9B8 /* Core */ = {
+		9C53CD021E03F51C000AD9B8 /* ClusterKit */ = {
 			isa = PBXGroup;
 			children = (
-				9CC875E41E02A66F0019AA18 /* ClusterKit.h */,
+				9CC875731E0295A30019AA18 /* Info.plist */,
+				9CE9154824C08DDC00A26AD9 /* include */,
 				9C53CD0D1E03F51C000AD9B8 /* Tree */,
 				9C53CD031E03F51C000AD9B8 /* Algorithm */,
-				9C53CD081E03F51C000AD9B8 /* CKCluster.h */,
+				9C53CD161E03F51C000AD9B8 /* MapKit */,
 				9C53CD091E03F51C000AD9B8 /* CKCluster.m */,
-				9C53CD0C1E03F51C000AD9B8 /* CKMap.h */,
-				9C53CD0A1E03F51C000AD9B8 /* CKClusterManager.h */,
 				9C53CD0B1E03F51C000AD9B8 /* CKClusterManager.m */,
 			);
-			path = Core;
+			path = ClusterKit;
 			sourceTree = "<group>";
 		};
 		9C53CD031E03F51C000AD9B8 /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
-				9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */,
 				9C53CD051E03F51C000AD9B8 /* CKClusterAlgorithm.m */,
-				9CE1F2671E069F30007E2678 /* CKGridBasedAlgorithm.h */,
 				9CE1F2681E069F30007E2678 /* CKGridBasedAlgorithm.m */,
-				9C53CD061E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h */,
 				9C53CD071E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.m */,
 			);
 			path = Algorithm;
@@ -164,8 +150,6 @@
 		9C53CD0D1E03F51C000AD9B8 /* Tree */ = {
 			isa = PBXGroup;
 			children = (
-				9C53CD0E1E03F51C000AD9B8 /* CKAnnotationTree.h */,
-				9C53CD0F1E03F51C000AD9B8 /* CKQuadTree.h */,
 				9C53CD101E03F51C000AD9B8 /* CKQuadTree.m */,
 			);
 			path = Tree;
@@ -183,7 +167,6 @@
 		9C53CD161E03F51C000AD9B8 /* MapKit */ = {
 			isa = PBXGroup;
 			children = (
-				9C53CD171E03F51C000AD9B8 /* MKMapView+ClusterKit.h */,
 				9C53CD181E03F51C000AD9B8 /* MKMapView+ClusterKit.m */,
 			);
 			path = MapKit;
@@ -193,8 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				9CC875B41E029A900019AA18 /* Metadata */,
-				9C53CD011E03F51C000AD9B8 /* ClusterKit */,
-				9CC875711E0295A30019AA18 /* Framework */,
+				9C53CD011E03F51C000AD9B8 /* Sources */,
 				9CC8757C1E0295A30019AA18 /* Tests */,
 				9CC875701E0295A30019AA18 /* Products */,
 				B65034C293FD9FEE36CEF08A /* Frameworks */,
@@ -210,24 +192,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9CC875711E0295A30019AA18 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				9CC875731E0295A30019AA18 /* Info.plist */,
-				9CC875B31E0297EB0019AA18 /* module.modulemap */,
-			);
-			path = Framework;
-			sourceTree = "<group>";
-		};
 		9CC8757C1E0295A30019AA18 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9CE807D41E2BC74E0041E83B /* CKQuadTreeTest.m */,
-				9CAA8B9D1E2BE1C800AD4063 /* CKGridBasedAlgorithmTest.m */,
-				9CAA8B9F1E2BE3DF00AD4063 /* CKNonHierarchicalDistanceBasedAlgorithmTest.m */,
-				9CC8757F1E0295A30019AA18 /* Info.plist */,
-				9CE807D61E2BD05A0041E83B /* CKAnnotation.h */,
-				9CE807D71E2BD05A0041E83B /* CKAnnotation.m */,
+				9CE9154724C089C100A26AD9 /* ClusterKitTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -235,6 +203,7 @@
 		9CC875B41E029A900019AA18 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				9CE9154624C0830A00A26AD9 /* Package.swift */,
 				9CC875B81E029AB50019AA18 /* .travis.yml */,
 				9CC875B51E029AB00019AA18 /* ClusterKit.podspec */,
 				9CC875B61E029AB00019AA18 /* LICENSE */,
@@ -242,6 +211,54 @@
 				9C4C93E11E4250D500927A42 /* CHANGELOG.md */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		9CE9154724C089C100A26AD9 /* ClusterKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				9CE807D41E2BC74E0041E83B /* CKQuadTreeTest.m */,
+				9CAA8B9D1E2BE1C800AD4063 /* CKGridBasedAlgorithmTest.m */,
+				9CAA8B9F1E2BE3DF00AD4063 /* CKNonHierarchicalDistanceBasedAlgorithmTest.m */,
+				9CE807D61E2BD05A0041E83B /* CKAnnotation.h */,
+				9CE807D71E2BD05A0041E83B /* CKAnnotation.m */,
+				9CC8757F1E0295A30019AA18 /* Info.plist */,
+			);
+			path = ClusterKitTests;
+			sourceTree = "<group>";
+		};
+		9CE9154824C08DDC00A26AD9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9CC875B31E0297EB0019AA18 /* module.modulemap */,
+				9CE9154924C0939E00A26AD9 /* ClusterKit */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		9CE9154924C0939E00A26AD9 /* ClusterKit */ = {
+			isa = PBXGroup;
+			children = (
+				9CC875E41E02A66F0019AA18 /* ClusterKit.h */,
+				9C53CD0A1E03F51C000AD9B8 /* CKClusterManager.h */,
+				9C53CD081E03F51C000AD9B8 /* CKCluster.h */,
+				9C53CD0C1E03F51C000AD9B8 /* CKMap.h */,
+				9C53CD0E1E03F51C000AD9B8 /* CKAnnotationTree.h */,
+				9C53CD0F1E03F51C000AD9B8 /* CKQuadTree.h */,
+				9C53CD041E03F51C000AD9B8 /* CKClusterAlgorithm.h */,
+				9CE1F2671E069F30007E2678 /* CKGridBasedAlgorithm.h */,
+				9C53CD061E03F51C000AD9B8 /* CKNonHierarchicalDistanceBasedAlgorithm.h */,
+				9C53CD171E03F51C000AD9B8 /* MKMapView+ClusterKit.h */,
+			);
+			path = ClusterKit;
+			sourceTree = "<group>";
+		};
+		9CE9154C24C19DE500A26AD9 /* Mapbox */ = {
+			isa = PBXGroup;
+			children = (
+				9CE9154E24C19DE500A26AD9 /* MGLMapView+ClusterKit.h */,
+				9CE9154D24C19DE500A26AD9 /* MGLMapView+ClusterKit.m */,
+			);
+			path = Mapbox;
 			sourceTree = "<group>";
 		};
 		B65034C293FD9FEE36CEF08A /* Frameworks */ = {
@@ -266,7 +283,6 @@
 				9CE1F2691E069F30007E2678 /* CKGridBasedAlgorithm.h in Headers */,
 				9C53CD1D1E03F51C000AD9B8 /* CKCluster.h in Headers */,
 				9C53CD211E03F51C000AD9B8 /* CKMap.h in Headers */,
-				9C2C4A0E1F94BACE00B22745 /* MGLMapView+ClusterKit.h in Headers */,
 				9C53CD191E03F51C000AD9B8 /* CKClusterAlgorithm.h in Headers */,
 				9CC875F31E02AE2D0019AA18 /* ClusterKit.h in Headers */,
 				9C53CD231E03F51C000AD9B8 /* CKQuadTree.h in Headers */,
@@ -319,7 +335,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CK;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Hulab;
 				TargetAttributes = {
 					9CC8756E1E0295A30019AA18 = {
@@ -334,7 +350,7 @@
 			};
 			buildConfigurationList = 9CC875691E0295A20019AA18 /* Build configuration list for PBXProject "ClusterKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -409,6 +425,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -455,7 +472,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -469,6 +485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -509,7 +526,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -528,11 +544,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Framework/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/ClusterKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = Framework/module.modulemap;
+				MARKETING_VERSION = 0.5.0;
+				MODULEMAP_FILE = Sources/ClusterKit/include/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ClusterKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -548,11 +565,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Framework/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/ClusterKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = Framework/module.modulemap;
+				MARKETING_VERSION = 0.5.0;
+				MODULEMAP_FILE = Sources/ClusterKit/include/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.ClusterKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -563,7 +581,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Tests/ClusterKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.HBClusterManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -574,7 +592,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Tests/ClusterKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulab.HBClusterManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

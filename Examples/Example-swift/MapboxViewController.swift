@@ -99,7 +99,7 @@ class MapboxViewController: UIViewController, MGLMapViewDelegate {
         
         if cluster.count > 1 {
             
-            let edgePadding = UIEdgeInsetsMake(40, 20, 44, 20)
+            let edgePadding = UIEdgeInsets.init(top: 40, left: 20, bottom: 44, right: 20)
             let camera = mapView.cameraThatFitsCluster(cluster, edgePadding: edgePadding)
             mapView.setCamera(camera, animated: true)
             
