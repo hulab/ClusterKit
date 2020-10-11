@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ClusterKit"
-  s.version          = "0.4.0"
+  s.version          = "0.5.0"
   s.summary          = "ClusterKit is a map clustering framework targeting MapKit, Google Maps, Mapbox and YandexMapKit."
 
   s.description      = <<-DESC
@@ -24,44 +24,39 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.requires_arc = true
   s.default_subspecs = 'Core'
-  
+
   s.subspec 'Core' do |ss|
-  	ss.frameworks = 'MapKit'
-    ss.source_files = 'ClusterKit/ClusterKit.h', 'ClusterKit/Core/**/*.{h,m}'
-  end
-  
-  s.subspec 'MapKit' do |ss|
-    ss.dependency 'ClusterKit/Core'
-    ss.source_files = 'ClusterKit/MapKit'
+    ss.frameworks = 'MapKit'
+    ss.source_files = 'Sources/ClusterKit/**/*.{h,m}'
+
+    ss.test_spec do |test_spec|
+      test_spec.source_files = 'Tests/ClusterKitTests/*.{h,m}'
+    end
   end
 
   # Like GoogleMaps sdk (googlemaps/google-maps-ios-utils#23) YandexMapKit is statically built,
   # which mean we can't use them as subspec dependency yet. Better to keep both
   # GoogleMaps and YandexMapKit commented until both of them are dynamically built!
-  
+
   # s.subspec 'GoogleMaps' do |ss|
   #  ss.platform = :ios, '8.0'
   #  ss.dependency 'ClusterKit/Core'
   #  ss.dependency 'GoogleMaps', '~> 2.7'
-  #  ss.source_files = 'ClusterKit/GoogleMaps'
+  #  ss.source_files = 'Sources/GoogleMaps'
   # end
 
   # s.subspec 'YandexMapKit' do |ss|
   #   ss.platform = :ios, '9.0'
   #   ss.dependency 'ClusterKit/Core'
   #   ss.dependency 'YandexMapKit', '~> 3.2'
-  #   ss.source_files = 'ClusterKit/YandexMapKit'
+  #   ss.source_files = 'Sources/YandexMapKit'
   # end
 
   s.subspec 'Mapbox' do |ss|
     ss.platform = :ios, '9.0'
     ss.dependency 'ClusterKit/Core'
-    ss.dependency 'Mapbox-iOS-SDK', '~> 5.1'
-    ss.source_files = 'ClusterKit/Mapbox'
-  end
-
-  s.test_spec do |test_spec|
-    test_spec.source_files = 'Tests/*.{h,m}'
+    ss.dependency 'Mapbox-iOS-SDK', '~> 5.0'
+    ss.source_files = 'Sources/Mapbox'
   end
 
 end
